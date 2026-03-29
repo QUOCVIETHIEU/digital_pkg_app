@@ -43,7 +43,8 @@ class AppRouter extends ChangeNotifier {
 
   GoRouter _createRouter() {
     return GoRouter(
-      initialLocation: AppRoute.login.path,
+      //initialLocation: AppRoute.login.path,
+      initialLocation: AppRoute.home.path,
       redirect: (context, state) async {
         final isAuthenticated = authBloc.state is Authenticated;
         final isUnAuthenticated = authBloc.state is Unauthenticated;
@@ -58,7 +59,8 @@ class AppRouter extends ChangeNotifier {
           return AppRoute.home.path;
         } else if (isUnAuthenticated &&
             !(state.matchedLocation == AppRoute.login.path)) {
-          return AppRoute.login.path;
+          //return AppRoute.login.path;
+          return null;
         }
 
         return null;
