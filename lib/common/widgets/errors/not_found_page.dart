@@ -29,7 +29,7 @@ class NotFoundPage extends StatelessWidget {
               ),
             ),
             TextButton(
-              onPressed: () => context.goNamed(AppRoute.home.name),
+              onPressed: () => context.goNamed(AppRoute.workflow.name),
               child: const Text('Go Back Home'),
             ),
           ],

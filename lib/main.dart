@@ -7,7 +7,6 @@ import 'package:url_strategy/url_strategy.dart';
 
 import 'common/models/app_info_model.dart';
 import 'core/configs/behavior/custom_behavior.dart';
-import 'core/configs/listview/listview_config.dart';
 import 'core/configs/themes/app_colors.dart';
 import 'core/configs/themes/app_theme.dart';
 import 'core/constants/constants.dart';
@@ -25,7 +24,6 @@ void main() async {
   await AppInfoModel.loadAppInfo();
   await ApiUrl.initializeBaseURL();
   await initializeDependencies();
-  ListViewConfigProvider.initializeConfigsWithScreenSizeFromSize();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
 
   // Run app

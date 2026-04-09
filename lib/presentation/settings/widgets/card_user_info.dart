@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../common/helpers/utils.dart';
 import '../../../common/widgets/widgets.dart';
 import '../../../core/configs/themes/app_colors.dart';
 import '../../../core/constants/constants.dart';
 import '../../../data/auth/models/models.dart';
 import '../../../gen/assets.gen.dart';
-import '../../../service_locator.dart';
 import '../../bloc.dart';
 
 class UserInfoCard extends StatefulWidget {
@@ -152,7 +150,7 @@ class _UserInfoCardState extends State<UserInfoCard> {
                       // Save Button
                       const SizedBox(width: 8),
                       Visibility(
-                        visible: sl<AccessUtils>().isCanUpdateRole,
+                        visible: true,
                         child: Row(
                           children: [
                             Visibility(

@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
 
 import '../../../common/helpers/utils.dart';
 import '../../../common/models/network.dart';
@@ -40,7 +39,6 @@ class AuthenticationBloc
       if (signinRes.userInfo.plantArray.isEmpty) {
         emit(Unauthenticated(userInfo: UserInfo.empty));
       } else {
-        await sl<AccessUtils>().init();
         sl<AppRouter>().reInit();
         emit(Authenticated(userInfo: signinRes.userInfo));
         await UserPreferences.savePlantId(signinRes.userInfo.plantArray.first);
@@ -59,7 +57,6 @@ class AuthenticationBloc
     final isLoggedIn = await sl<AuthRepository>().isLoggedIn();
     if (isLoggedIn) {
       final userInfo = await UserPreferences.getUserInfo();
-      await sl<AccessUtils>().init();
       sl<AppRouter>().reInit();
       emit(Authenticated(userInfo: userInfo));
     } else {

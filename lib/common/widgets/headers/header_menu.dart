@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/configs/themes/app_colors.dart';
+import '../../../presentation/auth/bloc/auth_bloc.dart';
 import '../../helpers/bloc_reload_helper.dart';
 import '../../models/drawer_model.dart';
-import '../responsive/responsive_widget.dart';
+import '../widgets.dart';
 
 class HeaderMenu extends StatefulWidget {
   final DrawerModel drawer;
@@ -69,7 +71,11 @@ class _HeaderMenuState extends State<HeaderMenu> {
     );
   }
 
-  Widget _buildHeader(BuildContext context, {required bool showMenuItems}) {
+  Widget _buildHeader(
+    BuildContext context, {
+    required bool showMenuItems,
+    String? subTitle,
+  }) {
     return Row(
       children: [
         Padding(
@@ -81,7 +87,7 @@ class _HeaderMenuState extends State<HeaderMenu> {
           ),
         ),
         Text(
-          widget.drawer.title,
+          widget.drawer.title + (subTitle != null ? '| $subTitle' : ''),
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
             fontWeight: FontWeight.w600,
             fontSize: 16,
@@ -146,6 +152,10 @@ class _HeaderMenuState extends State<HeaderMenu> {
               }).toList(),
             ),
           ),
+        IAvatarNotchedMenu(
+          user: context.read<AuthenticationBloc>().state.userInfo,
+          size: const Size(20.0, 20.0),
+        ),
       ],
     );
   }

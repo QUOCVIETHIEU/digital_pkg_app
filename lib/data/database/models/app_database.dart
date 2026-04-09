@@ -2,10 +2,10 @@ import 'package:drift/drift.dart';
 import 'package:drift_flutter/drift_flutter.dart';
 import 'package:logger/logger.dart';
 import 'package:path_provider/path_provider.dart';
-import '../../../../data/database/models/converters.dart';
+import 'package:tableview2/tableview2.dart';
 
+import '../../../../data/database/models/converters.dart';
 import '../../../common/models/app_info_model.dart';
-import '../../../common/models/listview_config_model.dart';
 
 part 'app_database.g.dart';
 

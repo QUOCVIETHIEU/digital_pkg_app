@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tableview2/tableview2.dart';
 
 import '../../../common/helpers/utils.dart';
 import '../../../gen/assets.gen.dart';
-import '../../models/models.dart';
 import '../../widgets/widgets.dart';
 
 class ListViewSettings extends StatefulWidget {

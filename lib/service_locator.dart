@@ -1,6 +1,5 @@
 import 'package:get_it/get_it.dart';
 
-import 'common/helpers/access_utils.dart';
 import 'core/network/dio_client.dart';
 import 'core/routes/router.dart';
 import 'core/warning/warning_client.dart';
@@ -49,9 +48,6 @@ Future<void> initializeDependencies() async {
   // support
   sl.registerSingleton<SupportApiService>(SupportApiServiceImpl());
   sl.registerSingleton<SupportRepository>(SupportRepositoryImpl());
-
-  // Access Utils
-  sl.registerSingleton<AccessUtils>(AccessUtils());
 
   // App Router
   sl.registerSingleton<AppRouter>(AppRouter(sl()));

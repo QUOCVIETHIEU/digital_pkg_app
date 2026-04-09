@@ -1,17 +1,14 @@
 import 'package:drift/drift.dart';
+import 'package:tableview2/tableview2.dart';
 
-import '../../../common/models/listview_config_model.dart';
 import '../../../core/configs/listview/listview_config.dart';
-import '../../../core/constants/enums.dart';
 import '../../../service_locator.dart';
 import '../models/app_database.dart';
 
 abstract class AppDatabaseService {
-  Future<ListViewConfigModel> getListViewConfigModel(
-    ListViewConfigName listViewConfigName,
-  );
+  Future<ListViewConfigModel> getListViewConfigModel(String listViewConfigName);
   Future<void> saveListViewConfig(
-    ListViewConfigName listViewConfigName,
+    String listViewConfigName,
     ListViewConfigModel listViewConfigModel,
   );
 }
@@ -19,16 +16,15 @@ abstract class AppDatabaseService {
 class AppDatabaseServiceImpl extends AppDatabaseService {
   @override
   Future<ListViewConfigModel> getListViewConfigModel(
-    ListViewConfigName listViewConfigName,
+    String listViewConfigName,
   ) async {
     try {
       late ListViewConfigModel listViewConfigModel;
 
       final db = sl<AppDatabase>();
-      final row =
-          await (db.select(db.listViewConfigs)
-                ..where((tbl) => tbl.name.equals(listViewConfigName.name)))
-              .getSingleOrNull();
+      final row = await (db.select(
+        db.listViewConfigs,
+      )..where((tbl) => tbl.name.equals(listViewConfigName))).getSingleOrNull();
       if (row != null) {
         listViewConfigModel = row.config;
       } else {
@@ -44,7 +40,7 @@ class AppDatabaseServiceImpl extends AppDatabaseService {
 
   @override
   Future<void> saveListViewConfig(
-    ListViewConfigName listViewConfigName,
+    String listViewConfigName,
     ListViewConfigModel listViewConfigModel,
   ) async {
     try {
@@ -53,7 +49,7 @@ class AppDatabaseServiceImpl extends AppDatabaseService {
           .into(db.listViewConfigs)
           .insert(
             ListViewConfig(
-              name: listViewConfigName.name,
+              name: listViewConfigName,
               config: listViewConfigModel,
             ),
             mode: InsertMode.insertOrReplace,

@@ -1,20 +1,12 @@
 import '../../../common/models/drawer_model.dart';
 import '../../../core/constants/app_route.dart';
-import '../../../service_locator.dart';
-import '../../helpers/access_utils.dart';
 
 class Drawers {
   static List<DrawerModel> getDrawers() {
     List<DrawerModel> drawers = [];
     for (var drawer in _allDrawers) {
-      drawer = drawer.copyWith(
-        children: drawer.children.where((child) {
-          return sl<AccessUtils>().hasRoutePermission(route: child.route);
-        }).toList(),
-      );
-      if (sl<AccessUtils>().hasRoutePermission(route: drawer.route)) {
-        drawers.add(drawer);
-      }
+      drawer = drawer.copyWith();
+      drawers.add(drawer);
     }
     return drawers;
   }
@@ -23,8 +15,8 @@ class Drawers {
 
   static final _allDrawers = [
     DrawerModel(
-      route: AppRoute.home,
-      title: 'HOME',
+      route: AppRoute.workflow,
+      title: 'WORKFLOW',
       icon: 'ico_drawer_home',
       enabled: true,
       children: [],

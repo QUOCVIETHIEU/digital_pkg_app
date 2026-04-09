@@ -1,6 +1,5 @@
 part of 'auth_bloc.dart';
 
-@immutable
 sealed class AuthenticationState extends Equatable {
   final UserInfo userInfo;
   const AuthenticationState({required this.userInfo});

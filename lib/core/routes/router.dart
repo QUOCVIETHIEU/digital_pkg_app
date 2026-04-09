@@ -55,7 +55,7 @@ class AppRouter extends ChangeNotifier {
         // Redirect to the home page if the user is authenticated
         else if (isAuthenticated &&
             (state.matchedLocation == AppRoute.login.path)) {
-          return AppRoute.home.path;
+          return AppRoute.workflow.path;
         } else if (isUnAuthenticated &&
             !(state.matchedLocation == AppRoute.login.path)) {
           return AppRoute.login.path;
@@ -78,17 +78,17 @@ class AppRouter extends ChangeNotifier {
                   builder: (context, state, navigationShell) {
                     return IFrameBase(
                       navigationShell: navigationShell,
-                      drawer: PageHome.drawer,
+                      drawer: PageWorkflow.drawer,
                     );
                   },
                   branches: [
                     StatefulShellBranch(
                       routes: [
                         GoRoute(
-                          path: AppRoute.home.path,
-                          name: AppRoute.home.name,
+                          path: AppRoute.workflow.path,
+                          name: AppRoute.workflow.name,
                           pageBuilder: (context, state) {
-                            return pageBuilder(const PageHome());
+                            return pageBuilder(const PageWorkflow());
                           },
                         ),
                       ],

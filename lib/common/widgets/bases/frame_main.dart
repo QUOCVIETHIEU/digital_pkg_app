@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../appbars/appbar.dart';
 import '../drawers/drawer.dart';
 
 class IFrameMain extends StatelessWidget {
@@ -15,15 +14,15 @@ class IFrameMain extends StatelessWidget {
       resizeToAvoidBottomInset: true,
       body: Column(
         children: [
-          /// FRAME HEADER APPBAR
-          const IAppbar(),
-
           /// FRAME BODY
           Expanded(
             child: Row(
               children: [
                 /// Navigation
-                IDrawer(navigationShell: navigationShell, onExpandedChanged: (bool isExpanded) {}),
+                IDrawer(
+                  navigationShell: navigationShell,
+                  onExpandedChanged: (bool isExpanded) {},
+                ),
 
                 /// Main Body
                 Expanded(flex: 1, child: navigationShell),

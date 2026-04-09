@@ -91,11 +91,13 @@ class _IDrawerState extends State<IDrawer> {
                             while (context.canPop()) {
                               context.popSafety();
                             }
-                            context.pushReplacementNamed(AppRoute.home.name);
+                            context.pushReplacementNamed(
+                              AppRoute.workflow.name,
+                            );
                             WidgetsBinding.instance.addPostFrameCallback((_) {
                               BlocReloadHelper.reloadByRoute(
                                 context,
-                                AppRoute.home,
+                                AppRoute.workflow,
                               );
                             });
                           }

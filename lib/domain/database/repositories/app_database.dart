@@ -1,9 +1,6 @@
-import '../../../common/models/listview_config_model.dart';
-import '../../../core/constants/enums.dart';
+import 'package:tableview2/tableview2.dart';
 
 abstract class AppDatabaseRepository {
-  Future<ListViewConfigModel> getListViewConfig(
-    ListViewConfigName listViewConfigName,
-  );
+  Future<ListViewConfigModel> getListViewConfig(String listViewConfigName);
   Future<void> saveListViewConfig(ListViewConfigModel listViewConfigModel);
 }

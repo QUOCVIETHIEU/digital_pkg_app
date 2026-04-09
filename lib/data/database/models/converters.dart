@@ -1,8 +1,7 @@
 import 'dart:convert';
 
 import 'package:drift/drift.dart';
-
-import '../../../common/models/listview_config_model.dart';
+import 'package:tableview2/tableview2.dart';
 
 class ListViewConfigConverter extends TypeConverter<ListViewConfigModel, String>
     with JsonTypeConverter2<ListViewConfigModel, String, Map<String, dynamic>> {

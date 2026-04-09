@@ -3,8 +3,8 @@ enum AppRoute {
   login(name: 'login', path: '/login'),
   serverConfig(name: 'server-config', path: '/server-config'),
 
-  /// 02. Dashboards
-  home(name: 'home', path: '/home'),
+  /// workflow
+  workflow(name: 'workflow', path: '/workflow'),
 
   dashboard(name: 'dashboard', path: '/dashboard'),
 
@@ -12,23 +12,10 @@ enum AppRoute {
   setting(name: 'setting', path: '/setting'),
 
   /// Supports
-  support(name: 'support', path: '/support'),
-
-  /// Workflows
-  workflow(name: 'workflow', path: '/workflow');
+  support(name: 'support', path: '/support');
 
   final String name;
   final String path;
 
   const AppRoute({required this.name, required this.path});
-}
-
-enum AppQueryParam {
-  mode(name: 'mode'),
-  recipeId(name: 'recipeId'),
-  isHistory(name: 'isHistory'),
-  selectedChip(name: 'selectedChip');
-
-  final String name;
-  const AppQueryParam({required this.name});
 }

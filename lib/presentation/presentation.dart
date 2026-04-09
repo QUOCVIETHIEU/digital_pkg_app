@@ -3,7 +3,7 @@ export '../../common/widgets/bases/frame_main.dart';
 export '../../common/widgets/errors/not_found_page.dart';
 export 'auth/pages/page_login.dart';
 export 'dashboard/pages/page_dashboard.dart';
-export 'home/pages/page_home.dart';
+export 'workflow/pages/page_workflow.dart';
 export 'server_config/pages/server_config.dart';
 export 'settings/pages/page_setting_home.dart';
 export 'supports/pages/page_support_home.dart';

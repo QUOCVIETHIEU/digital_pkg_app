@@ -1,6 +1,5 @@
 part of 'auth_bloc.dart';
 
-@immutable
 sealed class AuthenticationEvent {
   const AuthenticationEvent();
 }

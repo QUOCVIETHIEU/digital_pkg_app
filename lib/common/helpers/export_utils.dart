@@ -4,11 +4,10 @@ import 'package:excel/excel.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
+import 'package:tableview2/tableview2.dart';
 
 import '../../core/constants/constants.dart';
 import '../models/exportable_model.dart';
-import '../models/listview_config_model.dart';
-import '../models/table_column_config.dart';
 import 'save_json_web.dart' if (dart.library.io) 'save_json_io.dart';
 
 class ExportUtils {
@@ -155,8 +154,7 @@ class ExportUtils {
       return 'Mã hóa tệp Excel thất bại';
     }
 
-    final fileName =
-        '${configsParent.name.name}_${configsChild.name.name}.xlsx';
+    final fileName = '${configsParent.name}_${configsChild.name}.xlsx';
     String filePath = path.join(selectedDirectory, fileName);
 
     if (kIsWeb) {
@@ -247,7 +245,7 @@ class ExportUtils {
       return 'Mã hóa tệp Excel thất bại';
     }
 
-    final fileName = '${configs.name.name}.xlsx';
+    final fileName = '${configs.name}.xlsx';
     String filePath = path.join(selectedDirectory, fileName);
     if (kIsWeb) {
       excel.save(fileName: fileName);

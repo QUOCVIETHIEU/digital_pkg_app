@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../common/models/models.dart';
-
 typedef DateSelectedCallback = bool Function(DateTime);
 typedef DateSelectedCallbackVoid = void Function(DateTime);
 
@@ -27,7 +25,7 @@ typedef OnConfirmMaterialRecipeCallback =
       String note,
       bool isAccepTableTolerance,
     );
-typedef ListViewConfigUpdatedCallback = void Function(TableColumnConfig, bool);
+
 typedef OnDateRangeChangedCallback =
     void Function(DateTime dateFrom, DateTime dateTo);
 typedef ListViewSortCallback = void Function(int columnIndex, bool ascending);
