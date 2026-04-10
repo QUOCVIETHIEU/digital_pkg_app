@@ -31,6 +31,9 @@ class $AssetsIconsGen {
 
   /// Directory path: assets/icons/textfields
   $AssetsIconsTextfieldsGen get textfields => const $AssetsIconsTextfieldsGen();
+
+  /// Directory path: assets/icons/workflow
+  $AssetsIconsWorkflowGen get workflow => const $AssetsIconsWorkflowGen();
 }
 
 class $AssetsLogosGen {
@@ -140,6 +143,9 @@ class $AssetsIconsCommonGen {
 
   /// File path: assets/icons/common/ico_action_warning.svg
   String get icoActionWarning => 'assets/icons/common/ico_action_warning.svg';
+
+  /// File path: assets/icons/common/ico_add_doc.svg
+  String get icoAddDoc => 'assets/icons/common/ico_add_doc.svg';
 
   /// File path: assets/icons/common/ico_add_material.svg
   String get icoAddMaterial => 'assets/icons/common/ico_add_material.svg';
@@ -280,6 +286,7 @@ class $AssetsIconsCommonGen {
     icoActionSearch,
     icoActionSetting,
     icoActionWarning,
+    icoAddDoc,
     icoAddMaterial,
     icoAddReport,
     icoAllReports,
@@ -820,6 +827,23 @@ class $AssetsIconsTextfieldsGen {
     icoVerActive,
     icoVerNormal,
   ];
+}
+
+class $AssetsIconsWorkflowGen {
+  const $AssetsIconsWorkflowGen();
+
+  /// File path: assets/icons/workflow/ico_line.svg
+  String get icoLine => 'assets/icons/workflow/ico_line.svg';
+
+  /// File path: assets/icons/workflow/ico_matrix.svg
+  String get icoMatrix => 'assets/icons/workflow/ico_matrix.svg';
+
+  /// File path: assets/icons/workflow/ico_request_manager.svg
+  String get icoRequestManager =>
+      'assets/icons/workflow/ico_request_manager.svg';
+
+  /// List of all assets
+  List<String> get values => [icoLine, icoMatrix, icoRequestManager];
 }
 
 class Assets {

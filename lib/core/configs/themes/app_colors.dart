@@ -70,7 +70,7 @@ class AppColors {
   static const Color blueColor3 = Color(0xFF3B9CBC);
   static const Color blueColor4 = Color(0xFF41AAC7);
   static const Color blueColor5 = Color(0xFF008BCE);
-  static const Color blueColor6 = Color(0xFF008BE8);
+  static const Color blueColor6 = Color(0xFF0AB2C8);
   static const Color blueColor7 = Color(0xFF002F59);
   static const Color dodgerBlue = Color(0xFF1E90FF);
   static const Color headerBlue = Color(0xFF0099D8);

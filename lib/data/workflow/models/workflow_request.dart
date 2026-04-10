@@ -2,10 +2,12 @@ import 'package:equatable/equatable.dart';
 
 import '../../../common/models/models.dart';
 
+enum WorkflowRequestType { primary, secondary }
+
 class WorkflowRequest extends Equatable implements Exportable {
   final String id;
   final String requestId;
-  final String type;
+  final WorkflowRequestType type;
   final String itemCodeTesting;
   final String itemCodeSapUpdate;
   final String itemName;
@@ -37,7 +39,7 @@ class WorkflowRequest extends Equatable implements Exportable {
     return const WorkflowRequest(
       id: '',
       requestId: '',
-      type: '',
+      type: WorkflowRequestType.primary,
       itemCodeTesting: '',
       itemCodeSapUpdate: '',
       itemName: '',
@@ -54,7 +56,7 @@ class WorkflowRequest extends Equatable implements Exportable {
   WorkflowRequest copyWith({
     String? id,
     String? requestId,
-    String? type,
+    WorkflowRequestType? type,
     String? itemCodeTesting,
     String? itemCodeSapUpdate,
     String? itemName,
@@ -89,7 +91,7 @@ class WorkflowRequest extends Equatable implements Exportable {
       case 1:
         return requestId;
       case 2:
-        return type;
+        return type.name;
       case 3:
         return itemCodeTesting;
       case 4:

@@ -20,7 +20,7 @@ class IDropdownSearch<T> extends StatelessWidget {
     this.closeRadius = 4,
     this.expandRadius = 4,
     this.closedHeaderPadding = 10,
-    required this.searchHintText,
+    this.searchHintText = 'Search...',
     this.onItemSelected,
     this.enabled = true,
     this.prefixIcon,

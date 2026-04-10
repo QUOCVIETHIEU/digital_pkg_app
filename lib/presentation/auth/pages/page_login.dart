@@ -23,8 +23,12 @@ class PageLogin extends StatefulWidget {
 }
 
 class _PageLoginState extends State<PageLogin> {
-  final TextEditingController _userNameController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _userNameController = TextEditingController(
+    text: 'admin',
+  );
+  final TextEditingController _passwordController = TextEditingController(
+    text: 'admin',
+  );
 
   bool isRemember = false;
   Widget _serverConfig(AuthenticationState state) {

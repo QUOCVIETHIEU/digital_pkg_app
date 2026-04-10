@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../data/workflow/models/workflow_request.dart';
 import '../../../common/models/models.dart';
 import '../../../common/widgets/widgets.dart';
 import '../../../core/configs/themes/app_colors.dart';
 import '../../../core/constants/constants.dart';
+import '../../../gen/assets.gen.dart';
 import '../bloc/workflow_request/workflow_request_bloc.dart';
+import '../widgets/workflow_req_form.dart';
 import '../widgets/workflow_request_list.dart';
 
 class PageWorkflow extends StatelessWidget {
@@ -36,11 +41,7 @@ class _PageWorkflowContent extends StatelessWidget {
           children: [
             IPageHeader(
               title: '01 - REQUEST MANAGER',
-              image: const Icon(
-                Icons.settings,
-                size: 32.0,
-                color: AppColors.blueColor5,
-              ),
+              image: SvgPicture.asset(Assets.icons.workflow.icoRequestManager),
               searchLabel: 'Tìm kiếm yêu cầu:',
               searchHint: 'Nhập mã, tên, item code...',
               onSearchChanged: (value) {
@@ -56,7 +57,8 @@ class _PageWorkflowContent extends StatelessWidget {
                     size: 16.0,
                     color: AppColors.blueColor5,
                   ),
-                  onPressed: () {},
+                  onPressed: () =>
+                      _showAddRequestForm(context, WorkflowRequestType.primary),
                   width: 200.0,
                 ),
                 IRectangleButton(
@@ -64,9 +66,12 @@ class _PageWorkflowContent extends StatelessWidget {
                   leading: const Icon(
                     Icons.add,
                     size: 16.0,
-                    color: AppColors.blueColor5,
+                    color: AppColors.blueColor6,
                   ),
-                  onPressed: () {},
+                  onPressed: () => _showAddRequestForm(
+                    context,
+                    WorkflowRequestType.secondary,
+                  ),
                   width: 200.0,
                 ),
               ],
@@ -107,6 +112,25 @@ class _PageWorkflowContent extends StatelessWidget {
           ],
         );
       },
+    );
+  }
+
+  void _showAddRequestForm(BuildContext context, WorkflowRequestType type) {
+    IDialog.showCommonAnimationDialog(
+      context: context,
+      content: WorkflowReqForm(
+        request: WorkflowRequest.empty().copyWith(
+          type: type,
+          requestId: 'RQT20261203-015', // Mock ID as in image
+          itemCodeTesting: '7Up Free Fiber', // Mock as in image
+        ),
+        onSubmit: (newRequest) {
+          context.pop();
+          context.read<WorkflowRequestBloc>().add(
+            AddWorkflowRequest(newRequest),
+          );
+        },
+      ),
     );
   }
 }

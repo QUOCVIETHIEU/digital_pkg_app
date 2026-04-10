@@ -74,3 +74,11 @@ class UpdateWorkflowRequest extends WorkflowRequestEvent {
   @override
   List<Object?> get props => [allMaterials];
 }
+
+class AddWorkflowRequest extends WorkflowRequestEvent {
+  final WorkflowRequest request;
+  const AddWorkflowRequest(this.request);
+  @override
+  List<Object?> get props => [request];
+}
+

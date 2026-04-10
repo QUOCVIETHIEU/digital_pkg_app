@@ -37,6 +37,7 @@ class WorkflowRequestBloc
     on<WorkflowRequestListViewConfigUpdated>(_onListViewConfigUpdated);
     on<WorkflowRequestConfirm>(_onConfirmConfirmed);
     on<UpdateWorkflowRequest>(_onUpdateMaterialReconcile);
+    on<AddWorkflowRequest>(_onAddRequested);
   }
 
   Future<void> _onLoadRequested(
@@ -53,11 +54,17 @@ class WorkflowRequestBloc
         return WorkflowRequest(
           id: index.toString(),
           requestId: 'RQT20261203-$id',
-          type: index % 3 == 0 ? '---' : (index % 2 == 0 ? 'Primary' : 'Secondary'),
+          type: index % 3 == 0
+              ? WorkflowRequestType.primary
+              : (index % 2 == 0
+                    ? WorkflowRequestType.primary
+                    : WorkflowRequestType.secondary),
           itemCodeTesting: '2000000${(index % 2) + 1}',
           itemCodeSapUpdate: index == 0 ? '---' : '20000${500 + index}',
           itemName: 'Revi Dry Baboo F14033-Sodi Benz17174MSB ${index + 1}',
-          category: index % 4 == 0 ? 'Can' : (index % 4 == 1 ? 'End' : (index % 4 == 2 ? 'Tray' : 'Carton')),
+          category: index % 4 == 0
+              ? 'Can'
+              : (index % 4 == 1 ? 'End' : (index % 4 == 2 ? 'Tray' : 'Carton')),
           quantity: '${(index + 1) * 1000 + 222}',
           plantNameRunTrials: ['DOP', 'QNP', 'BNP', 'LAP', 'CTP'][index % 5],
           requestDatetime: '14:12:20 14/05/2026',
@@ -71,7 +78,7 @@ class WorkflowRequestBloc
         search: state.searchQuery,
         getSearchableFields: (m) => [
           m.requestId,
-          m.type,
+          m.type.name,
           m.itemCodeTesting,
           m.itemCodeSapUpdate,
           m.itemName,
@@ -129,7 +136,7 @@ class WorkflowRequestBloc
       search: state.searchQuery,
       getSearchableFields: (m) => [
         m.requestId,
-        m.type,
+        m.type.name,
         m.itemCodeTesting,
         m.itemCodeSapUpdate,
         m.itemName,
@@ -161,7 +168,7 @@ class WorkflowRequestBloc
       search: event.query,
       getSearchableFields: (m) => [
         m.requestId,
-        m.type,
+        m.type.name,
         m.itemCodeTesting,
         m.itemCodeSapUpdate,
         m.itemName,
@@ -273,6 +280,41 @@ class WorkflowRequestBloc
   ) async {
     emit(
       state.copyWith(allMaterials: event.allMaterials, status: Status.loaded),
+    );
+  }
+
+  FutureOr<void> _onAddRequested(
+    AddWorkflowRequest event,
+    Emitter<WorkflowRequestState> emit,
+  ) {
+    final updatedOriginal = List<WorkflowRequest>.from(state.originalMaterials)
+      ..insert(0, event.request);
+    // Re-apply search filter if any
+    final List<WorkflowRequest> filtered = SearchUtils.filterListBySearch(
+      items: updatedOriginal,
+      search: state.searchQuery,
+      getSearchableFields: (m) => [
+        m.requestId,
+        m.type.name,
+        m.itemCodeTesting,
+        m.itemCodeSapUpdate,
+        m.itemName,
+        m.category,
+        m.quantity,
+        m.plantNameRunTrials,
+        m.requestDatetime,
+        m.globalApproveDatetime,
+        m.qcmApproveDatetime,
+        m.shortRunDatetime,
+      ],
+    );
+
+    emit(
+      state.copyWith(
+        originalMaterials: updatedOriginal,
+        allMaterials: filtered,
+        status: Status.loaded,
+      ),
     );
   }
 }

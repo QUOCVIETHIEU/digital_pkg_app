@@ -9,7 +9,13 @@ class CustomTextFormField extends StatelessWidget {
     this.controller,
     this.initialValue,
     this.focusNode,
-    this.decoration = const InputDecoration(),
+    this.decoration = const InputDecoration(
+      isDense: true,
+      contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(4)),
+      ),
+    ),
     this.keyboardType,
     this.textCapitalization = TextCapitalization.none,
     this.textInputAction,
