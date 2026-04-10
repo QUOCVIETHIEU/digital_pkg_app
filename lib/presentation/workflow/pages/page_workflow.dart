@@ -18,7 +18,8 @@ class PageWorkflow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => WorkflowRequestBloc()..add(const WorkflowRequestLoadRequested('')),
+      create: (context) =>
+          WorkflowRequestBloc()..add(const WorkflowRequestLoadRequested('')),
       child: const _PageWorkflowContent(),
     );
   }
@@ -85,8 +86,8 @@ class _PageWorkflowContent extends StatelessWidget {
                   );
                 },
                 onSort: (index) {
-                  final isAscending = state.sortColumnIndex == index 
-                      ? !state.sortAscending 
+                  final isAscending = state.sortColumnIndex == index
+                      ? !state.sortAscending
                       : true;
                   context.read<WorkflowRequestBloc>().add(
                     WorkflowRequestSortRequested(index, isAscending),
@@ -95,6 +96,12 @@ class _PageWorkflowContent extends StatelessWidget {
                 sortColumnIndex: state.sortColumnIndex,
                 sortAscending: state.sortAscending,
                 showSort: true,
+                onSelect: (material) {
+                  context.read<WorkflowRequestBloc>().add(
+                    WorkflowRequestSelectedChanged(material),
+                  );
+                },
+                selectedMaterial: state.selectedMaterial,
               ),
             ),
           ],
@@ -103,4 +110,3 @@ class _PageWorkflowContent extends StatelessWidget {
     );
   }
 }
-
