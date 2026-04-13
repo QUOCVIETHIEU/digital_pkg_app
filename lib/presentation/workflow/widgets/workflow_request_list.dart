@@ -29,7 +29,7 @@ class WorkflowRequestList extends StatelessWidget {
   final void Function(WorkflowRequest)? onSelect;
   final WorkflowRequest? selectedMaterial;
   final bool showSort;
-  final void Function(int)? onSort;
+  final void Function(int, bool)? onSort;
   final int? sortColumnIndex;
   final bool? sortAscending;
   final bool? isShowPO;
@@ -103,14 +103,12 @@ class WorkflowRequestList extends StatelessWidget {
             : AppConfigs.dataRowHeight,
         headingRowHeight: AppConfigs.headingRowHeightGroup,
         hoveredIndexNotifier: ValueNotifier(-1),
-        fixedRowCount: 2,
+        fixedRowCount: 1,
         tableHeaderColor: colorHeader,
         listViewConfig: listViewConfig,
         sortColumnIndex: sortColumnIndex,
         sortAscending: sortAscending,
-        onSort: showSort && onSort != null
-            ? (columnIndex, _) => onSort!(columnIndex)
-            : null,
+        onSort: onSort,
         rows: materials.asMap().entries.map((entry) {
           final index = entry.key;
           final material = entry.value;

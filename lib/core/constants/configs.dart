@@ -29,7 +29,7 @@ class AppConfigs {
   static const double dividerThicknessDataTable = 0;
   static const double fontSizeHeader1 = 24.0;
   static const double headingRowHeight = 45.0;
-  static const double headingRowHeightGroup = 40.0;
+  static const double headingRowHeightGroup = 45.0;
   static const double dataRowHeight = 36.0;
   static const double dataRowHeightReconcile = 50.0;
   static const double spacingTextWithTitle = 3.0;

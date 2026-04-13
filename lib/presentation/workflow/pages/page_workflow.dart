@@ -90,13 +90,20 @@ class _PageWorkflowContent extends StatelessWidget {
                     ),
                   );
                 },
-                onSort: (index) {
-                  final isAscending = state.sortColumnIndex == index
-                      ? !state.sortAscending
-                      : true;
-                  context.read<WorkflowRequestBloc>().add(
-                    WorkflowRequestSortRequested(index, isAscending),
-                  );
+                onSort: (columnIndex, ascending) {
+                  if (state.sortColumnIndex != columnIndex) {
+                    context.read<WorkflowRequestBloc>().add(
+                      WorkflowRequestSortRequested(columnIndex, true),
+                    );
+                  } else if (state.sortAscending) {
+                    context.read<WorkflowRequestBloc>().add(
+                      WorkflowRequestSortRequested(columnIndex, false),
+                    );
+                  } else {
+                    context.read<WorkflowRequestBloc>().add(
+                      WorkflowRequestSortRequested(0, true),
+                    );
+                  }
                 },
                 sortColumnIndex: state.sortColumnIndex,
                 sortAscending: state.sortAscending,
@@ -106,6 +113,7 @@ class _PageWorkflowContent extends StatelessWidget {
                     WorkflowRequestSelectedChanged(material),
                   );
                 },
+                colorHeader: AppColors.workflowHeaderColor,
                 selectedMaterial: state.selectedMaterial,
               ),
             ),

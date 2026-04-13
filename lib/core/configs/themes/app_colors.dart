@@ -160,6 +160,7 @@ class AppColors {
   static const Color batchColor = Color(0xFF324F6A);
 
   static const Color qrCodeMixed = Color(0xFF3874FF);
+  static const Color workflowHeaderColor = Color(0xFF0A8BED);
   static const Color qrCodePickedWeight = Color(0xFF7E14CB);
 
   static const Color returnRequestInitialColor = Color(0xFF324F6A);
