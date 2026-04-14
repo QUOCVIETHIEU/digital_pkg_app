@@ -48,8 +48,7 @@ class WorkflowRequestBloc
     try {
       final listViewConfig = await sl<AppDatabaseRepository>()
           .getListViewConfig(ListViewConfigName.request.name);
-
-      final allMaterials = List.generate(20, (index) {
+      final allMaterials = List.generate(40, (index) {
         final id = (20 - index).toString().padLeft(3, '0');
         return WorkflowRequest(
           id: index.toString(),
@@ -108,8 +107,12 @@ class WorkflowRequestBloc
     WorkflowRequestSelectedChanged event,
     Emitter<WorkflowRequestState> emit,
   ) {
+    emit(state.copyWith(status: Status.initial));
     emit(
-      state.copyWith(selectedMaterial: event.material, status: Status.selected),
+      state.copyWith(
+        selectedMaterial: event.material,
+        status: Status.transitionPage,
+      ),
     );
   }
 

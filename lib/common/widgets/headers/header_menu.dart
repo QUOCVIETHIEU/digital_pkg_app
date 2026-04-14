@@ -12,10 +12,12 @@ import '../widgets.dart';
 class HeaderMenu extends StatefulWidget {
   final DrawerModel drawer;
   final StatefulNavigationShell navigationShell;
+  final String? subTitle;
   const HeaderMenu({
     super.key,
     required this.drawer,
     required this.navigationShell,
+    this.subTitle,
   });
 
   @override
@@ -64,10 +66,26 @@ class _HeaderMenuState extends State<HeaderMenu> {
   @override
   Widget build(BuildContext context) {
     return ResponsiveWidget(
-      small: _buildHeader(context, showMenuItems: false),
-      normal: _buildHeader(context, showMenuItems: false),
-      large: _buildHeader(context, showMenuItems: true),
-      extraLarge: _buildHeader(context, showMenuItems: true),
+      small: _buildHeader(
+        context,
+        showMenuItems: false,
+        subTitle: widget.subTitle,
+      ),
+      normal: _buildHeader(
+        context,
+        showMenuItems: false,
+        subTitle: widget.subTitle,
+      ),
+      large: _buildHeader(
+        context,
+        showMenuItems: false,
+        subTitle: widget.subTitle,
+      ),
+      extraLarge: _buildHeader(
+        context,
+        showMenuItems: false,
+        subTitle: widget.subTitle,
+      ),
     );
   }
 
@@ -77,21 +95,38 @@ class _HeaderMenuState extends State<HeaderMenu> {
     String? subTitle,
   }) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: SvgPicture.asset(
-            'assets/icons/drawers/${widget.drawer.icon}_active.svg',
-            width: 32.0,
-            height: 32.0,
-          ),
-        ),
-        Text(
-          widget.drawer.title + (subTitle != null ? '| $subTitle' : ''),
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-            fontWeight: FontWeight.w600,
-            fontSize: 16,
-          ),
+        Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: SvgPicture.asset(
+                'assets/icons/drawers/${widget.drawer.icon}_active.svg',
+                width: 24.0,
+                height: 24.0,
+              ),
+            ),
+            Row(
+              children: [
+                Text(
+                  widget.drawer.title + (subTitle != null ? '| ' : ''),
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
+                  ),
+                ),
+                if (subTitle != null)
+                  Text(
+                    subTitle,
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                    ),
+                  ),
+              ],
+            ),
+          ],
         ),
         if (showMenuItems)
           Expanded(

@@ -14,6 +14,9 @@ import 'package:flutter/widgets.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// Directory path: assets/icons/actions
+  $AssetsIconsActionsGen get actions => const $AssetsIconsActionsGen();
+
   /// Directory path: assets/icons/common
   $AssetsIconsCommonGen get common => const $AssetsIconsCommonGen();
 
@@ -89,6 +92,28 @@ class $AssetsLogosGen {
     logoQuocviet,
     logoSpvb,
     logoSpvbHeader,
+  ];
+}
+
+class $AssetsIconsActionsGen {
+  const $AssetsIconsActionsGen();
+
+  /// File path: assets/icons/actions/ico_action_workflow_completed.svg
+  String get icoActionWorkflowCompleted =>
+      'assets/icons/actions/ico_action_workflow_completed.svg';
+
+  /// File path: assets/icons/actions/ico_action_workflow_error.svg
+  String get icoActionWorkflowError =>
+      'assets/icons/actions/ico_action_workflow_error.svg';
+
+  /// File path: assets/icons/actions/ico_back_previous.svg
+  String get icoBackPrevious => 'assets/icons/actions/ico_back_previous.svg';
+
+  /// List of all assets
+  List<String> get values => [
+    icoActionWorkflowCompleted,
+    icoActionWorkflowError,
+    icoBackPrevious,
   ];
 }
 
@@ -191,6 +216,15 @@ class $AssetsIconsCommonGen {
 
   /// File path: assets/icons/common/ico_column.svg
   String get icoColumn => 'assets/icons/common/ico_column.svg';
+
+  /// File path: assets/icons/common/ico_common_digital.svg
+  String get icoCommonDigital => 'assets/icons/common/ico_common_digital.svg';
+
+  /// File path: assets/icons/common/ico_common_primary.svg
+  String get icoCommonPrimary => 'assets/icons/common/ico_common_primary.svg';
+
+  /// File path: assets/icons/common/ico_common_request.svg
+  String get icoCommonRequest => 'assets/icons/common/ico_common_request.svg';
 
   /// File path: assets/icons/common/ico_dashboard_small.svg
   String get icoDashboardSmall => 'assets/icons/common/ico_dashboard_small.svg';
@@ -302,6 +336,9 @@ class $AssetsIconsCommonGen {
     icoCheckbox,
     icoClearSnack,
     icoColumn,
+    icoCommonDigital,
+    icoCommonPrimary,
+    icoCommonRequest,
     icoDashboardSmall,
     icoDataEmpty,
     icoHistory,
@@ -339,14 +376,6 @@ class $AssetsIconsDrawersGen {
   /// File path: assets/icons/drawers/ico_drawer_consumption_normal.svg
   String get icoDrawerConsumptionNormal =>
       'assets/icons/drawers/ico_drawer_consumption_normal.svg';
-
-  /// File path: assets/icons/drawers/ico_drawer_dashboard_active.svg
-  String get icoDrawerDashboardActive =>
-      'assets/icons/drawers/ico_drawer_dashboard_active.svg';
-
-  /// File path: assets/icons/drawers/ico_drawer_dashboard_normal.svg
-  String get icoDrawerDashboardNormal =>
-      'assets/icons/drawers/ico_drawer_dashboard_normal.svg';
 
   /// File path: assets/icons/drawers/ico_drawer_home_active.svg
   String get icoDrawerHomeActive =>
@@ -520,8 +549,6 @@ class $AssetsIconsDrawersGen {
   List<String> get values => [
     icoDrawerConsumptionActive,
     icoDrawerConsumptionNormal,
-    icoDrawerDashboardActive,
-    icoDrawerDashboardNormal,
     icoDrawerHomeActive,
     icoDrawerHomeNormal,
     icoDrawerIntegrationActive,
@@ -586,6 +613,10 @@ class $AssetsIconsLaunchersGen {
   /// File path: assets/icons/launchers/app_launcher.svg
   String get appLauncher => 'assets/icons/launchers/app_launcher.svg';
 
+  /// File path: assets/icons/launchers/app_launcher_digital.svg
+  String get appLauncherDigital =>
+      'assets/icons/launchers/app_launcher_digital.svg';
+
   /// File path: assets/icons/launchers/app_launcher_light.png
   AssetGenImage get appLauncherLightPng =>
       const AssetGenImage('assets/icons/launchers/app_launcher_light.png');
@@ -601,6 +632,7 @@ class $AssetsIconsLaunchersGen {
   /// List of all assets
   List<dynamic> get values => [
     appLauncher,
+    appLauncherDigital,
     appLauncherLightPng,
     appLauncherLightSvg,
     newAppLauncher,

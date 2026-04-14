@@ -29,7 +29,7 @@ class IRichTextValue extends StatelessWidget {
         text: noDot ? '$label: ' : '${AppStrings.dotChar} $label: ',
         style: DefaultTextStyle.of(context).style.copyWith(
           fontSize: fontSizeValue,
-          fontWeight: FontWeight.w400,
+          fontWeight: FontWeight.w600,
           color: AppColors.textColor,
           fontFamily: FontFamily.montserrat,
         ),

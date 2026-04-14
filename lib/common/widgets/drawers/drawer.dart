@@ -204,6 +204,7 @@ class _IDrawerState extends State<IDrawer> {
                         children: drawItem.children,
                         selected: isSelected,
                         expandedDrawer: expandedDrawer,
+                        size: 20,
                         onPressed: () {
                           widget.navigationShell.goBranch(
                             index,
@@ -279,7 +280,7 @@ class _IDrawerState extends State<IDrawer> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ICircleButton(
-                        iconPath: Assets.icons.launchers.appLauncherLightSvg,
+                        iconPath: Assets.icons.launchers.appLauncherDigital,
                         size: 28.0,
                         onPressed: () async {
                           String url = await UserPreferences.getBaseURL();

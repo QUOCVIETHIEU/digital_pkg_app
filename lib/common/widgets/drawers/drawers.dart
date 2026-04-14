@@ -15,18 +15,26 @@ class Drawers {
 
   static final _allDrawers = [
     DrawerModel(
-      route: AppRoute.workflow,
-      title: 'WORKFLOW',
+      route: AppRoute.dashboard,
+      title: 'DASHBOARD',
       icon: 'ico_drawer_home',
       enabled: true,
       children: [],
     ),
     DrawerModel(
-      route: AppRoute.dashboard,
-      title: 'DASHBOARD',
-      icon: 'ico_drawer_dashboard',
+      route: AppRoute.workflow,
+      title: 'WORKFLOW',
+      icon: 'ico_drawer_workflow',
       enabled: true,
-      children: [],
+      children: [
+        DrawerModel(
+          route: AppRoute.requestManager,
+          title: 'REQUEST MANAGER',
+          icon: 'ico_drawer_request_manager',
+          enabled: true,
+          children: [],
+        ),
+      ],
     ),
     DrawerModel(
       route: AppRoute.setting,

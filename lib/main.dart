@@ -85,7 +85,12 @@ class _MyAppState extends State<MyApp> {
             BlocProvider<AuthenticationBloc>(
               create: (BuildContext context) => sl.get<AuthenticationBloc>(),
             ),
+            BlocProvider(
+              create: (context) => WorkflowRequestBloc(),
+              lazy: true,
+            ),
             BlocProvider(create: (context) => SettingHomeBloc(), lazy: true),
+
             BlocProvider(create: (context) => SupportBloc(), lazy: true),
           ],
           child: MaterialApp.router(

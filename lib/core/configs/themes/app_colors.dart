@@ -29,7 +29,7 @@ class AppColors {
   static const Color kpiEditColor = Color(0xFFB95409);
   static const Color kpiEditColor2 = Color(0xFFF36F21);
 
-  static const Color textColor = Color(0xFF324F6A);
+  static const Color textColor = Color(0xFF1A4B6E);
   static const Color textColorDisabled = Color(0xFF777777);
   static const Color textLevel0 = Color(0xFF515151);
   static const Color textLevel1 = Color(0xFF5E5E5E);
@@ -149,6 +149,12 @@ class AppColors {
   static final Color errorTextColor = Colors.red.shade900;
   static const Color reconcileColor = Color(0xFF00529C);
   static const Color lostColor = Color(0xFFF47937);
+
+  static const Color workFlowTimeLineCompleted = Color(0xFF00D88C);
+  static const Color workFlowTimeLineInProgress = Color(0xFF00BFFF);
+  static const Color workFlowTextDescription = Color(0xFF737373);
+  static const Color workFlowTextStepName = Color(0xFF1A4B6E);
+  static const Color dividerTimeLine = Color(0xFFD1D1D1);
 
   static const Color batchBackGroundSelected = Color(0xFFA0A212);
   static const Color batchBackGroundSelecting = Color(0xFF03BF92);

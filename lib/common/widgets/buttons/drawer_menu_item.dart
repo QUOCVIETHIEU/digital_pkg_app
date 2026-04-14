@@ -12,8 +12,7 @@ class IDrawerMenuItem extends StatelessWidget {
     required this.expandedDrawer,
     this.children = const [],
     this.padding = const EdgeInsets.all(2.0),
-    this.constraintsMin = 24.0,
-    this.size = 24.0,
+    this.size = 20.0,
     this.color = AppColors.iconDefault,
     this.tooltip = '',
     required this.onPressed,
@@ -27,7 +26,6 @@ class IDrawerMenuItem extends StatelessWidget {
   final Color color;
   final String tooltip;
   final EdgeInsetsGeometry padding;
-  final double constraintsMin;
   final void Function() onPressed;
 
   @override
@@ -54,7 +52,7 @@ class IDrawerMenuItem extends StatelessWidget {
                   ),
                   duration: const Duration(milliseconds: 150),
                   curve: Curves.easeInOut,
-                  builder: (context, size, child) {
+                  builder: (context, animatedSize, child) {
                     return SvgPicture.asset(
                       'assets/icons/drawers/${iconPath}_${selected ? 'active' : 'normal'}.svg',
                       width: size,

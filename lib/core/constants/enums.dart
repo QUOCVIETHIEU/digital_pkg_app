@@ -161,7 +161,17 @@ enum ActionIndicator {
   none,
 }
 
-enum Status { loading, loaded, error, selected, sorted, search, exported }
+enum Status {
+  initial,
+  loading,
+  loaded,
+  error,
+  selected,
+  sorted,
+  search,
+  exported,
+  transitionPage,
+}
 
 extension ActionIndicatorExtension on ActionIndicator {
   bool get isGet => this == ActionIndicator.get;

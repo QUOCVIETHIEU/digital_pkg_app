@@ -1,3 +1,4 @@
+import 'package:digital_pkg_system/common/helpers/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -10,10 +11,10 @@ import '../../../core/configs/themes/app_colors.dart';
 import '../../../core/constants/constants.dart';
 import '../../../gen/assets.gen.dart';
 import '../bloc/workflow_request/workflow_request_bloc.dart';
-import '../widgets/workflow_req_form.dart';
-import '../widgets/workflow_request_list.dart';
+import '../widgets/workflow_request/workflow_req_form.dart';
+import '../widgets/workflow_request/workflow_request_list.dart';
 
-class PageWorkflow extends StatelessWidget {
+class PageWorkflow extends StatefulWidget {
   const PageWorkflow({super.key});
 
   static DrawerModel get drawer => Drawers.drawers.firstWhere(
@@ -21,12 +22,21 @@ class PageWorkflow extends StatelessWidget {
   );
 
   @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          WorkflowRequestBloc()..add(const WorkflowRequestLoadRequested('')),
-      child: const _PageWorkflowContent(),
+  State<PageWorkflow> createState() => _PageWorkflowState();
+}
+
+class _PageWorkflowState extends State<PageWorkflow> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<WorkflowRequestBloc>().add(
+      const WorkflowRequestLoadRequested(''),
     );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return const _PageWorkflowContent();
   }
 }
 
@@ -35,7 +45,19 @@ class _PageWorkflowContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<WorkflowRequestBloc, WorkflowRequestState>(
+    return BlocConsumer<WorkflowRequestBloc, WorkflowRequestState>(
+      listener: (context, state) {
+        if (state.status == Status.transitionPage) {
+          context.pushNamed(AppRoute.requestManager.name);
+        } else if (state.status == Status.loading) {
+          IDialog.showDialogLoading(context: context);
+        } else if (state.status == Status.loaded) {
+          context.popSafety();
+        } else if (state.status == Status.error) {
+          context.popSafety();
+          IDialog.showErrorException(context: context, error: state.error!);
+        }
+      },
       builder: (context, state) {
         return Column(
           children: [

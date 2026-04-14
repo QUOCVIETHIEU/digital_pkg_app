@@ -71,32 +71,6 @@ class AppRouter extends ChangeNotifier {
             return IFrameMain(navigationShell: navigationShell);
           },
           branches: <StatefulShellBranch>[
-            // Home
-            StatefulShellBranch(
-              routes: <RouteBase>[
-                StatefulShellRoute.indexedStack(
-                  builder: (context, state, navigationShell) {
-                    return IFrameBase(
-                      navigationShell: navigationShell,
-                      drawer: PageWorkflow.drawer,
-                    );
-                  },
-                  branches: [
-                    StatefulShellBranch(
-                      routes: [
-                        GoRoute(
-                          path: AppRoute.workflow.path,
-                          name: AppRoute.workflow.name,
-                          pageBuilder: (context, state) {
-                            return pageBuilder(const PageWorkflow());
-                          },
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
             // Dashboard
             StatefulShellBranch(
               routes: <RouteBase>[
@@ -116,6 +90,41 @@ class AppRouter extends ChangeNotifier {
                           pageBuilder: (context, state) {
                             return pageBuilder(const PageDashboard());
                           },
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            // Home
+            StatefulShellBranch(
+              routes: <RouteBase>[
+                StatefulShellRoute.indexedStack(
+                  builder: (context, state, navigationShell) {
+                    return IFrameBase(
+                      navigationShell: navigationShell,
+                      drawer: PageWorkflow.drawer,
+                    );
+                  },
+                  branches: [
+                    StatefulShellBranch(
+                      routes: [
+                        GoRoute(
+                          path: AppRoute.workflow.path,
+                          name: AppRoute.workflow.name,
+                          pageBuilder: (context, state) {
+                            return pageBuilder(const PageWorkflow());
+                          },
+                          routes: [
+                            GoRoute(
+                              path: AppRoute.requestManager.path,
+                              name: AppRoute.requestManager.name,
+                              pageBuilder: (context, state) {
+                                return pageBuilder(const PageRequestManager());
+                              },
+                            ),
+                          ],
                         ),
                       ],
                     ),

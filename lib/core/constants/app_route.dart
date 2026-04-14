@@ -5,6 +5,7 @@ enum AppRoute {
 
   /// workflow
   workflow(name: 'workflow', path: '/workflow'),
+  requestManager(name: 'request-manager', path: '/request-manager'),
 
   dashboard(name: 'dashboard', path: '/dashboard'),
 

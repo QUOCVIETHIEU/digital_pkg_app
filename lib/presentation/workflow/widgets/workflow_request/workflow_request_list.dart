@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:tableview2/tableview2.dart';
 
-import '../../../../common/widgets/widgets.dart';
-import '../../../../core/configs/themes/app_colors.dart';
-import '../../../../core/constants/constants.dart';
-import '../../../../data/workflow/models/workflow_request.dart';
+import '../../../../../common/widgets/widgets.dart';
+import '../../../../../core/configs/themes/app_colors.dart';
+import '../../../../../core/constants/constants.dart';
+import '../../../../../data/workflow/models/workflow_request.dart';
+import '../../../../gen/assets.gen.dart';
 
 class WorkflowRequestList extends StatelessWidget {
   const WorkflowRequestList({
@@ -93,8 +95,9 @@ class WorkflowRequestList extends StatelessWidget {
       child: TableView2(
         empty: ListviewEmptyData(
           alignment: Alignment.topCenter,
-          size: const Size(double.infinity, 100),
+          size: Size(double.infinity, 100),
           message: emptyMessage,
+          icon: SvgPicture.asset(Assets.icons.common.icoDataEmpty),
         ),
         emptyMessage: emptyMessage,
         onConfigUpdated: onConfigUpdated,
