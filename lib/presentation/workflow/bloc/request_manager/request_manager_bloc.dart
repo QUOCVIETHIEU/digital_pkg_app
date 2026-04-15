@@ -43,7 +43,7 @@ class RequestManagerBloc
                 datetimeCreate: DateTime.now(),
                 product: 'Mirinda Orange, Pepsi Regular',
                 netContent: 330,
-                trial: 'Carton',
+                trial: ['Carton', 'Tray', 'Can', 'Box'],
                 weight: 21.2,
                 supplier: 'NNC Tây Ninh (Prf)',
                 cav: 96,

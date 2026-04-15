@@ -12,7 +12,7 @@ class ItemTesting extends Equatable {
   final DateTime datetimeCreate;
   final String product;
   final double netContent;
-  final String trial;
+  final List<String> trial;
   final double weight;
   final String supplier;
   final double cav;
@@ -52,7 +52,7 @@ class ItemTesting extends Equatable {
   ItemTesting copyWith({
     String? product,
     double? netContent,
-    String? trial,
+    List<String>? trial,
     double? weight,
     String? supplier,
     double? cav,

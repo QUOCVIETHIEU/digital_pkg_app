@@ -21,7 +21,6 @@ class TestingMaterial extends StatefulWidget {
 class _TestingMaterialState extends State<TestingMaterial> {
   late TextEditingController productController,
       netContentController,
-      trialController,
       weightController,
       supplierController,
       cavController,
@@ -44,7 +43,6 @@ class _TestingMaterialState extends State<TestingMaterial> {
     netContentController = TextEditingController(
       text: widget.itemTesting?.netContent.toString(),
     );
-    trialController = TextEditingController(text: widget.itemTesting?.trial);
     supplierController = TextEditingController(
       text: widget.itemTesting?.supplier,
     );
@@ -112,7 +110,18 @@ class _TestingMaterialState extends State<TestingMaterial> {
   void dispose() {
     productController.dispose();
     netContentController.dispose();
-    trialController.dispose();
+    supplierController.dispose();
+    cavController.dispose();
+    typeColorController.dispose();
+    resinCodeSupplierController.dispose();
+    gasVolumeController.dispose();
+    closureTypeController.dispose();
+    closureWeightController.dispose();
+    closureColorController.dispose();
+    closureSupplierController.dispose();
+    closureLineController.dispose();
+    additiveController.dispose();
+    noteController.dispose();
     weightController.dispose();
     super.dispose();
   }
@@ -207,7 +216,13 @@ class _TestingMaterialState extends State<TestingMaterial> {
               children: [
                 _buildField('Product', productController),
                 _buildField('Net content', netContentController),
-                _buildField('Type of trial', trialController),
+                _buildDropdownField(
+                  'Type of trial',
+                  widget.itemTesting?.trial.first,
+                  widget.itemTesting?.trial ?? [],
+                  prefixIcon: Assets.icons.workflow.icoMatrix,
+                  (value) {},
+                ),
                 _buildField('Weight', weightController),
                 _buildField('Supplier', supplierController),
                 _buildField('Mold', cavController),
@@ -228,7 +243,7 @@ class _TestingMaterialState extends State<TestingMaterial> {
                 _buildField('Closure supplier', closureSupplierController),
                 _buildField('Closure line', closureLineController),
                 _buildField('Additive', additiveController),
-                _buildField('Ghi chu', noteController, maxLines: 3),
+                _buildField('Ghi chú', noteController, maxLines: 3),
               ],
             ),
           ),
@@ -265,6 +280,37 @@ class _TestingMaterialState extends State<TestingMaterial> {
           controller: controller,
           maxLines: maxLines,
           decoration: const InputDecoration(isDense: true),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildDropdownField<T>(
+    String label,
+    T? value,
+    List<T> options,
+    void Function(T?) onChanged, {
+    bool required = true,
+    String? prefixIcon,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: 4.0,
+      children: [
+        Row(
+          children: [
+            Text(label, style: AppTheme.styleLabelInput),
+            if (required) ...[
+              const Text(' *', style: TextStyle(color: Colors.red)),
+            ],
+          ],
+        ),
+        IDropdownSearch<T>(
+          listItems: options,
+          onItemSelected: onChanged,
+          prefixIcon: prefixIcon,
+          closedHeaderPadding: 6,
+          initialItem: value,
         ),
       ],
     );
