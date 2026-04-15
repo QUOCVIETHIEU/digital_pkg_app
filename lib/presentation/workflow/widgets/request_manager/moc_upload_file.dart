@@ -36,7 +36,7 @@ class MocUploadFile extends StatelessWidget {
 
   Widget _buildHeader(BuildContext context) {
     return HeaderWorkFlowStep(
-      title: 'MOC FILE UPLOADED',
+      title: documentMaterial.documentTitle,
       peopleCreate: documentMaterial.peopleDownload,
       datetimeCreate: documentMaterial.dateTimeCreate,
     );

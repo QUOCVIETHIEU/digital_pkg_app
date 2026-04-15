@@ -91,6 +91,72 @@ class RequestManagerBloc
                 peopleDownload: 'Nguyễn Văn A',
                 dateTimeCreate: DateTime.now(),
                 parameterTestings: [],
+                documentTitle: 'MOC FILE UPLOADED',
+                files: [
+                  WorkflowFile(
+                    fileName: 'Moc File 01',
+                    fileType: WorkflowFileType.pdf,
+                    fileUrl: 'https://www.google.com',
+                    uploadDatetime: DateTime.now(),
+                    capacity: 113,
+                  ),
+                  WorkflowFile(
+                    fileName: 'Moc File 02',
+                    fileType: WorkflowFileType.image,
+                    fileUrl: 'https://www.google.com',
+                    uploadDatetime: DateTime.now(),
+                    capacity: 113,
+                  ),
+                ],
+              ),
+            ),
+            WorkflowStep(
+              stepName: 'Upload Protocol documents',
+              stepDescription: 'Upload Protocol thành công',
+              stepPeople: 'Nguyễn Văn A',
+              stepDatetime: DateTime.now(),
+              status: WorkflowStepStatus.updateDoc,
+              documentMaterial: DocumentMaterial(
+                documentTitle: 'PROTOCOL FILE UPLOADED',
+                peopleDownload: 'Nguyễn Văn A',
+                dateTimeCreate: DateTime.now(),
+                parameterTestings: [],
+                files: [
+                  WorkflowFile(
+                    fileName: 'Moc File 01',
+                    fileType: WorkflowFileType.pdf,
+                    fileUrl: 'https://www.google.com',
+                    uploadDatetime: DateTime.now(),
+                    capacity: 113,
+                  ),
+                  WorkflowFile(
+                    fileName: 'Moc File 02',
+                    fileType: WorkflowFileType.image,
+                    fileUrl: 'https://www.google.com',
+                    uploadDatetime: DateTime.now(),
+                    capacity: 113,
+                  ),
+                  WorkflowFile(
+                    fileName: 'Moc File 04',
+                    fileType: WorkflowFileType.xlsx,
+                    fileUrl: 'https://www.google.com',
+                    uploadDatetime: DateTime.now(),
+                    capacity: 113,
+                  ),
+                ],
+              ),
+            ),
+            WorkflowStep(
+              stepName: 'Upload TRF documents',
+              stepDescription: 'Upload TRF thành công',
+              stepPeople: 'Nguyễn Văn A',
+              stepDatetime: DateTime.now(),
+              status: WorkflowStepStatus.updateDoc,
+              documentMaterial: DocumentMaterial(
+                documentTitle: 'TRF FILE UPLOADED',
+                peopleDownload: 'Nguyễn Văn A',
+                dateTimeCreate: DateTime.now(),
+                parameterTestings: [],
                 files: [
                   WorkflowFile(
                     fileName: 'Moc File 01',
