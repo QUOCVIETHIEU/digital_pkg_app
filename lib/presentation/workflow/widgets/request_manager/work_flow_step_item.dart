@@ -89,7 +89,8 @@ class WorkFlowStepItem extends StatelessWidget {
               ),
             ],
           ),
-          workflowStep.status == WorkflowStepStatus.confirmRequest
+          workflowStep.status == WorkflowStepStatus.confirmRequest ||
+                  workflowStep.status == WorkflowStepStatus.confirmDoc
               ? _buildButtonViewConfirm(context)
               : _buildButton(context),
 
@@ -104,11 +105,11 @@ class WorkFlowStepItem extends StatelessWidget {
       children: [
         IRectangleButton(
           leading: SvgPicture.asset(
-            Assets.icons.actions.icoActionFile,
+            workflowStep.status.buttonIcon,
             width: 10,
             height: 10,
           ),
-          title: 'Xem thông tin item',
+          title: workflowStep.status.buttonStepName,
           fontSize: 10,
           fontWeight: FontWeight.w500,
           backgroundColor: AppColors.workFlowButtonBackgroundColor,

@@ -24,12 +24,12 @@ class _WorkFlowStepListState extends State<WorkFlowStepList>
   void initState() {
     super.initState();
     _animationController = AnimationController(
-      duration: const Duration(milliseconds: 220),
+      duration: const Duration(milliseconds: 250),
       vsync: this,
     );
     _arrowAnimation = Tween<double>(
       begin: 0,
-      end: 0.25,
+      end: 0.45,
     ).animate(_animationController);
     _animationController.value = 1;
   }
@@ -62,7 +62,7 @@ class _WorkFlowStepListState extends State<WorkFlowStepList>
       padding: const EdgeInsets.only(bottom: 26),
       child: Container(
         width: double.infinity,
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
         decoration: BoxDecoration(
           color: AppColors.primary,
           borderRadius: BorderRadius.circular(4),

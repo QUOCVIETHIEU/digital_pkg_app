@@ -88,9 +88,10 @@ class TimeLineRequestItem extends StatelessWidget {
       children: [
         Text(
           '${index < 9 ? '0${index + 1}' : index + 1} - ${workflowTimelineItem.stepName}',
-          style: Theme.of(context).textTheme.titleLarge!.copyWith(
+          style: TextStyle(
             fontWeight: FontWeight.w600,
             color: AppColors.workFlowTextStepName,
+            fontSize: 14,
           ),
         ),
         Text(
@@ -122,7 +123,7 @@ class TimeLineRequestItem extends StatelessWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     color: AppColors.workFlowTextStepName,
-                    fontSize: 16,
+                    fontSize: 14,
                   ),
                 ),
                 Text(
@@ -130,18 +131,18 @@ class TimeLineRequestItem extends StatelessWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     color: AppColors.workFlowTextDescription,
-                    fontSize: 14,
+                    fontSize: 12,
                   ),
                 ),
                 IRichTextValue(
                   label: 'Người thực hiện',
                   value: workflowTimelineItem.requestPeople,
-                  fontSizeValue: 14,
+                  fontSizeValue: 12,
                 ),
                 IRichTextValue(
                   label: 'Pic',
                   value: workflowTimelineItem.requestPic,
-                  fontSizeValue: 14,
+                  fontSizeValue: 12,
                 ),
               ],
             ),

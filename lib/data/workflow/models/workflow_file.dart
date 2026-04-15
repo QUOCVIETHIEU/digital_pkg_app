@@ -25,4 +25,4 @@ class WorkflowFile {
   Map<String, dynamic> toJson() => _$WorkflowFileToJson(this);
 }
 
-enum WorkflowFileType { xlsx, pdf, image, none }
+enum WorkflowFileType { xlsx, pdf, image, docx, none }
