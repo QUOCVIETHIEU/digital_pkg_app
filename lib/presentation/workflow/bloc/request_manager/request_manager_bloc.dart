@@ -30,6 +30,7 @@ class RequestManagerBloc
           requestDescription:
               'PCU/NPD điền đầy đủ thông tin của itemcode để gửi yêu cầu',
           requestPeople: 'Nguyễn Văn A',
+          requestApprovePeople: 'Nguyễn Văn B',
           requestPic: 'PCU (Normal), NPD (New line)',
           status: WorkflowTimelineItemStatus.done,
           workflowStep: [
@@ -73,6 +74,7 @@ class RequestManagerBloc
         ),
         WorkflowTimelineItem(
           stepName: 'PREPARE DOC',
+          requestApprovePeople: 'Nguyễn Văn B',
           stepDescription: 'NPD',
           titleRequest: 'UPLOAD TÀI LIỆU MOC, PROTOCOL, TRF CHO NVL TEST',
           requestDescription:

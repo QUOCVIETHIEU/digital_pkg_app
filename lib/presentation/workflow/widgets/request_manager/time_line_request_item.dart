@@ -140,6 +140,11 @@ class TimeLineRequestItem extends StatelessWidget {
                   fontSizeValue: 12,
                 ),
                 IRichTextValue(
+                  label: 'Người phê duyệt',
+                  value: workflowTimelineItem.requestApprovePeople,
+                  fontSizeValue: 12,
+                ),
+                IRichTextValue(
                   label: 'Pic',
                   value: workflowTimelineItem.requestPic,
                   fontSizeValue: 12,

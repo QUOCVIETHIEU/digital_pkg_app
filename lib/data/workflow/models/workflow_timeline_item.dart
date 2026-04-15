@@ -14,6 +14,7 @@ class WorkflowTimelineItem extends Equatable {
   final String stepName;
   final String stepDescription;
   final String titleRequest;
+  final String requestApprovePeople;
   final String requestDescription;
   final String requestPeople;
   final String requestPic;
@@ -29,6 +30,7 @@ class WorkflowTimelineItem extends Equatable {
     required this.requestPic,
     required this.status,
     required this.workflowStep,
+    required this.requestApprovePeople,
   });
 
   WorkflowTimelineItem copyWith({
@@ -37,6 +39,7 @@ class WorkflowTimelineItem extends Equatable {
     String? titleRequest,
     String? requestDescription,
     String? requestPeople,
+    String? requestApprovePeople,
     String? requestPic,
     WorkflowTimelineItemStatus? status,
     List<WorkflowStep>? workflowStep,
@@ -50,6 +53,7 @@ class WorkflowTimelineItem extends Equatable {
       requestPic: requestPic ?? this.requestPic,
       status: status ?? this.status,
       workflowStep: workflowStep ?? this.workflowStep,
+      requestApprovePeople: requestApprovePeople ?? this.requestApprovePeople,
     );
   }
 
@@ -67,6 +71,7 @@ class WorkflowTimelineItem extends Equatable {
     requestPic,
     status,
     workflowStep,
+    requestApprovePeople,
   ];
 }
 
