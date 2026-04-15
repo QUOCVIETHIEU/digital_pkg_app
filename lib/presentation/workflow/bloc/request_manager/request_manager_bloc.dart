@@ -39,6 +39,8 @@ class RequestManagerBloc
               stepDatetime: DateTime.now(),
               status: WorkflowStepStatus.testRequest,
               itemTesting: ItemTesting(
+                peopleCreate: 'Nguyễn Văn A',
+                datetimeCreate: DateTime.now(),
                 product: 'Mirinda Orange, Pepsi Regular',
                 netContent: 330,
                 trial: 'Carton',

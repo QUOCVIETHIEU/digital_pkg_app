@@ -1170,7 +1170,42 @@ class IDialog {
     );
   }
 
-  static Future<T?> showDialogActions<T>({
+  static Future<T?> showDialogLeft<T>({
+    required BuildContext context,
+    Widget? content,
+    bool barrierDismissible = false,
+    Color? backgroundColor,
+    ShapeBorder? shape,
+    Clip? clipBehavior,
+    EdgeInsets? insetPadding,
+    Duration transitionDuration = const Duration(milliseconds: 300),
+    Curve transitionCurve = Curves.easeInOut,
+    Offset beginOffset = const Offset(0, 1),
+  }) {
+    return showGeneralDialog<T>(
+      context: context,
+      barrierDismissible: barrierDismissible,
+      barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
+      barrierColor: Colors.black54,
+      transitionDuration: transitionDuration,
+      pageBuilder: (context, animation, secondaryAnimation) {
+        return SafeArea(
+          child: Align(alignment: Alignment.centerRight, child: content),
+        );
+      },
+      transitionBuilder: (context, animation, secondaryAnimation, child) {
+        return SlideTransition(
+          position: Tween<Offset>(begin: const Offset(1, 0), end: Offset.zero)
+              .animate(
+                CurvedAnimation(parent: animation, curve: Curves.easeOutCubic),
+              ),
+          child: child,
+        );
+      },
+    );
+  }
+
+  Future<T?> showDialogActions<T>({
     required BuildContext context,
     required VoidCallback onEdit,
     required VoidCallback onDelete,

@@ -6,6 +6,7 @@ import '../../../../common/widgets/widgets.dart';
 import '../../../../core/configs/themes/app_colors.dart';
 import '../../../../data/workflow/models/models.dart';
 import '../../../../gen/assets.gen.dart';
+import 'testing_material.dart';
 
 class WorkFlowStepItem extends StatelessWidget {
   const WorkFlowStepItem({
@@ -118,7 +119,7 @@ class WorkFlowStepItem extends StatelessWidget {
           enableVerticalDivider: false,
           buttonPadding: const EdgeInsets.symmetric(vertical: 2, horizontal: 6),
           height: 30,
-          onPressed: () {},
+          onPressed: () => _showStepDetailDialog(context),
         ),
       ],
     );
@@ -180,6 +181,14 @@ class WorkFlowStepItem extends StatelessWidget {
           onPressed: () {},
         ),
       ],
+    );
+  }
+
+  void _showStepDetailDialog(BuildContext context) {
+    final itemTesting = workflowStep.itemTesting;
+    IDialog.showDialogLeft(
+      context: context,
+      content: TestingMaterial(itemTesting: itemTesting),
     );
   }
 }

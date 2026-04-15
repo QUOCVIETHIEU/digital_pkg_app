@@ -24,12 +24,12 @@ class _WorkFlowStepListState extends State<WorkFlowStepList>
   void initState() {
     super.initState();
     _animationController = AnimationController(
-      duration: const Duration(milliseconds: 250),
+      duration: const Duration(milliseconds: 220),
       vsync: this,
     );
     _arrowAnimation = Tween<double>(
       begin: 0,
-      end: 0.45,
+      end: 0.25,
     ).animate(_animationController);
     _animationController.value = 1;
   }

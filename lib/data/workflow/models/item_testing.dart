@@ -1,10 +1,15 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../common/models/base_model.dart';
+
 part 'item_testing.g.dart';
 
 @JsonSerializable()
 class ItemTesting extends Equatable {
+  final String peopleCreate;
+  @ApiDateTimeConverter()
+  final DateTime datetimeCreate;
   final String product;
   final double netContent;
   final String trial;
@@ -23,6 +28,8 @@ class ItemTesting extends Equatable {
   final String additive;
   final String note;
   const ItemTesting({
+    required this.peopleCreate,
+    required this.datetimeCreate,
     required this.product,
     required this.netContent,
     required this.trial,
@@ -60,8 +67,12 @@ class ItemTesting extends Equatable {
     String? closureLine,
     String? additive,
     String? note,
+    String? peopleCreate,
+    DateTime? datetimeCreate,
   }) {
     return ItemTesting(
+      peopleCreate: peopleCreate ?? this.peopleCreate,
+      datetimeCreate: datetimeCreate ?? this.datetimeCreate,
       product: product ?? this.product,
       netContent: netContent ?? this.netContent,
       trial: trial ?? this.trial,
@@ -105,5 +116,7 @@ class ItemTesting extends Equatable {
     closureLine,
     additive,
     note,
+    peopleCreate,
+    datetimeCreate,
   ];
 }
