@@ -70,30 +70,47 @@ class WorkflowTimelineItem extends Equatable {
   ];
 }
 
-enum WorkflowTimelineItemStatus { pending, inProgress, completed, failed }
+enum WorkflowTimelineItemStatus { upComing, inProgress, done, failed }
 
 extension WorkflowTimelineItemStatusExtension on WorkflowTimelineItemStatus {
   String get name => switch (this) {
-    WorkflowTimelineItemStatus.pending => 'Pending',
+    WorkflowTimelineItemStatus.upComing => 'Upcoming',
     WorkflowTimelineItemStatus.inProgress => 'In Progress',
-    WorkflowTimelineItemStatus.completed => 'Completed',
+    WorkflowTimelineItemStatus.done => 'Done',
     WorkflowTimelineItemStatus.failed => 'Failed',
   };
   Color get color => switch (this) {
-    WorkflowTimelineItemStatus.pending => AppColors.workFlowTimeLineInProgress,
+    WorkflowTimelineItemStatus.upComing => AppColors.workFlowTimeLineInProgress,
     WorkflowTimelineItemStatus.inProgress =>
       AppColors.workFlowTimeLineInProgress,
-    WorkflowTimelineItemStatus.completed => AppColors.workFlowTimeLineCompleted,
+    WorkflowTimelineItemStatus.done => AppColors.workFlowTimeLineCompleted,
     WorkflowTimelineItemStatus.failed => AppColors.errorColor,
   };
   String get icon => switch (this) {
-    WorkflowTimelineItemStatus.pending =>
+    WorkflowTimelineItemStatus.upComing =>
       Assets.icons.actions.icoActionWorkflowError,
     WorkflowTimelineItemStatus.inProgress =>
       Assets.icons.actions.icoActionWorkflowError,
-    WorkflowTimelineItemStatus.completed =>
+    WorkflowTimelineItemStatus.done =>
       Assets.icons.actions.icoActionWorkflowCompleted,
     WorkflowTimelineItemStatus.failed =>
       Assets.icons.actions.icoActionWorkflowError,
+  };
+  Color get borderColor => switch (this) {
+    WorkflowTimelineItemStatus.upComing =>
+      AppColors.workFlowBorderColorUpComing,
+    WorkflowTimelineItemStatus.inProgress =>
+      AppColors.workFlowBorderColorInProgress,
+    WorkflowTimelineItemStatus.done => AppColors.workFlowBorderColorDone,
+    WorkflowTimelineItemStatus.failed => AppColors.workFlowBorderColorFailed,
+  };
+  Color get backgroundColor => switch (this) {
+    WorkflowTimelineItemStatus.upComing =>
+      AppColors.workFlowBackgroundColorUpComing,
+    WorkflowTimelineItemStatus.inProgress =>
+      AppColors.workFlowBackgroundColorInProgress,
+    WorkflowTimelineItemStatus.done => AppColors.workFlowBackgroundColorDone,
+    WorkflowTimelineItemStatus.failed =>
+      AppColors.workFlowBackgroundColorFailed,
   };
 }

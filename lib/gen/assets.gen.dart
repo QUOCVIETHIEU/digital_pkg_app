@@ -98,6 +98,15 @@ class $AssetsLogosGen {
 class $AssetsIconsActionsGen {
   const $AssetsIconsActionsGen();
 
+  /// File path: assets/icons/actions/ico_action_down.svg
+  String get icoActionDown => 'assets/icons/actions/ico_action_down.svg';
+
+  /// File path: assets/icons/actions/ico_action_file.svg
+  String get icoActionFile => 'assets/icons/actions/ico_action_file.svg';
+
+  /// File path: assets/icons/actions/ico_action_right.svg
+  String get icoActionRight => 'assets/icons/actions/ico_action_right.svg';
+
   /// File path: assets/icons/actions/ico_action_workflow_completed.svg
   String get icoActionWorkflowCompleted =>
       'assets/icons/actions/ico_action_workflow_completed.svg';
@@ -111,6 +120,9 @@ class $AssetsIconsActionsGen {
 
   /// List of all assets
   List<String> get values => [
+    icoActionDown,
+    icoActionFile,
+    icoActionRight,
     icoActionWorkflowCompleted,
     icoActionWorkflowError,
     icoBackPrevious,
@@ -217,8 +229,19 @@ class $AssetsIconsCommonGen {
   /// File path: assets/icons/common/ico_column.svg
   String get icoColumn => 'assets/icons/common/ico_column.svg';
 
+  /// File path: assets/icons/common/ico_common_comment.svg
+  String get icoCommonComment => 'assets/icons/common/ico_common_comment.svg';
+
+  /// File path: assets/icons/common/ico_common_confirm_step.svg
+  String get icoCommonConfirmStep =>
+      'assets/icons/common/ico_common_confirm_step.svg';
+
   /// File path: assets/icons/common/ico_common_digital.svg
   String get icoCommonDigital => 'assets/icons/common/ico_common_digital.svg';
+
+  /// File path: assets/icons/common/ico_common_done_step.svg
+  String get icoCommonDoneStep =>
+      'assets/icons/common/ico_common_done_step.svg';
 
   /// File path: assets/icons/common/ico_common_primary.svg
   String get icoCommonPrimary => 'assets/icons/common/ico_common_primary.svg';
@@ -336,7 +359,10 @@ class $AssetsIconsCommonGen {
     icoCheckbox,
     icoClearSnack,
     icoColumn,
+    icoCommonComment,
+    icoCommonConfirmStep,
     icoCommonDigital,
+    icoCommonDoneStep,
     icoCommonPrimary,
     icoCommonRequest,
     icoDashboardSmall,
@@ -376,6 +402,9 @@ class $AssetsIconsDrawersGen {
   /// File path: assets/icons/drawers/ico_drawer_consumption_normal.svg
   String get icoDrawerConsumptionNormal =>
       'assets/icons/drawers/ico_drawer_consumption_normal.svg';
+
+  /// File path: assets/icons/drawers/ico_drawer_file.svg
+  String get icoDrawerFile => 'assets/icons/drawers/ico_drawer_file.svg';
 
   /// File path: assets/icons/drawers/ico_drawer_home_active.svg
   String get icoDrawerHomeActive =>
@@ -549,6 +578,7 @@ class $AssetsIconsDrawersGen {
   List<String> get values => [
     icoDrawerConsumptionActive,
     icoDrawerConsumptionNormal,
+    icoDrawerFile,
     icoDrawerHomeActive,
     icoDrawerHomeNormal,
     icoDrawerIntegrationActive,

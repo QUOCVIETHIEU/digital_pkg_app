@@ -11,7 +11,7 @@ class RequestManagerList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: workflowTimelineItems.length,
-      padding: EdgeInsets.zero,
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       itemBuilder: (context, index) {
         return TimeLineRequestItem(
           workflowTimelineItem: workflowTimelineItems[index],

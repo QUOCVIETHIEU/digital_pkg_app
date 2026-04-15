@@ -6,6 +6,7 @@ import '../../../../common/widgets/widgets.dart';
 import '../../../../core/configs/themes/app_colors.dart';
 import '../../../../data/workflow/models/models.dart';
 import '../../../../gen/assets.gen.dart';
+import 'work_flow_step_list.dart';
 
 class TimeLineRequestItem extends StatelessWidget {
   const TimeLineRequestItem({
@@ -54,7 +55,7 @@ class TimeLineRequestItem extends StatelessWidget {
                 ),
                 child:
                     workflowTimelineItem.status ==
-                        WorkflowTimelineItemStatus.completed
+                        WorkflowTimelineItemStatus.done
                     ? SvgPicture.asset(
                         Assets.icons.actions.icoActionWorkflowCompleted,
                         width: 15,
@@ -67,18 +68,12 @@ class TimeLineRequestItem extends StatelessWidget {
           ),
           Expanded(
             flex: 5,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                isFirst
-                    ? Padding(
-                        padding: const EdgeInsets.only(top: 20),
-                        child: _buildHeaderRequest(),
-                      )
-                    : _buildHeaderRequest(),
-              ],
-            ),
+            child: isFirst
+                ? Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: _buildRequest(),
+                  )
+                : _buildRequest(),
           ),
         ],
       ),
@@ -109,48 +104,73 @@ class TimeLineRequestItem extends StatelessWidget {
     );
   }
 
-  Widget _buildHeaderRequest() {
+  Widget _buildRequest() {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 4,
+      spacing: 12,
       children: [
-        Text(
-          workflowTimelineItem.titleRequest,
-          style: TextStyle(
-            fontWeight: FontWeight.w500,
-            color: AppColors.workFlowTextStepName,
-            fontSize: 16,
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: 4,
+              children: [
+                Text(
+                  workflowTimelineItem.titleRequest,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.workFlowTextStepName,
+                    fontSize: 16,
+                  ),
+                ),
+                Text(
+                  workflowTimelineItem.requestDescription,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.workFlowTextDescription,
+                    fontSize: 14,
+                  ),
+                ),
+                IRichTextValue(
+                  label: 'Người thực hiện',
+                  value: workflowTimelineItem.requestPeople,
+                  fontSizeValue: 14,
+                ),
+                IRichTextValue(
+                  label: 'Pic',
+                  value: workflowTimelineItem.requestPic,
+                  fontSizeValue: 14,
+                ),
+              ],
+            ),
+            Container(
+              width: 60,
+              height: 30,
+              decoration: BoxDecoration(
+                color: workflowTimelineItem.status.backgroundColor,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: workflowTimelineItem.status.borderColor,
+                  width: 0.8,
+                ),
+              ),
+              child: Center(
+                child: Text(
+                  workflowTimelineItem.status.name,
+                  style: TextStyle(
+                    color: workflowTimelineItem.status.color,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 12,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
-        Text(
-          workflowTimelineItem.requestDescription,
-          style: TextStyle(
-            fontWeight: FontWeight.w500,
-            color: AppColors.workFlowTextDescription,
-            fontSize: 14,
-          ),
-        ),
-        IRichTextValue(
-          label: 'Người thực hiện',
-          value: workflowTimelineItem.requestPeople,
-          fontSizeValue: 14,
-        ),
-        IRichTextValue(
-          label: 'Pic',
-          value: workflowTimelineItem.requestPic,
-          fontSizeValue: 14,
-        ),
+        WorkFlowStepList(workflowSteps: workflowTimelineItem.workflowStep),
       ],
-    );
-  }
-
-  Widget _buildBodyRequest() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 4,
-      children: [],
     );
   }
 }

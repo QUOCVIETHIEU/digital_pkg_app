@@ -155,6 +155,20 @@ class AppColors {
   static const Color workFlowTextDescription = Color(0xFF737373);
   static const Color workFlowTextStepName = Color(0xFF1A4B6E);
   static const Color dividerTimeLine = Color(0xFFD1D1D1);
+  static const Color workFlowBorderColorDone = Color(0xFF69EFBD);
+  static const Color workFlowBorderColorInProgress = Color(0xFF9DDFFE);
+  static const Color workFlowBorderColorUpComing = Color(0xFFE5E5E5);
+  static const Color workFlowBorderColorFailed = Color(0xFFCC0534);
+  static const Color workFlowBackgroundColorDone = Color(0xFFE8FFF6);
+  static const Color workFlowBackgroundColorInProgress = Color(0xFFE6F5FF);
+  static const Color workFlowBackgroundColorUpComing = Color(0xFFE5E5E5);
+  static const Color workFlowBackgroundColorFailed = Color(0xFFF0F8FF);
+  static const Color workFlowTextDone = Color(0xFF007C53);
+  static const Color workFlowTextInProgress = Color(0xFF006BAE);
+  static const Color workFlowTextUpComing = Color(0xFF737373);
+  static const Color workFlowTextFailed = Color(0xFFCC0534);
+  static const Color workFlowTextStepList = Color(0xFF6B6B6B);
+  static const Color workFlowButtonBackgroundColor = Color(0xFFE8B200);
 
   static const Color batchBackGroundSelected = Color(0xFFA0A212);
   static const Color batchBackGroundSelecting = Color(0xFF03BF92);

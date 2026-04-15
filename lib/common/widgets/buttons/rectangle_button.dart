@@ -24,6 +24,11 @@ class IRectangleButton extends StatelessWidget {
     this.enable = true,
     this.hasPermission = true,
     this.disabledTextColor = AppColors.disabledBorderTextColor,
+    this.enableVerticalDivider = true,
+    this.buttonPadding = const EdgeInsets.symmetric(
+      vertical: 4,
+      horizontal: 12,
+    ),
   });
 
   final Widget leading;
@@ -44,6 +49,8 @@ class IRectangleButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final bool enable;
   final bool hasPermission;
+  final bool enableVerticalDivider;
+  final EdgeInsets buttonPadding;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -55,28 +62,28 @@ class IRectangleButton extends StatelessWidget {
             ? OutlinedButton(
                 onPressed: enable ? () => onPressed?.call() : null,
                 style: OutlinedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12.0,
-                    vertical: 4.0,
-                  ),
+                  padding: buttonPadding,
                   side: BorderSide(color: outlineColor, width: borderSize),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(radius),
                   ),
+                  backgroundColor: backgroundColor,
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
+                  spacing: enableVerticalDivider ? 0 : 6,
                   children: [
-                    SizedBox(width: 16.0, height: 16.0, child: leading),
-                    const VerticalDivider(
-                      color: AppColors.borderColor,
-                      width: 16,
-                      thickness: 1,
-                      indent: 12.0,
-                      endIndent: 12.0,
-                    ),
+                    SizedBox(width: 12.0, height: 12.0, child: leading),
+                    if (enableVerticalDivider)
+                      const VerticalDivider(
+                        color: AppColors.borderColor,
+                        width: 16,
+                        thickness: 1,
+                        indent: 12.0,
+                        endIndent: 12.0,
+                      ),
                     Text(
                       title,
                       style: TextStyle(
