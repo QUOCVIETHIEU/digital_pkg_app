@@ -1,6 +1,7 @@
 // Bases
 export 'bases/frame_base.dart';
 export 'bases/frame_main.dart';
+export 'buttons/button_default.dart';
 // Buttons
 export 'buttons/choice_chip_button.dart';
 export 'buttons/circle_button.dart';

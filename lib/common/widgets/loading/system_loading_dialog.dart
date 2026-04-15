@@ -20,9 +20,9 @@ class SystemLoadingDialog extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SvgPicture.asset(
-            Assets.icons.launchers.appLauncher,
-            width: 64,
-            height: 64,
+            Assets.icons.launchers.appLauncherDigital,
+            width: 50,
+            height: 50,
           ),
           Padding(
             padding: const EdgeInsets.all(10.0),

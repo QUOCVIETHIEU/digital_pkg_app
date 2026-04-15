@@ -20,6 +20,7 @@ class RequestManagerBloc
   ) async {
     emit(state.copyWith(status: Status.loading));
     try {
+      await Future.delayed(const Duration(seconds: 1));
       List<WorkflowTimelineItem> workflowTimelineItems;
       workflowTimelineItems = [
         WorkflowTimelineItem(
