@@ -6,6 +6,7 @@ import '../../../../common/widgets/widgets.dart';
 import '../../../../core/configs/themes/app_colors.dart';
 import '../../../../data/workflow/models/models.dart';
 import '../../../../gen/assets.gen.dart';
+import 'moc_upload_file.dart';
 import 'testing_material.dart';
 import 'view_comment.dart';
 
@@ -120,7 +121,11 @@ class WorkFlowStepItem extends StatelessWidget {
           enableVerticalDivider: false,
           buttonPadding: const EdgeInsets.symmetric(vertical: 2, horizontal: 6),
           height: 30,
-          onPressed: () => _showStepDetailDialog(context),
+          onPressed: () => workflowStep.status == WorkflowStepStatus.testRequest
+              ? _showStepDetailDialog(context)
+              : workflowStep.status == WorkflowStepStatus.updateDoc
+              ? _showUpdateDocDialog(context)
+              : null,
         ),
       ],
     );
@@ -192,6 +197,13 @@ class WorkFlowStepItem extends StatelessWidget {
     IDialog.showDialogLeft(
       context: context,
       content: TestingMaterial(itemTesting: itemTesting),
+    );
+  }
+
+  void _showUpdateDocDialog(BuildContext context) {
+    IDialog.showDialogLeft(
+      context: context,
+      content: MocUploadFile(documentMaterial: workflowStep.documentMaterial!),
     );
   }
 

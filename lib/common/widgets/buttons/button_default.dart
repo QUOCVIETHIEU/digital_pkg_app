@@ -21,7 +21,9 @@ class IButtonDefault extends StatelessWidget {
       vertical: 0.0,
     ),
     this.disableBackgroundButton = AppColors.disableBackgroundButtonDialog,
+    this.borderColor,
     this.textStyle,
+    this.borderWidth = 0.5,
   });
 
   final String label;
@@ -37,7 +39,8 @@ class IButtonDefault extends StatelessWidget {
   final EdgeInsets buttonPadding;
   final Color disableBackgroundButton;
   final TextStyle? textStyle;
-
+  final double borderWidth;
+  final Color? borderColor;
   @override
   Widget build(BuildContext context) {
     final disableButton = onPressed == null;
@@ -53,6 +56,12 @@ class IButtonDefault extends StatelessWidget {
           shape: WidgetStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(borderRadius),
+            ),
+          ),
+          side: WidgetStateProperty.all<BorderSide>(
+            BorderSide(
+              color: borderColor ?? backgroundColor,
+              width: borderWidth,
             ),
           ),
         ),

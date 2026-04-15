@@ -169,8 +169,11 @@ class AppColors {
   static const Color workFlowTextFailed = Color(0xFFCC0534);
   static const Color workFlowTextStepList = Color(0xFF6B6B6B);
   static const Color workFlowButtonBackgroundColor = Color(0xFFE8B200);
+  static const Color workFlowBorderColorFile = Color(0xFFE6E8E7);
   static const Color disableBackgroundButtonDialog = Color(0xFFA8A8A8);
   static const Color backgroundButtonDialogComment = Color(0xFF3C87D0);
+  static const Color workFlowTextFile = Color(0xFFD9D9D9);
+  static const Color workFlowTextFileView = Color(0xFFF1F4F6);
 
   static const Color batchBackGroundSelected = Color(0xFFA0A212);
   static const Color batchBackGroundSelecting = Color(0xFF03BF92);

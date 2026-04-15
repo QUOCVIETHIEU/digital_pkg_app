@@ -403,6 +403,9 @@ class $AssetsIconsDrawersGen {
   String get icoDrawerConsumptionNormal =>
       'assets/icons/drawers/ico_drawer_consumption_normal.svg';
 
+  /// File path: assets/icons/drawers/ico_drawer_excel.svg
+  String get icoDrawerExcel => 'assets/icons/drawers/ico_drawer_excel.svg';
+
   /// File path: assets/icons/drawers/ico_drawer_file.svg
   String get icoDrawerFile => 'assets/icons/drawers/ico_drawer_file.svg';
 
@@ -413,6 +416,9 @@ class $AssetsIconsDrawersGen {
   /// File path: assets/icons/drawers/ico_drawer_home_normal.svg
   String get icoDrawerHomeNormal =>
       'assets/icons/drawers/ico_drawer_home_normal.svg';
+
+  /// File path: assets/icons/drawers/ico_drawer_image.svg
+  String get icoDrawerImage => 'assets/icons/drawers/ico_drawer_image.svg';
 
   /// File path: assets/icons/drawers/ico_drawer_integration_active.svg
   String get icoDrawerIntegrationActive =>
@@ -457,6 +463,9 @@ class $AssetsIconsDrawersGen {
   /// File path: assets/icons/drawers/ico_drawer_mixing_normal.svg
   String get icoDrawerMixingNormal =>
       'assets/icons/drawers/ico_drawer_mixing_normal.svg';
+
+  /// File path: assets/icons/drawers/ico_drawer_pdf.svg
+  String get icoDrawerPdf => 'assets/icons/drawers/ico_drawer_pdf.svg';
 
   /// File path: assets/icons/drawers/ico_drawer_point_active.svg
   String get icoDrawerPointActive =>
@@ -562,6 +571,9 @@ class $AssetsIconsDrawersGen {
   String get icoDrawerWeigherNormal =>
       'assets/icons/drawers/ico_drawer_weigher_normal.svg';
 
+  /// File path: assets/icons/drawers/ico_drawer_word.svg
+  String get icoDrawerWord => 'assets/icons/drawers/ico_drawer_word.svg';
+
   /// File path: assets/icons/drawers/ico_drawer_workflow_active.svg
   String get icoDrawerWorkflowActive =>
       'assets/icons/drawers/ico_drawer_workflow_active.svg';
@@ -578,9 +590,11 @@ class $AssetsIconsDrawersGen {
   List<String> get values => [
     icoDrawerConsumptionActive,
     icoDrawerConsumptionNormal,
+    icoDrawerExcel,
     icoDrawerFile,
     icoDrawerHomeActive,
     icoDrawerHomeNormal,
+    icoDrawerImage,
     icoDrawerIntegrationActive,
     icoDrawerIntegrationNormal,
     icoDrawerItemActive,
@@ -592,6 +606,7 @@ class $AssetsIconsDrawersGen {
     icoDrawerMenuNormal,
     icoDrawerMixingActive,
     icoDrawerMixingNormal,
+    icoDrawerPdf,
     icoDrawerPointActive,
     icoDrawerPointNormal,
     icoDrawerProductionActive,
@@ -618,6 +633,7 @@ class $AssetsIconsDrawersGen {
     icoDrawerUtilityNormal,
     icoDrawerWeigherActive,
     icoDrawerWeigherNormal,
+    icoDrawerWord,
     icoDrawerWorkflowActive,
     icoDrawerWorkflowHover,
     icoDrawerWorkflowNormal,
