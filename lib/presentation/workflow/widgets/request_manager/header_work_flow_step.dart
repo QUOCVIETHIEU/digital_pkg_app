@@ -8,12 +8,12 @@ import '../../../../gen/assets.gen.dart';
 class HeaderWorkFlowStep extends StatelessWidget {
   const HeaderWorkFlowStep({
     super.key,
-    required this.title,
+    required this.value,
     required this.peopleCreate,
     required this.datetimeCreate,
     this.onClose,
   });
-  final String title;
+  final String value;
   final String peopleCreate;
   final DateTime? datetimeCreate;
   final VoidCallback? onClose;
@@ -30,7 +30,7 @@ class HeaderWorkFlowStep extends StatelessWidget {
             spacing: 4,
             children: [
               Text(
-                title,
+                value,
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
               Padding(
@@ -40,7 +40,7 @@ class HeaderWorkFlowStep extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '${AppStrings.dotChar} Người tạo: $peopleCreate',
+                      '${AppStrings.dotChar} $peopleCreate',
                       style: const TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.w500,

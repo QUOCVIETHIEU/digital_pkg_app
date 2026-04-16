@@ -201,6 +201,59 @@ class RequestManagerBloc
             ),
           ],
         ),
+        WorkflowTimelineItem(
+          stepName: 'EXECUTIONS',
+          requestApprovePeople: 'Nguyễn Văn B',
+          stepDescription: 'NPD + PLANT',
+          titleRequest: 'GỬI THÔNG BÁO, CHUẨN BỊ KẾ HOẠCH TESTING, CHẠY TRIAL',
+          requestDescription:
+              'PCU/NPD điền đầy đủ thông tin của itemcode để gửi yêu cầu',
+          requestPeople: 'Nguyễn Văn A',
+          requestPic: 'NPD, Plant',
+          status: WorkflowTimelineItemStatus.done,
+          workflowStep: [
+            WorkflowStep(
+              stepName: 'Chuẩn bị nguyên liệu test',
+              stepDescription: 'Đã chuẩn bị thành công nguyên liệu test',
+              stepPeople: 'Nguyễn Văn A',
+              stepDatetime: DateTime.now(),
+              status: WorkflowStepStatus.itemExecutions,
+              itemInformation: ItemInformation(
+                peopleDownload: 'Nguyễn Văn A',
+                dateTimeCreate: DateTime.now(),
+                itemCode: '200000001',
+                itemName: 'CROWNClosure_CF_2.45_White_F-H-C-B-J_SVN',
+                note: 'Test line Q',
+                batchItems: [
+                  BatchItem(
+                    batchLot: '110125-SVN',
+                    quantity: 10.0,
+                    note: 'Nguyên liệu test 1',
+                  ),
+                  BatchItem(
+                    batchLot: '300825-SVN',
+                    quantity: 20.0,
+                    note: 'Nguyên liệu test 2',
+                  ),
+                  BatchItem(
+                    batchLot: '240426-SVN',
+                    quantity: 30.0,
+                    note: 'Nguyên liệu test 3',
+                  ),
+                ],
+              ),
+            ),
+
+            WorkflowStep(
+              stepName: 'Xác nhận/Hủy upload',
+              stepDescription: 'Đã xác nhận upload documents thành công',
+              stepPeople: 'Nguyễn Văn A',
+              stepDatetime: DateTime.now(),
+              status: WorkflowStepStatus.confirmDoc,
+              viewComment: 'Nguyên Liệu sẵn sàng để chạy testing',
+            ),
+          ],
+        ),
       ];
       emit(
         state.copyWith(

@@ -151,8 +151,8 @@ class _TestingMaterialState extends State<TestingMaterial> {
 
   Widget _buildHeader(BuildContext context) {
     return HeaderWorkFlowStep(
-      title: 'YÊU CẦU TESTING NGUYÊN VẬT LIỆU',
-      peopleCreate: widget.itemTesting?.peopleCreate ?? '',
+      value: 'YÊU CẦU TESTING NGUYÊN VẬT LIỆU',
+      peopleCreate: 'Người tạo: ${widget.itemTesting?.peopleCreate ?? ''}',
       datetimeCreate: widget.itemTesting?.datetimeCreate,
       onClose: widget.onClose,
     );

@@ -105,6 +105,8 @@ class AppColors {
   static const Color backgroundTankSelected = Color(0xFFCEF3FF);
   static const Color colorAnimatedDonut = Color(0xFF299956);
   static const Color backgroundAnimatedDonut = Color(0xFFCDD1DE);
+  static const Color headerTableDiagram = Color(0xFF88919a);
+
   static const Color preparedColor = Color(0xFF009D57);
   static const Color preparingColor = Color(0xFFF47937);
 

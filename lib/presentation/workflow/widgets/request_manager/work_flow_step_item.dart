@@ -6,6 +6,7 @@ import '../../../../common/widgets/widgets.dart';
 import '../../../../core/configs/themes/app_colors.dart';
 import '../../../../data/workflow/models/models.dart';
 import '../../../../gen/assets.gen.dart';
+import 'item_executions.dart';
 import 'moc_upload_file.dart';
 import 'testing_material.dart';
 import 'view_comment.dart';
@@ -123,6 +124,8 @@ class WorkFlowStepItem extends StatelessWidget {
           height: 30,
           onPressed: () => workflowStep.status == WorkflowStepStatus.testRequest
               ? _showStepDetailDialog(context)
+              : workflowStep.status == WorkflowStepStatus.itemExecutions
+              ? _showItemExecutionsDialog(context)
               : workflowStep.status == WorkflowStepStatus.updateDoc
               ? _showUpdateDocDialog(context)
               : null,
@@ -197,6 +200,13 @@ class WorkFlowStepItem extends StatelessWidget {
     IDialog.showDialogLeft(
       context: context,
       content: TestingMaterial(itemTesting: itemTesting),
+    );
+  }
+
+  void _showItemExecutionsDialog(BuildContext context) {
+    IDialog.showDialogLeft(
+      context: context,
+      content: ItemExecutions(itemInformation: workflowStep.itemInformation!),
     );
   }
 
