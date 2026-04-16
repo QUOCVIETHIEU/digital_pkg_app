@@ -73,7 +73,22 @@ class _ItemExecutionsState extends State<ItemExecutions> {
       children: [
         _buildField('Mã nguyên liệu', itemCodeController),
         _buildField('Tên nguyên liệu', itemNameController),
-        TableExecutions(batchItems: widget.itemInformation.batchItems),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: 4,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text('Batch:', style: AppTheme.styleLabelInput),
+
+                Text(' *', style: const TextStyle(color: Colors.red)),
+              ],
+            ),
+            TableExecutions(batchItems: widget.itemInformation.batchItems),
+          ],
+        ),
         _buildField('Ghi chú', noteController, maxLines: 3),
       ],
     );
@@ -95,7 +110,7 @@ class _ItemExecutionsState extends State<ItemExecutions> {
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text(label, style: AppTheme.styleLabelInput),
+            Text('$label:', style: AppTheme.styleLabelInput),
             if (required) ...[
               Text(' *', style: const TextStyle(color: Colors.red)),
             ],
