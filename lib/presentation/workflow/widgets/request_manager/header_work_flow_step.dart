@@ -10,7 +10,7 @@ class HeaderWorkFlowStep extends StatelessWidget {
     super.key,
     required this.value,
     required this.peopleCreate,
-    required this.datetimeCreate,
+    this.datetimeCreate,
     this.onClose,
   });
   final String value;

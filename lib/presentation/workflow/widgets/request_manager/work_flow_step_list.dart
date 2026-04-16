@@ -83,7 +83,7 @@ class _WorkFlowStepListState extends State<WorkFlowStepList>
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     color: AppColors.workFlowTextStepList,
-                    fontSize: 14,
+                    fontSize: 13,
                   ),
                 ),
                 InkWell(

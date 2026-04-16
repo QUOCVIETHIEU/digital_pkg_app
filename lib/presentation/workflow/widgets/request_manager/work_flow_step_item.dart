@@ -49,14 +49,14 @@ class WorkFlowStepItem extends StatelessWidget {
                       Text(
                         workflowStep.stepName,
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 13,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                       Text(
                         workflowStep.stepDescription,
                         style: TextStyle(
-                          fontSize: 13,
+                          fontSize: 12,
                           fontWeight: FontWeight.w400,
                           fontStyle: FontStyle.italic,
                           color: AppColors.workFlowTextUpComing,
@@ -96,7 +96,9 @@ class WorkFlowStepItem extends StatelessWidget {
           ),
           workflowStep.status == WorkflowStepStatus.confirmRequest ||
                   workflowStep.status == WorkflowStepStatus.confirmDoc ||
-                  workflowStep.status == WorkflowStepStatus.confirmExecution
+                  workflowStep.status == WorkflowStepStatus.confirmExecution ||
+                  workflowStep.status == WorkflowStepStatus.qcConfirm ||
+                  workflowStep.status == WorkflowStepStatus.globalResult
               ? _buildButtonViewConfirm(context)
               : _buildButton(context),
 
@@ -130,7 +132,9 @@ class WorkFlowStepItem extends StatelessWidget {
               ? _showItemExecutionsDialog(context)
               : workflowStep.status == WorkflowStepStatus.planExecution
               ? _showPlanExecutionsDialog(context)
-              : workflowStep.status == WorkflowStepStatus.updateDoc
+              : workflowStep.status == WorkflowStepStatus.updateDoc ||
+                    workflowStep.status == WorkflowStepStatus.qcResult ||
+                    workflowStep.status == WorkflowStepStatus.globalUpload
               ? _showUpdateDocDialog(context)
               : null,
         ),
@@ -226,7 +230,10 @@ class WorkFlowStepItem extends StatelessWidget {
   void _showUpdateDocDialog(BuildContext context) {
     IDialog.showDialogLeft(
       context: context,
-      content: MocUploadFile(documentMaterial: workflowStep.documentMaterial!),
+      content: MocUploadFile(
+        documentMaterial: workflowStep.documentMaterial!,
+        status: workflowStep.status,
+      ),
     );
   }
 

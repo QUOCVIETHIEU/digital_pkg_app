@@ -178,6 +178,8 @@ class AppColors {
   static const Color workFlowTextFileView = Color(0xFFF1F4F6);
   static const Color workFlowHeaderLetter = Color(0xFFF4F6F9);
   static const Color workFlowBorderColorLetter = Color(0xFFE0E5EE);
+  static const Color workFlowTextGlobalApproved = Color(0xFF06AC75);
+  static const Color workFlowTextGlobalRejected = Color(0xFFFB2C36);
 
   static const Color batchBackGroundSelected = Color(0xFFA0A212);
   static const Color batchBackGroundSelecting = Color(0xFF03BF92);

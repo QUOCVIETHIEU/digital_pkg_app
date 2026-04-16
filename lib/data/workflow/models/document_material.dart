@@ -8,18 +8,22 @@ part 'document_material.g.dart';
 class DocumentMaterial {
   final String peopleDownload;
   final DateTime dateTimeCreate;
-  final List<ParameterTesting> parameterTestings;
+  final List<ParameterTesting>? parameterTestings;
   final String documentTitle;
-  final List<WorkflowFile> files;
+  final List<WorkflowFile>? files;
+  final GlobalUploadType? globalUploadType;
   DocumentMaterial({
     required this.peopleDownload,
     required this.dateTimeCreate,
-    required this.parameterTestings,
-    required this.files,
+    this.parameterTestings,
+    this.files,
     required this.documentTitle,
+    this.globalUploadType,
   });
 
   factory DocumentMaterial.fromJson(Map<String, dynamic> json) =>
       _$DocumentMaterialFromJson(json);
   Map<String, dynamic> toJson() => _$DocumentMaterialToJson(this);
 }
+
+enum GlobalUploadType { globalApprove, globalReject }

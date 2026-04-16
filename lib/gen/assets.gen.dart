@@ -395,6 +395,10 @@ class $AssetsIconsCommonGen {
 class $AssetsIconsDrawersGen {
   const $AssetsIconsDrawersGen();
 
+  /// File path: assets/icons/drawers/ico_drawer_approval_global.svg
+  String get icoDrawerApprovalGlobal =>
+      'assets/icons/drawers/ico_drawer_approval_global.svg';
+
   /// File path: assets/icons/drawers/ico_drawer_completed.svg
   String get icoDrawerCompleted =>
       'assets/icons/drawers/ico_drawer_completed.svg';
@@ -410,8 +414,23 @@ class $AssetsIconsDrawersGen {
   /// File path: assets/icons/drawers/ico_drawer_excel.svg
   String get icoDrawerExcel => 'assets/icons/drawers/ico_drawer_excel.svg';
 
+  /// File path: assets/icons/drawers/ico_drawer_eyes_result.svg
+  String get icoDrawerEyesResult =>
+      'assets/icons/drawers/ico_drawer_eyes_result.svg';
+
   /// File path: assets/icons/drawers/ico_drawer_file.svg
   String get icoDrawerFile => 'assets/icons/drawers/ico_drawer_file.svg';
+
+  /// File path: assets/icons/drawers/ico_drawer_global.svg
+  String get icoDrawerGlobal => 'assets/icons/drawers/ico_drawer_global.svg';
+
+  /// File path: assets/icons/drawers/ico_drawer_global_approved_step.svg
+  String get icoDrawerGlobalApprovedStep =>
+      'assets/icons/drawers/ico_drawer_global_approved_step.svg';
+
+  /// File path: assets/icons/drawers/ico_drawer_global_rejected_step.svg
+  String get icoDrawerGlobalRejectedStep =>
+      'assets/icons/drawers/ico_drawer_global_rejected_step.svg';
 
   /// File path: assets/icons/drawers/ico_drawer_home_active.svg
   String get icoDrawerHomeActive =>
@@ -468,6 +487,9 @@ class $AssetsIconsDrawersGen {
   String get icoDrawerMixingNormal =>
       'assets/icons/drawers/ico_drawer_mixing_normal.svg';
 
+  /// File path: assets/icons/drawers/ico_drawer_passed.svg
+  String get icoDrawerPassed => 'assets/icons/drawers/ico_drawer_passed.svg';
+
   /// File path: assets/icons/drawers/ico_drawer_pdf.svg
   String get icoDrawerPdf => 'assets/icons/drawers/ico_drawer_pdf.svg';
 
@@ -489,6 +511,10 @@ class $AssetsIconsDrawersGen {
   /// File path: assets/icons/drawers/ico_drawer_production_normal.svg
   String get icoDrawerProductionNormal =>
       'assets/icons/drawers/ico_drawer_production_normal.svg';
+
+  /// File path: assets/icons/drawers/ico_drawer_qc_result.svg
+  String get icoDrawerQcResult =>
+      'assets/icons/drawers/ico_drawer_qc_result.svg';
 
   /// File path: assets/icons/drawers/ico_drawer_quality_active.svg
   String get icoDrawerQualityActive =>
@@ -562,6 +588,9 @@ class $AssetsIconsDrawersGen {
   String get icoDrawerSyrupNormal =>
       'assets/icons/drawers/ico_drawer_syrup_normal.svg';
 
+  /// File path: assets/icons/drawers/ico_drawer_tag.svg
+  String get icoDrawerTag => 'assets/icons/drawers/ico_drawer_tag.svg';
+
   /// File path: assets/icons/drawers/ico_drawer_utility_active.svg
   String get icoDrawerUtilityActive =>
       'assets/icons/drawers/ico_drawer_utility_active.svg';
@@ -595,11 +624,16 @@ class $AssetsIconsDrawersGen {
 
   /// List of all assets
   List<String> get values => [
+    icoDrawerApprovalGlobal,
     icoDrawerCompleted,
     icoDrawerConsumptionActive,
     icoDrawerConsumptionNormal,
     icoDrawerExcel,
+    icoDrawerEyesResult,
     icoDrawerFile,
+    icoDrawerGlobal,
+    icoDrawerGlobalApprovedStep,
+    icoDrawerGlobalRejectedStep,
     icoDrawerHomeActive,
     icoDrawerHomeNormal,
     icoDrawerImage,
@@ -614,12 +648,14 @@ class $AssetsIconsDrawersGen {
     icoDrawerMenuNormal,
     icoDrawerMixingActive,
     icoDrawerMixingNormal,
+    icoDrawerPassed,
     icoDrawerPdf,
     icoDrawerPlan,
     icoDrawerPointActive,
     icoDrawerPointNormal,
     icoDrawerProductionActive,
     icoDrawerProductionNormal,
+    icoDrawerQcResult,
     icoDrawerQualityActive,
     icoDrawerQualityNormal,
     icoDrawerReportActive,
@@ -638,6 +674,7 @@ class $AssetsIconsDrawersGen {
     icoDrawerSupportNormal,
     icoDrawerSyrupActive,
     icoDrawerSyrupNormal,
+    icoDrawerTag,
     icoDrawerUtilityActive,
     icoDrawerUtilityNormal,
     icoDrawerWeigherActive,
