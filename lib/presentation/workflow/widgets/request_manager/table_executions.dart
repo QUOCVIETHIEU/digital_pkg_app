@@ -26,6 +26,7 @@ class TableExecutions extends StatelessWidget {
         children: [
           Container(
             decoration: const BoxDecoration(
+              color: AppColors.backgroundButtonDialogComment,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(AppSize.borderRadiusCircular),
                 topRight: Radius.circular(AppSize.borderRadiusCircular),
@@ -107,7 +108,6 @@ class TableExecutions extends StatelessWidget {
       width: width,
       constraints: const BoxConstraints(minHeight: 35),
       decoration: const BoxDecoration(
-        color: AppColors.backgroundButtonDialogComment,
         border: Border(
           bottom: BorderSide(
             color: AppColors.dividerTimeLine,

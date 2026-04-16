@@ -467,6 +467,9 @@ class $AssetsIconsDrawersGen {
   /// File path: assets/icons/drawers/ico_drawer_pdf.svg
   String get icoDrawerPdf => 'assets/icons/drawers/ico_drawer_pdf.svg';
 
+  /// File path: assets/icons/drawers/ico_drawer_plan.svg
+  String get icoDrawerPlan => 'assets/icons/drawers/ico_drawer_plan.svg';
+
   /// File path: assets/icons/drawers/ico_drawer_point_active.svg
   String get icoDrawerPointActive =>
       'assets/icons/drawers/ico_drawer_point_active.svg';
@@ -607,6 +610,7 @@ class $AssetsIconsDrawersGen {
     icoDrawerMixingActive,
     icoDrawerMixingNormal,
     icoDrawerPdf,
+    icoDrawerPlan,
     icoDrawerPointActive,
     icoDrawerPointNormal,
     icoDrawerProductionActive,

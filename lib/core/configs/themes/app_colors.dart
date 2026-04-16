@@ -176,6 +176,8 @@ class AppColors {
   static const Color backgroundButtonDialogComment = Color(0xFF3C87D0);
   static const Color workFlowTextFile = Color(0xFFD9D9D9);
   static const Color workFlowTextFileView = Color(0xFFF1F4F6);
+  static const Color workFlowHeaderLetter = Color(0xFFF4F6F9);
+  static const Color workFlowBorderColorLetter = Color(0xFFE0E5EE);
 
   static const Color batchBackGroundSelected = Color(0xFFA0A212);
   static const Color batchBackGroundSelecting = Color(0xFF03BF92);

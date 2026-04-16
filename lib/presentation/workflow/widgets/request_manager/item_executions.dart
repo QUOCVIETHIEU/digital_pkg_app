@@ -41,20 +41,23 @@ class _ItemExecutionsState extends State<ItemExecutions> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.white,
-      child: Container(
-        width: MediaQuery.sizeOf(context).width * 0.4,
-        height: double.infinity,
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 30),
+    return Container(
+      width: MediaQuery.sizeOf(context).width * 0.4,
+      height: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+      decoration: BoxDecoration(
         color: Colors.white,
-        child: Column(
-          spacing: 20,
-          children: [
-            _buildHeader(context),
-            Expanded(child: SingleChildScrollView(child: _buildBody(context))),
-          ],
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(12),
+          bottomLeft: Radius.circular(12),
         ),
+      ),
+      child: Column(
+        spacing: 20,
+        children: [
+          _buildHeader(context),
+          Expanded(child: SingleChildScrollView(child: _buildBody(context))),
+        ],
       ),
     );
   }

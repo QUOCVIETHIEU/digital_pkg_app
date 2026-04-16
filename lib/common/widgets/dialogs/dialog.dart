@@ -1190,7 +1190,10 @@ class IDialog {
       transitionDuration: transitionDuration,
       pageBuilder: (context, animation, secondaryAnimation) {
         return SafeArea(
-          child: Align(alignment: Alignment.centerRight, child: content),
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: Material(color: Colors.transparent, child: content),
+          ),
         );
       },
       transitionBuilder: (context, animation, secondaryAnimation, child) {

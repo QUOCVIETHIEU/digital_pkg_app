@@ -243,6 +243,25 @@ class RequestManagerBloc
                 ],
               ),
             ),
+            WorkflowStep(
+              stepName: 'Gửi Email thông báo chạy test NVL tới nhà máy',
+              stepDescription: 'Đã gửi thông báo thành công',
+              stepPeople: 'Nguyễn Văn A',
+              stepDatetime: DateTime.now(),
+              status: WorkflowStepStatus.planExecution,
+              materialNotification: MaterialNotification(
+                peopleDownload: 'Nguyễn Văn A',
+                datetimeCreate: DateTime.now(),
+                sendToPeople: 'plant.manager@email.com',
+                subject: 'Thông báo chạy trials nguyên vật liệu testing',
+                itemCode: '200000001',
+                quantity: 10.0,
+                lineName: 'SVN',
+                unit: 'Cav.',
+                datetimeConfirm: DateTime.now(),
+                dateTimeSend: DateTime.now(),
+              ),
+            ),
 
             WorkflowStep(
               stepName: 'Nhà máy xác nhận kế hoạch và chuẩn bị NVL test',

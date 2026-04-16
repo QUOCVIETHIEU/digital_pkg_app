@@ -19,6 +19,7 @@ class WorkflowStep {
   final ItemTesting? itemTesting;
   final DocumentMaterial? documentMaterial;
   final ItemInformation? itemInformation;
+  final MaterialNotification? materialNotification;
   const WorkflowStep({
     required this.stepName,
     required this.stepDescription,
@@ -30,6 +31,7 @@ class WorkflowStep {
     this.itemInformation,
     this.stepPic,
     required this.status,
+    this.materialNotification,
   });
 
   factory WorkflowStep.fromJson(Map<String, dynamic> json) =>
@@ -108,7 +110,7 @@ extension WorkflowStepStatusExtension on WorkflowStepStatus {
     WorkflowStepStatus.updateDoc => 'Xem thông tin item',
     WorkflowStepStatus.confirmDoc => 'Xem thông tin item',
     WorkflowStepStatus.itemExecutions => 'Xem thông tin item',
-    WorkflowStepStatus.planExecution => 'Xem thông tin item',
+    WorkflowStepStatus.planExecution => 'Xem kế hoạch',
     WorkflowStepStatus.confirmExecution => 'Xem thông tin item',
     WorkflowStepStatus.qcResult => 'Xem thông tin item',
     WorkflowStepStatus.qcConfirm => 'Xem thông tin item',
@@ -136,7 +138,7 @@ extension WorkflowStepStatusExtension on WorkflowStepStatus {
     WorkflowStepStatus.updateDoc => Assets.icons.actions.icoActionFile,
     WorkflowStepStatus.confirmDoc => Assets.icons.actions.icoActionFile,
     WorkflowStepStatus.itemExecutions => Assets.icons.actions.icoActionFile,
-    WorkflowStepStatus.planExecution => Assets.icons.actions.icoActionFile,
+    WorkflowStepStatus.planExecution => Assets.icons.drawers.icoDrawerPlan,
     WorkflowStepStatus.confirmExecution => Assets.icons.actions.icoActionFile,
     WorkflowStepStatus.qcResult => Assets.icons.actions.icoActionFile,
     WorkflowStepStatus.qcConfirm => Assets.icons.actions.icoActionFile,
@@ -167,7 +169,7 @@ extension WorkflowStepStatusExtension on WorkflowStepStatus {
     WorkflowStepStatus.updateDoc => 'Xem files upload',
     WorkflowStepStatus.confirmDoc => 'Xem thông tin item',
     WorkflowStepStatus.itemExecutions => 'Xem thông tin item',
-    WorkflowStepStatus.planExecution => 'Xem thông tin item',
+    WorkflowStepStatus.planExecution => 'Xem kế hoạch',
     WorkflowStepStatus.confirmExecution => 'Xem thông tin item',
     WorkflowStepStatus.qcResult => 'Xem thông tin item',
     WorkflowStepStatus.qcConfirm => 'Xem thông tin item',
