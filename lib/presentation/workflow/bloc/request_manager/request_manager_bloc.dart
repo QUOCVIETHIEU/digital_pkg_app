@@ -582,6 +582,62 @@ class RequestManagerBloc
             ),
           ],
         ),
+        WorkflowTimelineItem(
+          stepName: 'MATRIX',
+          requestApprovePeople: 'Nguyễn Văn B',
+          stepDescription: 'QC',
+          titleRequest: 'QC CẬP NHẬT MATRIX NGUYÊN LIỆU',
+          requestDescription:
+              'Cập nhật Matrix nguyên vật liệu và thông báo tới PIC liên quan',
+          requestPeople: 'Nguyễn Văn A',
+          requestPic: 'QC Material',
+          status: WorkflowTimelineItemStatus.done,
+          workflowStep: [
+            WorkflowStep(
+              stepName: 'QC cập nhật Matrix nguyên liệu',
+              stepDescription: ' QC đã cập nhật Matrix vào hệ thống thành công',
+              stepPeople: 'Nguyễn Văn A',
+              stepDatetime: DateTime.now(),
+              status: WorkflowStepStatus.qcMatrix,
+              matrixEdi: MatrixEdi(
+                line: 'CSD Sidel-T',
+                size: 390,
+                unit: 'ml',
+                type: 'CSD - Clear',
+                weight: 10.0,
+                unitWeight: 'grs',
+                supplier: 'SVN-BD',
+                resin: 'Ramapet S1',
+                itemCode: 'CSD-S1-390ML',
+                mold: '3A-72',
+                itemName: 'PET PREFORM',
+                items: [
+                  MatrixEdiItem(
+                    materialCode: 'HCSV 2.55gr White - v6',
+                    materialName: '30000077',
+                  ),
+                  MatrixEdiItem(
+                    materialCode: 'SVN - 1.47gr Clear - D',
+                    materialName: '30001560',
+                  ),
+                  MatrixEdiItem(
+                    materialCode: 'HCVN - 2.15gr White',
+                    materialName: '30003689',
+                  ),
+                ],
+                status: EdiStatus.pending,
+              ),
+            ),
+            WorkflowStep(
+              stepName: 'Gửi thông báo tới PIC',
+              stepDescription:
+                  'Đã gửi email thông báo cập nhật Matrix tới các bộ phận.',
+              stepPeople: 'Nguyễn Văn A',
+              stepDatetime: DateTime.now(),
+              status: WorkflowStepStatus.matrixNotification,
+            ),
+          ],
+        ),
       ];
       emit(
         state.copyWith(

@@ -7,6 +7,7 @@ import '../../../../core/configs/themes/app_colors.dart';
 import '../../../../data/workflow/models/models.dart';
 import '../../../../gen/assets.gen.dart';
 import 'item_executions.dart';
+import 'matrix_material.dart';
 import 'moc_upload_file.dart';
 import 'plan_executions.dart';
 import 'testing_material.dart';
@@ -100,7 +101,8 @@ class WorkFlowStepItem extends StatelessWidget {
                   workflowStep.status == WorkflowStepStatus.qcConfirm ||
                   workflowStep.status == WorkflowStepStatus.globalResult ||
                   workflowStep.status == WorkflowStepStatus.pkgResult ||
-                  workflowStep.status == WorkflowStepStatus.qcmResult
+                  workflowStep.status == WorkflowStepStatus.qcmResult ||
+                  workflowStep.status == WorkflowStepStatus.matrixNotification
               ? _buildButtonViewConfirm(context)
               : _buildButton(context),
 
@@ -140,6 +142,8 @@ class WorkFlowStepItem extends StatelessWidget {
                     workflowStep.status == WorkflowStepStatus.globalUpload ||
                     workflowStep.status == WorkflowStepStatus.pkgUpload
               ? _showUpdateDocDialog(context)
+              : workflowStep.status == WorkflowStepStatus.qcMatrix
+              ? _showMatrixMaterialDialog(context)
               : null,
         ),
       ],
@@ -184,25 +188,29 @@ class WorkFlowStepItem extends StatelessWidget {
             ],
           ),
         ),
-        IRectangleButton(
-          leading: SvgPicture.asset(
-            Assets.icons.common.icoCommonComment,
-            width: 10,
-            height: 10,
+        if (workflowStep.viewComment?.isNotEmpty ?? false)
+          IRectangleButton(
+            leading: SvgPicture.asset(
+              Assets.icons.common.icoCommonComment,
+              width: 10,
+              height: 10,
+            ),
+            title: 'View comment',
+            fontSize: 8,
+            fontWeight: FontWeight.w600,
+            backgroundColor: AppColors.workFlowBorderColorUpComing,
+            textColor: AppColors.textColor,
+            outlineColor: AppColors.workFlowTextDescription,
+            enableVerticalDivider: false,
+            buttonPadding: const EdgeInsets.symmetric(
+              vertical: 2,
+              horizontal: 6,
+            ),
+            height: 30,
+            onPressed: () {
+              _showCommentDialog(context);
+            },
           ),
-          title: 'View comment',
-          fontSize: 8,
-          fontWeight: FontWeight.w600,
-          backgroundColor: AppColors.workFlowBorderColorUpComing,
-          textColor: AppColors.textColor,
-          outlineColor: AppColors.workFlowTextDescription,
-          enableVerticalDivider: false,
-          buttonPadding: const EdgeInsets.symmetric(vertical: 2, horizontal: 6),
-          height: 30,
-          onPressed: () {
-            _showCommentDialog(context);
-          },
-        ),
       ],
     );
   }
@@ -236,6 +244,13 @@ class WorkFlowStepItem extends StatelessWidget {
         documentMaterial: workflowStep.documentMaterial!,
         status: workflowStep.status,
       ),
+    );
+  }
+
+  void _showMatrixMaterialDialog(BuildContext context) {
+    IDialog.showDialogLeft(
+      context: context,
+      content: MatrixMaterial(workflowStep: workflowStep),
     );
   }
 

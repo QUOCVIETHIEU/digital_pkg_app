@@ -20,6 +20,7 @@ class WorkflowStep {
   final DocumentMaterial? documentMaterial;
   final ItemInformation? itemInformation;
   final MaterialNotification? materialNotification;
+  final MatrixEdi? matrixEdi;
   const WorkflowStep({
     required this.stepName,
     required this.stepDescription,
@@ -31,6 +32,7 @@ class WorkflowStep {
     this.itemInformation,
     this.stepPic,
     required this.status,
+    this.matrixEdi,
     this.materialNotification,
   });
 
@@ -78,16 +80,18 @@ extension WorkflowStepStatusExtension on WorkflowStepStatus {
     WorkflowStepStatus.itemExecutions => Assets.icons.common.icoCommonDoneStep,
     WorkflowStepStatus.planExecution => Assets.icons.common.icoCommonDoneStep,
     WorkflowStepStatus.confirmExecution =>
-      Assets.icons.common.icoCommonDoneStep,
+      Assets.icons.common.icoCommonConfirmStep,
     WorkflowStepStatus.qcResult => Assets.icons.common.icoCommonDoneStep,
     WorkflowStepStatus.qcConfirm => Assets.icons.common.icoCommonDoneStep,
     WorkflowStepStatus.globalUpload => Assets.icons.common.icoCommonDoneStep,
     WorkflowStepStatus.globalResult =>
       Assets.icons.drawers.icoDrawerApprovalGlobal,
     WorkflowStepStatus.pkgUpload => Assets.icons.common.icoCommonDoneStep,
-    WorkflowStepStatus.pkgResult => Assets.icons.common.icoCommonDoneStep,
+    WorkflowStepStatus.pkgResult =>
+      Assets.icons.drawers.icoDrawerApprovalGlobal,
     WorkflowStepStatus.qcmInformation => Assets.icons.common.icoCommonDoneStep,
-    WorkflowStepStatus.qcmResult => Assets.icons.common.icoCommonDoneStep,
+    WorkflowStepStatus.qcmResult =>
+      Assets.icons.drawers.icoDrawerApprovalGlobal,
     WorkflowStepStatus.qcMatrix => Assets.icons.common.icoCommonDoneStep,
     WorkflowStepStatus.matrixNotification =>
       Assets.icons.common.icoCommonDoneStep,
@@ -123,8 +127,9 @@ extension WorkflowStepStatusExtension on WorkflowStepStatus {
     WorkflowStepStatus.qcmInformation =>
       Assets.icons.drawers.icoDrawerEyesResult,
     WorkflowStepStatus.qcmResult => Assets.icons.drawers.icoDrawerEyesResult,
-    WorkflowStepStatus.qcMatrix => Assets.icons.actions.icoActionFile,
-    WorkflowStepStatus.matrixNotification => Assets.icons.actions.icoActionFile,
+    WorkflowStepStatus.qcMatrix => Assets.icons.drawers.icoDrawerMatrix,
+    WorkflowStepStatus.matrixNotification =>
+      Assets.icons.drawers.icoDrawerMatrix,
     WorkflowStepStatus.itemCodeMaterial => Assets.icons.actions.icoActionFile,
     WorkflowStepStatus.itemCodeBom => Assets.icons.actions.icoActionFile,
     WorkflowStepStatus.itemCodeUpdated => Assets.icons.actions.icoActionFile,
@@ -154,8 +159,8 @@ extension WorkflowStepStatusExtension on WorkflowStepStatus {
     WorkflowStepStatus.pkgResult => 'Xem files upload',
     WorkflowStepStatus.qcmInformation => 'Xem thông tin',
     WorkflowStepStatus.qcmResult => 'Xem thông tin',
-    WorkflowStepStatus.qcMatrix => 'Xem thông tin item',
-    WorkflowStepStatus.matrixNotification => 'Xem thông tin item',
+    WorkflowStepStatus.qcMatrix => 'Xem matrix',
+    WorkflowStepStatus.matrixNotification => 'Xem matrix',
     WorkflowStepStatus.itemCodeMaterial => 'Xem thông tin item',
     WorkflowStepStatus.itemCodeBom => 'Xem thông tin item',
     WorkflowStepStatus.itemCodeUpdated => 'Xem thông tin item',
@@ -182,8 +187,8 @@ extension WorkflowStepStatusExtension on WorkflowStepStatus {
     WorkflowStepStatus.pkgResult => 'Approved',
     WorkflowStepStatus.qcmInformation => 'Approved',
     WorkflowStepStatus.qcmResult => 'Approved',
-    WorkflowStepStatus.qcMatrix => 'Xác nhận',
-    WorkflowStepStatus.matrixNotification => 'Xác nhận',
+    WorkflowStepStatus.qcMatrix => 'Đã gửi mail',
+    WorkflowStepStatus.matrixNotification => 'Đã gửi mail',
     WorkflowStepStatus.itemCodeMaterial => 'Xác nhận',
     WorkflowStepStatus.itemCodeBom => 'Xác nhận',
     WorkflowStepStatus.itemCodeUpdated => 'Xác nhận',
@@ -210,8 +215,9 @@ extension WorkflowStepStatusExtension on WorkflowStepStatus {
     WorkflowStepStatus.pkgResult => Assets.icons.drawers.icoDrawerGlobal,
     WorkflowStepStatus.qcmInformation => Assets.icons.drawers.icoDrawerGlobal,
     WorkflowStepStatus.qcmResult => Assets.icons.drawers.icoDrawerGlobal,
-    WorkflowStepStatus.qcMatrix => Assets.icons.actions.icoActionFile,
-    WorkflowStepStatus.matrixNotification => Assets.icons.actions.icoActionFile,
+    WorkflowStepStatus.qcMatrix => Assets.icons.drawers.icoDrawerEmail,
+    WorkflowStepStatus.matrixNotification =>
+      Assets.icons.drawers.icoDrawerEmail,
     WorkflowStepStatus.itemCodeMaterial => Assets.icons.actions.icoActionFile,
     WorkflowStepStatus.itemCodeBom => Assets.icons.actions.icoActionFile,
     WorkflowStepStatus.itemCodeUpdated => Assets.icons.actions.icoActionFile,

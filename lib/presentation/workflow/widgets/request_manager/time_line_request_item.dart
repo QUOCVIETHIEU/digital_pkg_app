@@ -132,6 +132,7 @@ class TimeLineRequestItem extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                     color: AppColors.workFlowTextDescription,
                     fontSize: 12,
+                    fontStyle: FontStyle.italic,
                   ),
                 ),
                 IRichTextValue(
@@ -175,7 +176,9 @@ class TimeLineRequestItem extends StatelessWidget {
             ),
           ],
         ),
-        WorkFlowStepList(workflowSteps: workflowTimelineItem.workflowStep),
+        workflowTimelineItem.workflowStep.isNotEmpty
+            ? WorkFlowStepList(workflowSteps: workflowTimelineItem.workflowStep)
+            : const SizedBox.shrink(),
       ],
     );
   }

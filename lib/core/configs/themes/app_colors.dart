@@ -180,6 +180,13 @@ class AppColors {
   static const Color workFlowBorderColorLetter = Color(0xFFE0E5EE);
   static const Color workFlowTextGlobalApproved = Color(0xFF06AC75);
   static const Color workFlowTextGlobalRejected = Color(0xFFFB2C36);
+  static const Color borderEdi = Color(0xFFEDBF6F);
+  static const Color backgroundEdi = Color(0xFFFFF5E2);
+  static const Color textEdi = Color(0xFFCA4300);
+  static const Color workFlowTabColor = Color(0xFFEAEAEA);
+  static const Color workFlowMatrixItemIcon = Color(0xFFEEEFF1);
+  static const Color workFlowMatrixItemIconShadow = Color(0x17000000);
+  static const Color workFlowMatrixItemIconShadow2 = Color(0x1AFFFFFF);
 
   static const Color batchBackGroundSelected = Color(0xFFA0A212);
   static const Color batchBackGroundSelecting = Color(0xFF03BF92);

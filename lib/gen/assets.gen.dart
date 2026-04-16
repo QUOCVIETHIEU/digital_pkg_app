@@ -107,6 +107,9 @@ class $AssetsIconsActionsGen {
   /// File path: assets/icons/actions/ico_action_right.svg
   String get icoActionRight => 'assets/icons/actions/ico_action_right.svg';
 
+  /// File path: assets/icons/actions/ico_action_send.svg
+  String get icoActionSend => 'assets/icons/actions/ico_action_send.svg';
+
   /// File path: assets/icons/actions/ico_action_workflow_completed.svg
   String get icoActionWorkflowCompleted =>
       'assets/icons/actions/ico_action_workflow_completed.svg';
@@ -118,14 +121,20 @@ class $AssetsIconsActionsGen {
   /// File path: assets/icons/actions/ico_back_previous.svg
   String get icoBackPrevious => 'assets/icons/actions/ico_back_previous.svg';
 
+  /// File path: assets/icons/actions/ico_drawer_sap_banner.svg
+  String get icoDrawerSapBanner =>
+      'assets/icons/actions/ico_drawer_sap_banner.svg';
+
   /// List of all assets
   List<String> get values => [
     icoActionDown,
     icoActionFile,
     icoActionRight,
+    icoActionSend,
     icoActionWorkflowCompleted,
     icoActionWorkflowError,
     icoBackPrevious,
+    icoDrawerSapBanner,
   ];
 }
 
@@ -229,6 +238,9 @@ class $AssetsIconsCommonGen {
   /// File path: assets/icons/common/ico_column.svg
   String get icoColumn => 'assets/icons/common/ico_column.svg';
 
+  /// File path: assets/icons/common/ico_common_bottle.svg
+  String get icoCommonBottle => 'assets/icons/common/ico_common_bottle.svg';
+
   /// File path: assets/icons/common/ico_common_comment.svg
   String get icoCommonComment => 'assets/icons/common/ico_common_comment.svg';
 
@@ -242,6 +254,14 @@ class $AssetsIconsCommonGen {
   /// File path: assets/icons/common/ico_common_done_step.svg
   String get icoCommonDoneStep =>
       'assets/icons/common/ico_common_done_step.svg';
+
+  /// File path: assets/icons/common/ico_common_pet.png
+  AssetGenImage get icoCommonPet =>
+      const AssetGenImage('assets/icons/common/ico_common_pet.png');
+
+  /// File path: assets/icons/common/ico_common_pet_preform.svg
+  String get icoCommonPetPreform =>
+      'assets/icons/common/ico_common_pet_preform.svg';
 
   /// File path: assets/icons/common/ico_common_primary.svg
   String get icoCommonPrimary => 'assets/icons/common/ico_common_primary.svg';
@@ -327,7 +347,7 @@ class $AssetsIconsCommonGen {
   String get icoUserSetting => 'assets/icons/common/ico_user_setting.svg';
 
   /// List of all assets
-  List<String> get values => [
+  List<dynamic> get values => [
     icoAcceptCheckBg,
     icoAccepted,
     icoActionAdd,
@@ -359,10 +379,13 @@ class $AssetsIconsCommonGen {
     icoCheckbox,
     icoClearSnack,
     icoColumn,
+    icoCommonBottle,
     icoCommonComment,
     icoCommonConfirmStep,
     icoCommonDigital,
     icoCommonDoneStep,
+    icoCommonPet,
+    icoCommonPetPreform,
     icoCommonPrimary,
     icoCommonRequest,
     icoDashboardSmall,
@@ -395,9 +418,15 @@ class $AssetsIconsCommonGen {
 class $AssetsIconsDrawersGen {
   const $AssetsIconsDrawersGen();
 
+  /// File path: assets/icons/drawers/ico_action_send.svg
+  String get icoActionSend => 'assets/icons/drawers/ico_action_send.svg';
+
   /// File path: assets/icons/drawers/ico_drawer_approval_global.svg
   String get icoDrawerApprovalGlobal =>
       'assets/icons/drawers/ico_drawer_approval_global.svg';
+
+  /// File path: assets/icons/drawers/ico_drawer_clock.svg
+  String get icoDrawerClock => 'assets/icons/drawers/ico_drawer_clock.svg';
 
   /// File path: assets/icons/drawers/ico_drawer_completed.svg
   String get icoDrawerCompleted =>
@@ -410,6 +439,9 @@ class $AssetsIconsDrawersGen {
   /// File path: assets/icons/drawers/ico_drawer_consumption_normal.svg
   String get icoDrawerConsumptionNormal =>
       'assets/icons/drawers/ico_drawer_consumption_normal.svg';
+
+  /// File path: assets/icons/drawers/ico_drawer_email.svg
+  String get icoDrawerEmail => 'assets/icons/drawers/ico_drawer_email.svg';
 
   /// File path: assets/icons/drawers/ico_drawer_excel.svg
   String get icoDrawerExcel => 'assets/icons/drawers/ico_drawer_excel.svg';
@@ -475,6 +507,17 @@ class $AssetsIconsDrawersGen {
   String get icoDrawerMaterialManagerNormal =>
       'assets/icons/drawers/ico_drawer_material_manager_normal.svg';
 
+  /// File path: assets/icons/drawers/ico_drawer_matrix.svg
+  String get icoDrawerMatrix => 'assets/icons/drawers/ico_drawer_matrix.svg';
+
+  /// File path: assets/icons/drawers/ico_drawer_matrix_item.svg
+  String get icoDrawerMatrixItem =>
+      'assets/icons/drawers/ico_drawer_matrix_item.svg';
+
+  /// File path: assets/icons/drawers/ico_drawer_matrix_nvl.svg
+  String get icoDrawerMatrixNvl =>
+      'assets/icons/drawers/ico_drawer_matrix_nvl.svg';
+
   /// File path: assets/icons/drawers/ico_drawer_menu_normal.svg
   String get icoDrawerMenuNormal =>
       'assets/icons/drawers/ico_drawer_menu_normal.svg';
@@ -486,6 +529,10 @@ class $AssetsIconsDrawersGen {
   /// File path: assets/icons/drawers/ico_drawer_mixing_normal.svg
   String get icoDrawerMixingNormal =>
       'assets/icons/drawers/ico_drawer_mixing_normal.svg';
+
+  /// File path: assets/icons/drawers/ico_drawer_mixing_sap.svg
+  String get icoDrawerMixingSap =>
+      'assets/icons/drawers/ico_drawer_mixing_sap.svg';
 
   /// File path: assets/icons/drawers/ico_drawer_passed.svg
   String get icoDrawerPassed => 'assets/icons/drawers/ico_drawer_passed.svg';
@@ -548,6 +595,10 @@ class $AssetsIconsDrawersGen {
   String get icoDrawerReturnGoodsNormal =>
       'assets/icons/drawers/ico_drawer_return_goods_normal.svg';
 
+  /// File path: assets/icons/drawers/ico_drawer_sap_banner.svg
+  String get icoDrawerSapBanner =>
+      'assets/icons/drawers/ico_drawer_sap_banner.svg';
+
   /// File path: assets/icons/drawers/ico_drawer_setting_active.svg
   String get icoDrawerSettingActive =>
       'assets/icons/drawers/ico_drawer_setting_active.svg';
@@ -563,6 +614,9 @@ class $AssetsIconsDrawersGen {
   /// File path: assets/icons/drawers/ico_drawer_shopfloor_normal.svg
   String get icoDrawerShopfloorNormal =>
       'assets/icons/drawers/ico_drawer_shopfloor_normal.svg';
+
+  /// File path: assets/icons/drawers/ico_drawer_size.svg
+  String get icoDrawerSize => 'assets/icons/drawers/ico_drawer_size.svg';
 
   /// File path: assets/icons/drawers/ico_drawer_storage_location_active.svg
   String get icoDrawerStorageLocationActive =>
@@ -607,6 +661,9 @@ class $AssetsIconsDrawersGen {
   String get icoDrawerWeigherNormal =>
       'assets/icons/drawers/ico_drawer_weigher_normal.svg';
 
+  /// File path: assets/icons/drawers/ico_drawer_weight.svg
+  String get icoDrawerWeight => 'assets/icons/drawers/ico_drawer_weight.svg';
+
   /// File path: assets/icons/drawers/ico_drawer_word.svg
   String get icoDrawerWord => 'assets/icons/drawers/ico_drawer_word.svg';
 
@@ -624,10 +681,13 @@ class $AssetsIconsDrawersGen {
 
   /// List of all assets
   List<String> get values => [
+    icoActionSend,
     icoDrawerApprovalGlobal,
+    icoDrawerClock,
     icoDrawerCompleted,
     icoDrawerConsumptionActive,
     icoDrawerConsumptionNormal,
+    icoDrawerEmail,
     icoDrawerExcel,
     icoDrawerEyesResult,
     icoDrawerFile,
@@ -645,9 +705,13 @@ class $AssetsIconsDrawersGen {
     icoDrawerKronesNormal,
     icoDrawerMaterialManagerActive,
     icoDrawerMaterialManagerNormal,
+    icoDrawerMatrix,
+    icoDrawerMatrixItem,
+    icoDrawerMatrixNvl,
     icoDrawerMenuNormal,
     icoDrawerMixingActive,
     icoDrawerMixingNormal,
+    icoDrawerMixingSap,
     icoDrawerPassed,
     icoDrawerPdf,
     icoDrawerPlan,
@@ -664,10 +728,12 @@ class $AssetsIconsDrawersGen {
     icoDrawerReportNormal,
     icoDrawerReturnGoodsActive,
     icoDrawerReturnGoodsNormal,
+    icoDrawerSapBanner,
     icoDrawerSettingActive,
     icoDrawerSettingNormal,
     icoDrawerShopfloorActive,
     icoDrawerShopfloorNormal,
+    icoDrawerSize,
     icoDrawerStorageLocationActive,
     icoDrawerStorageLocationNormal,
     icoDrawerSupportActive,
@@ -679,6 +745,7 @@ class $AssetsIconsDrawersGen {
     icoDrawerUtilityNormal,
     icoDrawerWeigherActive,
     icoDrawerWeigherNormal,
+    icoDrawerWeight,
     icoDrawerWord,
     icoDrawerWorkflowActive,
     icoDrawerWorkflowHover,

@@ -3,6 +3,7 @@ export 'document_material.dart';
 export 'item_information.dart';
 export 'item_testing.dart';
 export 'material_notification.dart';
+export 'matrix_edi.dart';
 export 'parameter_testing.dart';
 export 'workflow_file.dart';
 export 'workflow_step.dart';
