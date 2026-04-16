@@ -245,12 +245,12 @@ class RequestManagerBloc
             ),
 
             WorkflowStep(
-              stepName: 'Xác nhận/Hủy upload',
-              stepDescription: 'Đã xác nhận upload documents thành công',
+              stepName: 'Nhà máy xác nhận kế hoạch và chuẩn bị NVL test',
+              stepDescription: 'Đã xác nhận thành công',
               stepPeople: 'Nguyễn Văn A',
               stepDatetime: DateTime.now(),
               status: WorkflowStepStatus.confirmDoc,
-              viewComment: 'Nguyên Liệu sẵn sàng để chạy testing',
+              viewComment: 'Nhà máy đã xác nhận kế hoạch',
             ),
           ],
         ),
