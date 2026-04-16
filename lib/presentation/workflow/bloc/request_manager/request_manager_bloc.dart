@@ -250,6 +250,7 @@ class RequestManagerBloc
               stepDatetime: DateTime.now(),
               status: WorkflowStepStatus.planExecution,
               materialNotification: MaterialNotification(
+                title: 'Thông BÁO NGUYÊN VẬT LIỆU',
                 peopleDownload: 'Nguyễn Văn A',
                 datetimeCreate: DateTime.now(),
                 sendToPeople: 'plant.manager@email.com',
@@ -258,8 +259,9 @@ class RequestManagerBloc
                 quantity: 10.0,
                 lineName: 'SVN',
                 unit: 'Cav.',
-                datetimeConfirm: DateTime.now(),
-                dateTimeSend: DateTime.now(),
+                peopleHeader: 'Plant Manager',
+                content:
+                    'Đây là email thông báo kế hoạch testing NVL Phôi đến nhà máy DOP vào ngày 16/04/2026',
               ),
             ),
 
@@ -411,7 +413,7 @@ class RequestManagerBloc
               stepDatetime: DateTime.now(),
               status: WorkflowStepStatus.globalUpload,
               documentMaterial: DocumentMaterial(
-                documentTitle: 'GLOBAL APPROVE RESULT',
+                documentTitle: 'GLOBAL REJECT RESULT',
                 peopleDownload: 'Nguyễn Văn A',
                 dateTimeCreate: DateTime.now(),
                 globalUploadType: GlobalUploadType.globalReject,
@@ -454,6 +456,129 @@ class RequestManagerBloc
               stepDatetime: DateTime.now(),
               status: WorkflowStepStatus.globalResult,
               viewComment: 'Global approve testing result',
+            ),
+          ],
+        ),
+        WorkflowTimelineItem(
+          stepName: 'NW PKG APPROVE',
+          requestApprovePeople: 'Nguyễn Văn B',
+          stepDescription: 'NW PKG MANAGER',
+          titleRequest: 'NW MANAGER REVIEW AND APPROVE',
+          requestDescription:
+              'NW Manager review và xác nhận kết quả để đưa vào nhà máy chạy test nguyên vật liệu',
+          requestPeople: 'Nguyễn Văn A',
+          requestPic: 'NW PKG Manager',
+          status: WorkflowTimelineItemStatus.done,
+          workflowStep: [
+            WorkflowStep(
+              stepName: 'PKG owner collect and send to NW PKG Manager',
+              stepDescription: 'Đã upload file & gửi phê duyệt thành công',
+              stepPeople: 'Nguyễn Văn A',
+              stepDatetime: DateTime.now(),
+              status: WorkflowStepStatus.pkgUpload,
+              documentMaterial: DocumentMaterial(
+                peopleDownload: 'Nguyễn Văn A',
+                dateTimeCreate: DateTime.now(),
+                parameterTestings: [],
+                documentTitle: 'PKG UPLOAD DATA REVIEW FILE UPLOADED',
+                files: [
+                  WorkflowFile(
+                    fileName: 'Review File 01',
+                    fileType: WorkflowFileType.pdf,
+                    fileUrl: 'https://www.google.com',
+                    uploadDatetime: DateTime.now(),
+                    capacity: 113,
+                  ),
+                  WorkflowFile(
+                    fileName: 'Review File 02',
+                    fileType: WorkflowFileType.pdf,
+                    fileUrl: 'https://www.google.com',
+                    uploadDatetime: DateTime.now(),
+                    capacity: 113,
+                  ),
+                  WorkflowFile(
+                    fileName: 'Review File 03',
+                    fileType: WorkflowFileType.docx,
+                    fileUrl: 'https://www.google.com',
+                    uploadDatetime: DateTime.now(),
+                    capacity: 113,
+                  ),
+                ],
+              ),
+            ),
+
+            WorkflowStep(
+              stepName: 'Kết quả phê duyệt của PKG Manager',
+              stepDescription: 'PKG Manager đã phê duyệt yêu cầu',
+              stepPeople: 'Nguyễn Văn A',
+              stepDatetime: DateTime.now(),
+              status: WorkflowStepStatus.pkgResult,
+              viewComment: 'Nguyên Liệu sẵn sàng để chạy testing',
+            ),
+          ],
+        ),
+        WorkflowTimelineItem(
+          stepName: 'QCM APPROVE',
+          requestApprovePeople: 'Nguyễn Văn B',
+          stepDescription: 'NW PKG MANAGER',
+          titleRequest: 'NW MANAGER REVIEW AND APPROVE',
+          requestDescription:
+              'NW Manager review và xác nhận kết quả để đưa vào nhà máy chạy test nguyên vật liệu',
+          requestPeople: 'Nguyễn Văn A',
+          requestPic: 'NW PKG Manager',
+          status: WorkflowTimelineItemStatus.done,
+          workflowStep: [
+            WorkflowStep(
+              stepName: 'QC Raw Material inform to QCM',
+              stepDescription: 'Đã gửi email cho QC Manager thành công',
+              stepPeople: 'Nguyễn Văn A',
+              stepDatetime: DateTime.now(),
+              status: WorkflowStepStatus.qcmInformation,
+              documentMaterial: DocumentMaterial(
+                peopleDownload: 'Nguyễn Văn A',
+                dateTimeCreate: DateTime.now(),
+                parameterTestings: [],
+                documentTitle: 'QC RAW MATERIAL INFORM QCM APPROVE',
+                files: [
+                  WorkflowFile(
+                    fileName: 'Moc File 01',
+                    fileType: WorkflowFileType.pdf,
+                    fileUrl: 'https://www.google.com',
+                    uploadDatetime: DateTime.now(),
+                    capacity: 113,
+                  ),
+                  WorkflowFile(
+                    fileName: 'Moc File 02',
+                    fileType: WorkflowFileType.pdf,
+                    fileUrl: 'https://www.google.com',
+                    uploadDatetime: DateTime.now(),
+                    capacity: 113,
+                  ),
+                ],
+              ),
+              materialNotification: MaterialNotification(
+                peopleDownload: 'Nguyễn Văn A',
+                title: 'PKG UPLOAD DATA REVIEW FILE UPLOAD',
+                datetimeCreate: DateTime.now(),
+                sendToPeople: 'plant.manager@email.com',
+                subject: 'Thông báo chạy trials nguyên vật liệu testing',
+                itemCode: '200000001',
+                quantity: 10.0,
+                lineName: 'SVN',
+                unit: 'Cav.',
+                peopleHeader: 'QCM',
+                content:
+                    'Kết quả testing nguyên liệu đã thành công như file đính kèm, vui lòng kiểm tra và approve kết quả để qua bước kế tiếp',
+              ),
+            ),
+
+            WorkflowStep(
+              stepName: 'Kết quả phê duyệt của QC Manager',
+              stepDescription: 'QC Manager phê duyệt thành công',
+              stepPeople: 'Nguyễn Văn A',
+              stepDatetime: DateTime.now(),
+              status: WorkflowStepStatus.qcmResult,
+              viewComment: 'Nguyên Liệu sẵn sàng để chạy testing',
             ),
           ],
         ),

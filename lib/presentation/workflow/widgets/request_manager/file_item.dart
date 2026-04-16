@@ -18,7 +18,7 @@ class FileItem extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(4),
+          borderRadius: BorderRadius.circular(6),
           border: Border.all(color: AppColors.workFlowBorderColorFile),
         ),
         child: Row(

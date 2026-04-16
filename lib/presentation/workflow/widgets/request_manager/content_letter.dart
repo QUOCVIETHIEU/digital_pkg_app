@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../common/helpers/datetime_utils.dart';
 import '../../../../core/configs/themes/app_colors.dart';
 import '../../../../core/constants/constants.dart';
 import '../../../../data/workflow/models/models.dart';
@@ -12,13 +11,6 @@ class ContentLetter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dateText = materialNotification?.dateTimeSend == null
-        ? '---'
-        : DateTimeUtils.formatDateTimeToFormat(
-            materialNotification!.dateTimeSend,
-            DateTimeFormat.dateFormat,
-          );
-
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -51,11 +43,11 @@ class ContentLetter extends StatelessWidget {
               spacing: 16,
               children: [
                 Text(
-                  'Dear Plant Manager,',
+                  'Dear ${materialNotification?.peopleHeader ?? ''},',
                   style: TextStyle(fontWeight: FontWeight.w600),
                 ),
                 Text(
-                  'Đây là email thông báo kế hoạch testing NVL Phôi đến nhà máy DOP vào ngày $dateText.',
+                  materialNotification?.content ?? '',
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     overflow: TextOverflow.visible,
@@ -78,7 +70,7 @@ class ContentLetter extends StatelessWidget {
                     _buildContent(
                       context,
                       'Số lượng',
-                      materialNotification?.quantity.toString() ?? '',
+                      '${materialNotification?.quantity.toString() ?? ''} ${materialNotification?.unit ?? ''}',
                     ),
                     _buildContent(
                       context,

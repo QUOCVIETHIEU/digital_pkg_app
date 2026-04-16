@@ -98,7 +98,9 @@ class WorkFlowStepItem extends StatelessWidget {
                   workflowStep.status == WorkflowStepStatus.confirmDoc ||
                   workflowStep.status == WorkflowStepStatus.confirmExecution ||
                   workflowStep.status == WorkflowStepStatus.qcConfirm ||
-                  workflowStep.status == WorkflowStepStatus.globalResult
+                  workflowStep.status == WorkflowStepStatus.globalResult ||
+                  workflowStep.status == WorkflowStepStatus.pkgResult ||
+                  workflowStep.status == WorkflowStepStatus.qcmResult
               ? _buildButtonViewConfirm(context)
               : _buildButton(context),
 
@@ -130,11 +132,13 @@ class WorkFlowStepItem extends StatelessWidget {
               ? _showStepDetailDialog(context)
               : workflowStep.status == WorkflowStepStatus.itemExecutions
               ? _showItemExecutionsDialog(context)
-              : workflowStep.status == WorkflowStepStatus.planExecution
+              : workflowStep.status == WorkflowStepStatus.planExecution ||
+                    workflowStep.status == WorkflowStepStatus.qcmInformation
               ? _showPlanExecutionsDialog(context)
               : workflowStep.status == WorkflowStepStatus.updateDoc ||
                     workflowStep.status == WorkflowStepStatus.qcResult ||
-                    workflowStep.status == WorkflowStepStatus.globalUpload
+                    workflowStep.status == WorkflowStepStatus.globalUpload ||
+                    workflowStep.status == WorkflowStepStatus.pkgUpload
               ? _showUpdateDocDialog(context)
               : null,
         ),
@@ -221,9 +225,7 @@ class WorkFlowStepItem extends StatelessWidget {
   void _showPlanExecutionsDialog(BuildContext context) {
     IDialog.showDialogLeft(
       context: context,
-      content: PlanExecutions(
-        materialNotification: workflowStep.materialNotification,
-      ),
+      content: PlanExecutions(workflowStep: workflowStep),
     );
   }
 

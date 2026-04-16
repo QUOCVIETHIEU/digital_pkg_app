@@ -6,15 +6,14 @@ part 'material_notification.g.dart';
 
 @JsonSerializable()
 class MaterialNotification {
+  final String title;
   final String peopleDownload;
   @ApiDateTimeConverter()
   final DateTime datetimeCreate;
   final String sendToPeople;
-  @ApiDateTimeConverter()
-  final DateTime datetimeConfirm;
   final String subject;
-  @ApiDateTimeConverter()
-  final DateTime dateTimeSend;
+  final String peopleHeader;
+  final String content;
   final String itemCode;
   final double quantity;
   final String lineName;
@@ -23,13 +22,14 @@ class MaterialNotification {
     required this.peopleDownload,
     required this.datetimeCreate,
     required this.sendToPeople,
-    required this.datetimeConfirm,
+    required this.peopleHeader,
     required this.subject,
-    required this.dateTimeSend,
+    required this.content,
     required this.itemCode,
     required this.quantity,
     required this.lineName,
     required this.unit,
+    required this.title,
   });
   factory MaterialNotification.fromJson(Map<String, dynamic> json) =>
       _$MaterialNotificationFromJson(json);

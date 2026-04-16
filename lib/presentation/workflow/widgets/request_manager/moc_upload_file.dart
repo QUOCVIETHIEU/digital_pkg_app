@@ -9,9 +9,9 @@ import 'header_work_flow_step.dart';
 import 'parameter_testing_item.dart';
 
 class MocUploadFile extends StatelessWidget {
-  const MocUploadFile({super.key, this.documentMaterial, required this.status});
+  const MocUploadFile({super.key, this.documentMaterial, this.status});
   final DocumentMaterial? documentMaterial;
-  final WorkflowStepStatus status;
+  final WorkflowStepStatus? status;
 
   @override
   Widget build(BuildContext context) {

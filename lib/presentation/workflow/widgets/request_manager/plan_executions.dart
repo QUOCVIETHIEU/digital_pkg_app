@@ -4,11 +4,12 @@ import '../../../../common/widgets/widgets.dart';
 import '../../../../core/configs/themes/app_theme.dart';
 import '../../../../data/workflow/models/models.dart';
 import 'content_letter.dart';
+import 'file_item.dart';
 import 'header_work_flow_step.dart';
 
 class PlanExecutions extends StatefulWidget {
-  const PlanExecutions({super.key, this.materialNotification});
-  final MaterialNotification? materialNotification;
+  const PlanExecutions({super.key, this.workflowStep});
+  final WorkflowStep? workflowStep;
 
   @override
   State<PlanExecutions> createState() => _PlanExecutionsState();
@@ -19,11 +20,12 @@ class _PlanExecutionsState extends State<PlanExecutions> {
   @override
   void initState() {
     super.initState();
+    final materialNotification = widget.workflowStep?.materialNotification;
     sendToPeopleController = TextEditingController(
-      text: widget.materialNotification?.sendToPeople ?? '',
+      text: materialNotification?.sendToPeople ?? '',
     );
     subjectController = TextEditingController(
-      text: widget.materialNotification?.subject ?? '',
+      text: materialNotification?.subject ?? '',
     );
   }
 
@@ -36,6 +38,7 @@ class _PlanExecutionsState extends State<PlanExecutions> {
 
   @override
   Widget build(BuildContext context) {
+    final materialNotification = widget.workflowStep;
     return Container(
       width: MediaQuery.sizeOf(context).width * 0.4,
       height: double.infinity,
@@ -50,29 +53,53 @@ class _PlanExecutionsState extends State<PlanExecutions> {
       child: Column(
         spacing: 30,
         children: [
-          _buildHeader(context),
-          Expanded(child: SingleChildScrollView(child: _buildBody(context))),
+          _buildHeader(context, materialNotification?.materialNotification),
+          Expanded(
+            child: SingleChildScrollView(
+              child: _buildBody(
+                context,
+                materialNotification?.materialNotification,
+                materialNotification?.documentMaterial?.files ?? [],
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
 
-  Widget _buildHeader(BuildContext context) {
+  Widget _buildHeader(
+    BuildContext context,
+    MaterialNotification? materialNotification,
+  ) {
     return HeaderWorkFlowStep(
-      value: 'YÊU CẦU TESTING NGUYÊN VẬT LIỆU',
-      peopleCreate:
-          'Người tải: ${widget.materialNotification?.peopleDownload ?? ''}',
-      datetimeCreate: widget.materialNotification?.datetimeCreate,
+      value: materialNotification?.title ?? '',
+      peopleCreate: 'Người tải: ${materialNotification?.peopleDownload ?? ''}',
+      datetimeCreate: materialNotification?.datetimeCreate,
     );
   }
 
-  Widget _buildBody(BuildContext context) {
+  Widget _buildBody(
+    BuildContext context,
+    MaterialNotification? materialNotification,
+    List<WorkflowFile>? files,
+  ) {
     return Column(
       spacing: 20,
       children: [
         _buildTextField('To', sendToPeopleController),
         _buildTextField('Subject', subjectController),
-        ContentLetter(materialNotification: widget.materialNotification),
+        ContentLetter(materialNotification: materialNotification),
+        if (files?.isNotEmpty ?? false)
+          Column(
+            spacing: 6,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Files đính kèm:', style: AppTheme.styleLabelInput),
+              ...files!.map((file) => FileItem(file: file)),
+            ],
+          ),
       ],
     );
   }
