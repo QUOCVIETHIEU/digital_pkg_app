@@ -395,6 +395,10 @@ class $AssetsIconsCommonGen {
 class $AssetsIconsDrawersGen {
   const $AssetsIconsDrawersGen();
 
+  /// File path: assets/icons/drawers/ico_drawer_completed.svg
+  String get icoDrawerCompleted =>
+      'assets/icons/drawers/ico_drawer_completed.svg';
+
   /// File path: assets/icons/drawers/ico_drawer_consumption_active.svg
   String get icoDrawerConsumptionActive =>
       'assets/icons/drawers/ico_drawer_consumption_active.svg';
@@ -591,6 +595,7 @@ class $AssetsIconsDrawersGen {
 
   /// List of all assets
   List<String> get values => [
+    icoDrawerCompleted,
     icoDrawerConsumptionActive,
     icoDrawerConsumptionNormal,
     icoDrawerExcel,

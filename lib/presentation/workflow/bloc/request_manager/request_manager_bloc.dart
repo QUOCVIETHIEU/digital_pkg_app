@@ -268,7 +268,7 @@ class RequestManagerBloc
               stepDescription: 'Đã xác nhận thành công',
               stepPeople: 'Nguyễn Văn A',
               stepDatetime: DateTime.now(),
-              status: WorkflowStepStatus.confirmDoc,
+              status: WorkflowStepStatus.confirmExecution,
               viewComment: 'Nhà máy đã xác nhận kế hoạch',
             ),
           ],

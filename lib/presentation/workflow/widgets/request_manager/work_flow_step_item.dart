@@ -95,7 +95,8 @@ class WorkFlowStepItem extends StatelessWidget {
             ],
           ),
           workflowStep.status == WorkflowStepStatus.confirmRequest ||
-                  workflowStep.status == WorkflowStepStatus.confirmDoc
+                  workflowStep.status == WorkflowStepStatus.confirmDoc ||
+                  workflowStep.status == WorkflowStepStatus.confirmExecution
               ? _buildButtonViewConfirm(context)
               : _buildButton(context),
 
@@ -144,7 +145,7 @@ class WorkFlowStepItem extends StatelessWidget {
       spacing: 10,
       children: [
         Container(
-          width: 80,
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
           height: 30,
           decoration: BoxDecoration(
             color: AppColors.workFlowBackgroundColorDone,
@@ -160,12 +161,12 @@ class WorkFlowStepItem extends StatelessWidget {
             spacing: 6,
             children: [
               SvgPicture.asset(
-                Assets.icons.drawers.icoDrawerFile,
+                workflowStep.status.buttonTitleConfirmIcon,
                 width: 10,
                 height: 10,
               ),
               Text(
-                'Created',
+                workflowStep.status.buttonTitleConfirm,
                 style: TextStyle(
                   fontSize: 10,
                   fontWeight: FontWeight.w600,
