@@ -12,7 +12,7 @@ class MatrixMaterialItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 260,
+      width: 280,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       decoration: BoxDecoration(
         color: AppColors.workFlowBorderColorDone,
@@ -25,8 +25,8 @@ class MatrixMaterialItem extends StatelessWidget {
         children: [
           SvgPicture.asset(
             Assets.icons.common.icoCommonBottle,
-            width: 36,
-            height: 36,
+            width: 44,
+            height: 44,
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -36,7 +36,7 @@ class MatrixMaterialItem extends StatelessWidget {
               Text(
                 matrixEdiItem.materialCode,
                 style: const TextStyle(
-                  fontSize: 13,
+                  fontSize: 15,
                   fontWeight: FontWeight.w500,
                   color: AppColors.workFlowTextStepName,
                 ),
@@ -44,8 +44,8 @@ class MatrixMaterialItem extends StatelessWidget {
               Text(
                 matrixEdiItem.materialName,
                 style: const TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w600,
+                  fontSize: 17,
+                  fontWeight: FontWeight.w700,
                   color: AppColors.workFlowTextStepName,
                 ),
               ),
