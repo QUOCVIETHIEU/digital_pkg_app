@@ -8,6 +8,7 @@ import '../../../../core/configs/themes/app_colors.dart';
 import '../../../../data/workflow/models/models.dart';
 import '../../../../gen/assets.gen.dart';
 import '../../../bloc.dart';
+import 'item_code_sap.dart';
 import 'item_executions.dart';
 import 'matrix_material.dart';
 import 'moc_upload_file.dart';
@@ -239,6 +240,11 @@ class WorkFlowStepItem extends StatelessWidget {
     }
     if (UtilsWorkFlow.isShowMatrixMaterialDialog(status)) {
       _showMatrixMaterialDialog(context);
+      return;
+    }
+    if (status == WorkflowStepStatus.itemCodeMaterial) {
+      _showAddItemCodeSapDialog(context);
+      return;
     }
   }
 
@@ -247,6 +253,14 @@ class WorkFlowStepItem extends StatelessWidget {
     IDialog.showDialogLeft(
       context: context,
       content: TestingMaterial(itemTesting: itemTesting),
+    );
+  }
+
+  void _showAddItemCodeSapDialog(BuildContext context) {
+    final matrixEdi = workflowStep.matrixEdi;
+    IDialog.showDialogLeft(
+      context: context,
+      content: ItemCodeSap(matrixEdi: matrixEdi),
     );
   }
 
