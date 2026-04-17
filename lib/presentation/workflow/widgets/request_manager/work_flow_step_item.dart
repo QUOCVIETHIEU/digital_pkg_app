@@ -97,14 +97,8 @@ class WorkFlowStepItem extends StatelessWidget {
               ),
             ],
           ),
-          workflowStep.status == WorkflowStepStatus.confirmRequest ||
-                  workflowStep.status == WorkflowStepStatus.confirmDoc ||
-                  workflowStep.status == WorkflowStepStatus.confirmExecution ||
-                  workflowStep.status == WorkflowStepStatus.qcConfirm ||
-                  workflowStep.status == WorkflowStepStatus.globalResult ||
-                  workflowStep.status == WorkflowStepStatus.pkgResult ||
-                  workflowStep.status == WorkflowStepStatus.qcmResult ||
-                  workflowStep.status == WorkflowStepStatus.matrixNotification
+
+          UtilsWorkFlow.isShowButtonConfirm(workflowStep.status)
               ? _buildButtonViewConfirm(context)
               : _buildButton(context),
 
@@ -116,6 +110,7 @@ class WorkFlowStepItem extends StatelessWidget {
 
   Widget _buildButton(BuildContext context) {
     return Row(
+      spacing: 10,
       children: [
         IRectangleButton(
           leading: SvgPicture.asset(
@@ -132,22 +127,29 @@ class WorkFlowStepItem extends StatelessWidget {
           enableVerticalDivider: false,
           buttonPadding: const EdgeInsets.symmetric(vertical: 2, horizontal: 6),
           height: 30,
-          onPressed: () => workflowStep.status == WorkflowStepStatus.testRequest
-              ? _showStepDetailDialog(context)
-              : workflowStep.status == WorkflowStepStatus.itemExecutions
-              ? _showItemExecutionsDialog(context)
-              : workflowStep.status == WorkflowStepStatus.planExecution ||
-                    workflowStep.status == WorkflowStepStatus.qcmInformation
-              ? _showPlanExecutionsDialog(context)
-              : workflowStep.status == WorkflowStepStatus.updateDoc ||
-                    workflowStep.status == WorkflowStepStatus.qcResult ||
-                    workflowStep.status == WorkflowStepStatus.globalUpload ||
-                    workflowStep.status == WorkflowStepStatus.pkgUpload
-              ? _showUpdateDocDialog(context)
-              : workflowStep.status == WorkflowStepStatus.qcMatrix
-              ? _showMatrixMaterialDialog(context)
-              : null,
+          onPressed: () => _handlePrimaryAction(context),
         ),
+        if (workflowStep.status == WorkflowStepStatus.itemCodeMaterial)
+          IRectangleButton(
+            leading: SvgPicture.asset(
+              Assets.icons.drawers.icoDrawerMatrix,
+              width: 10,
+              height: 10,
+            ),
+            title: 'Xem matrix update',
+            fontSize: 10,
+            fontWeight: FontWeight.w500,
+            backgroundColor: AppColors.workFlowButtonMatrix,
+            textColor: AppColors.primary,
+            outlineColor: AppColors.workFlowButtonMatrix,
+            enableVerticalDivider: false,
+            buttonPadding: const EdgeInsets.symmetric(
+              vertical: 2,
+              horizontal: 6,
+            ),
+            height: 30,
+            onPressed: () {},
+          ),
       ],
     );
   }
@@ -215,6 +217,29 @@ class WorkFlowStepItem extends StatelessWidget {
           ),
       ],
     );
+  }
+
+  void _handlePrimaryAction(BuildContext context) {
+    final status = workflowStep.status;
+    if (UtilsWorkFlow.isShowStepDetailDialog(status)) {
+      _showStepDetailDialog(context);
+      return;
+    }
+    if (UtilsWorkFlow.isShowItemExecutionsDialog(status)) {
+      _showItemExecutionsDialog(context);
+      return;
+    }
+    if (UtilsWorkFlow.isShowPlanExecutionsDialog(status)) {
+      _showPlanExecutionsDialog(context);
+      return;
+    }
+    if (UtilsWorkFlow.isShowUpdateDocDialog(status)) {
+      _showUpdateDocDialog(context);
+      return;
+    }
+    if (UtilsWorkFlow.isShowMatrixMaterialDialog(status)) {
+      _showMatrixMaterialDialog(context);
+    }
   }
 
   void _showStepDetailDialog(BuildContext context) {

@@ -63,7 +63,7 @@ enum WorkflowStepStatus {
   matrixNotification,
   itemCodeMaterial,
   itemCodeBom,
-  itemCodeUpdated,
+  itemCodeConfirm,
   shortRun,
   shortRunInformation,
   shortRunResult,
@@ -100,7 +100,7 @@ extension WorkflowStepStatusExtension on WorkflowStepStatus {
     WorkflowStepStatus.itemCodeMaterial =>
       Assets.icons.common.icoCommonDoneStep,
     WorkflowStepStatus.itemCodeBom => Assets.icons.common.icoCommonDoneStep,
-    WorkflowStepStatus.itemCodeUpdated => Assets.icons.common.icoCommonDoneStep,
+    WorkflowStepStatus.itemCodeConfirm => Assets.icons.common.icoCommonDoneStep,
     WorkflowStepStatus.shortRun => Assets.icons.common.icoCommonDoneStep,
     WorkflowStepStatus.shortRunInformation =>
       Assets.icons.common.icoCommonDoneStep,
@@ -134,7 +134,7 @@ extension WorkflowStepStatusExtension on WorkflowStepStatus {
       Assets.icons.drawers.icoDrawerMatrix,
     WorkflowStepStatus.itemCodeMaterial => Assets.icons.actions.icoActionFile,
     WorkflowStepStatus.itemCodeBom => Assets.icons.actions.icoActionFile,
-    WorkflowStepStatus.itemCodeUpdated => Assets.icons.actions.icoActionFile,
+    WorkflowStepStatus.itemCodeConfirm => Assets.icons.actions.icoActionFile,
     WorkflowStepStatus.shortRun => Assets.icons.actions.icoActionFile,
     WorkflowStepStatus.shortRunInformation =>
       Assets.icons.actions.icoActionFile,
@@ -163,9 +163,9 @@ extension WorkflowStepStatusExtension on WorkflowStepStatus {
     WorkflowStepStatus.qcmResult => 'Xem thông tin',
     WorkflowStepStatus.qcMatrix => 'Xem matrix',
     WorkflowStepStatus.matrixNotification => 'Xem matrix',
-    WorkflowStepStatus.itemCodeMaterial => 'Xem thông tin item',
-    WorkflowStepStatus.itemCodeBom => 'Xem thông tin item',
-    WorkflowStepStatus.itemCodeUpdated => 'Xem thông tin item',
+    WorkflowStepStatus.itemCodeMaterial => 'Xem thông tin NL',
+    WorkflowStepStatus.itemCodeBom => 'Xem thông tin BOM',
+    WorkflowStepStatus.itemCodeConfirm => 'Xem thông tin item',
     WorkflowStepStatus.shortRun => 'Xem thông tin item',
     WorkflowStepStatus.shortRunInformation => 'Xem thông tin item',
     WorkflowStepStatus.shortRunResult => 'Xem thông tin item',
@@ -191,9 +191,9 @@ extension WorkflowStepStatusExtension on WorkflowStepStatus {
     WorkflowStepStatus.qcmResult => 'Approved',
     WorkflowStepStatus.qcMatrix => 'Đã gửi mail',
     WorkflowStepStatus.matrixNotification => 'Đã gửi mail',
-    WorkflowStepStatus.itemCodeMaterial => 'Xác nhận',
-    WorkflowStepStatus.itemCodeBom => 'Xác nhận',
-    WorkflowStepStatus.itemCodeUpdated => 'Xác nhận',
+    WorkflowStepStatus.itemCodeMaterial => 'Đã cập nhật',
+    WorkflowStepStatus.itemCodeBom => 'Đã cập nhật',
+    WorkflowStepStatus.itemCodeConfirm => 'Đã cập nhật',
     WorkflowStepStatus.shortRun => 'Xác nhận',
     WorkflowStepStatus.shortRunInformation => 'Xác nhận',
     WorkflowStepStatus.shortRunResult => 'Xác nhận',
@@ -220,9 +220,11 @@ extension WorkflowStepStatusExtension on WorkflowStepStatus {
     WorkflowStepStatus.qcMatrix => Assets.icons.drawers.icoDrawerEmail,
     WorkflowStepStatus.matrixNotification =>
       Assets.icons.drawers.icoDrawerEmail,
-    WorkflowStepStatus.itemCodeMaterial => Assets.icons.actions.icoActionFile,
-    WorkflowStepStatus.itemCodeBom => Assets.icons.actions.icoActionFile,
-    WorkflowStepStatus.itemCodeUpdated => Assets.icons.actions.icoActionFile,
+    WorkflowStepStatus.itemCodeMaterial =>
+      Assets.icons.drawers.icoDrawerCompleted,
+    WorkflowStepStatus.itemCodeBom => Assets.icons.drawers.icoDrawerCompleted,
+    WorkflowStepStatus.itemCodeConfirm =>
+      Assets.icons.drawers.icoDrawerCompleted,
     WorkflowStepStatus.shortRun => Assets.icons.actions.icoActionFile,
     WorkflowStepStatus.shortRunInformation =>
       Assets.icons.actions.icoActionFile,

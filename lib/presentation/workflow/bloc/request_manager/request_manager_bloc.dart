@@ -686,6 +686,102 @@ class RequestManagerBloc
             ),
           ],
         ),
+        WorkflowTimelineItem(
+          stepName: 'ITEMCODE',
+          requestApprovePeople: 'Nguyễn Văn B',
+          stepDescription: 'PCU + MRP + QA',
+          titleRequest: 'PCU TẠO ITEMCODE MỚI TRÊN SAP',
+          requestDescription:
+              'Cập nhật Matrix nguyên vật liệu và thông báo tới PIC liên quan',
+          requestPeople: 'Nguyễn Văn A',
+          requestPic: 'CU, MRP Plant & QA Executive',
+          status: WorkflowTimelineItemStatus.done,
+          workflowStep: [
+            WorkflowStep(
+              stepName: 'QC cập nhật Matrix nguyên liệu',
+              stepDescription: ' QC đã cập nhật Matrix vào hệ thống thành công',
+              stepPeople: 'Nguyễn Văn A',
+              stepDatetime: DateTime.now(),
+              status: WorkflowStepStatus.itemCodeMaterial,
+              matrixEdi: MatrixEdi(
+                plantStatus: PlantStatus.hmp,
+                line: 'CSD Sidel-T',
+                size: 390,
+                unit: 'ml',
+                type: 'CSD - Clear',
+                weight: 10.0,
+                unitWeight: 'grs',
+                supplier: 'SVN-BD',
+                resin: 'Ramapet S1',
+                itemCode: 'CSD-S1-390ML',
+                mold: '3A-72',
+                itemName: 'PET PREFORM',
+                items: [
+                  MatrixEdiItem(
+                    materialCode: 'HCSV 2.55gr White - v6',
+                    materialName: '30000077',
+                  ),
+                  MatrixEdiItem(
+                    materialCode: 'SVN - 1.47gr Clear - D',
+                    materialName: '30001560',
+                  ),
+                  MatrixEdiItem(
+                    materialCode: 'HCVN - 2.15gr White',
+                    materialName: '30003689',
+                  ),
+                ],
+                status: [
+                  TestingStatus.testing,
+                  TestingStatus.testingFollow,
+                  TestingStatus.testingConfirm,
+                ],
+              ),
+              matrixEdiList: List.generate(
+                20,
+                (index) => MatrixEdi(
+                  line: 'CSD Sidel-T ${index + 1}',
+                  size: random.nextInt(100).toDouble(),
+                  unit: 'ml',
+                  type: 'CSD - Clear',
+                  weight: random.nextInt(100).toDouble(),
+                  unitWeight: 'grs',
+                  supplier: 'SVN-BD ${index + 1}',
+                  resin: 'Ramapet S1 ${index + 1}',
+                  itemCode: 'CSD-S1-${index + 1}',
+                  mold: '3A-72 ${index + 1}',
+                  itemName: 'PET PREFORM ${index + 1}',
+                  items: [],
+                  status: List.generate(
+                    8,
+                    (index) =>
+                        TestingStatus.values[random.nextInt(
+                          TestingStatus.values.length,
+                        )],
+                  ),
+                  plantStatus:
+                      availablePlantStatuses[random.nextInt(
+                        availablePlantStatuses.length,
+                      )],
+                ),
+              ).toList(),
+            ),
+            WorkflowStep(
+              stepName: 'QC cập nhật Matrix nguyên liệu',
+              stepDescription: ' QC đã cập nhật Matrix vào hệ thống thành công',
+              stepPeople: 'Nguyễn Văn A',
+              stepDatetime: DateTime.now(),
+              status: WorkflowStepStatus.itemCodeBom,
+            ),
+
+            WorkflowStep(
+              stepName: 'PCU update new item on SAP',
+              stepDescription: 'Đã cập nhật thành công thông tin item trên SAP',
+              stepPeople: 'Nguyễn Văn A',
+              stepDatetime: DateTime.now(),
+              status: WorkflowStepStatus.itemCodeConfirm,
+            ),
+          ],
+        ),
       ];
       emit(
         state.copyWith(

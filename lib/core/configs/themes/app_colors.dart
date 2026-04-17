@@ -190,6 +190,7 @@ class AppColors {
   static const Color itemStatusTestingColor = Color(0xFFFFF2ED);
   static const Color itemStatusTestingConfirmColor = Color(0xFFA8FFDE);
   static const itemStatusTestingFollowColor = Color(0xFFFFE38E);
+  static const workFlowButtonMatrix = Color(0xFFD850D1);
 
   static const Color batchBackGroundSelected = Color(0xFFA0A212);
   static const Color batchBackGroundSelecting = Color(0xFF03BF92);
