@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../common/helpers/utils.dart';
@@ -6,6 +7,7 @@ import '../../../../common/widgets/widgets.dart';
 import '../../../../core/configs/themes/app_colors.dart';
 import '../../../../data/workflow/models/models.dart';
 import '../../../../gen/assets.gen.dart';
+import '../../../bloc.dart';
 import 'item_executions.dart';
 import 'matrix_material.dart';
 import 'moc_upload_file.dart';
@@ -250,7 +252,10 @@ class WorkFlowStepItem extends StatelessWidget {
   void _showMatrixMaterialDialog(BuildContext context) {
     IDialog.showDialogLeft(
       context: context,
-      content: MatrixMaterial(workflowStep: workflowStep),
+      content: BlocProvider.value(
+        value: context.read<RequestManagerBloc>(),
+        child: MatrixMaterial(workflowStep: workflowStep),
+      ),
     );
   }
 

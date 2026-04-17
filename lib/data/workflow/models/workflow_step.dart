@@ -21,6 +21,7 @@ class WorkflowStep {
   final ItemInformation? itemInformation;
   final MaterialNotification? materialNotification;
   final MatrixEdi? matrixEdi;
+  final List<MatrixEdi>? matrixEdiList;
   const WorkflowStep({
     required this.stepName,
     required this.stepDescription,
@@ -34,6 +35,7 @@ class WorkflowStep {
     required this.status,
     this.matrixEdi,
     this.materialNotification,
+    this.matrixEdiList,
   });
 
   factory WorkflowStep.fromJson(Map<String, dynamic> json) =>

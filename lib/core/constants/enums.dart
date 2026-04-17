@@ -126,7 +126,7 @@ enum ScreenSize {
   const ScreenSize(this.size);
 }
 
-enum ListViewConfigName { request }
+enum ListViewConfigName { request, matrixEdi }
 
 enum MultiSplitArea { area1, area2 }
 

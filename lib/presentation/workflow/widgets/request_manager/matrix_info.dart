@@ -79,7 +79,6 @@ class _MatrixInfoState extends State<MatrixInfo> {
         children: [
           buildMaterialItem(widget.matrixEdi),
           Expanded(
-            flex: 1,
             child: buildMaterialPanel(
               sectionTitle: 'CLOSURE',
               items: widget.matrixEdi.items,

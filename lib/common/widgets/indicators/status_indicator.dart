@@ -9,6 +9,8 @@ class StatusIndicator<T> extends StatelessWidget {
   final double borderRadius;
   final TextStyle? textStyle;
   final MainAxisAlignment mainAxisAlignment;
+  final String Function(T)? getDescription;
+  final TextStyle? descriptionStyle;
 
   const StatusIndicator({
     super.key,
@@ -20,6 +22,8 @@ class StatusIndicator<T> extends StatelessWidget {
     this.borderRadius = 2.0,
     this.textStyle,
     this.mainAxisAlignment = MainAxisAlignment.end,
+    this.getDescription,
+    this.descriptionStyle,
   });
 
   @override
@@ -46,7 +50,17 @@ class StatusIndicator<T> extends StatelessWidget {
             borderRadius: BorderRadius.circular(borderRadius),
           ),
         ),
-        Text(getName(value), style: textStyle),
+        Row(
+          spacing: 4.0,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(getName(value), style: textStyle),
+            if (getDescription != null) ...[
+              Text(getDescription!(value), style: descriptionStyle),
+            ],
+          ],
+        ),
       ],
     );
   }

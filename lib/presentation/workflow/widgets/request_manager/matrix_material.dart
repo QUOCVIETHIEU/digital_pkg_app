@@ -1,13 +1,16 @@
 import 'package:digital_pkg_system/presentation/workflow/widgets/request_manager/header_matrix_material.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../common/widgets/widgets.dart';
 import '../../../../core/configs/themes/app_colors.dart';
 import '../../../../data/workflow/models/models.dart';
 import '../../../../gen/assets.gen.dart';
+import '../../../bloc.dart';
 import 'header_matrix_item.dart';
 import 'matrix_info.dart';
+import 'matrix_preform_material.dart';
 
 class MatrixMaterial extends StatefulWidget {
   const MatrixMaterial({super.key, this.workflowStep});
@@ -35,6 +38,7 @@ class _MatrixMaterialState extends State<MatrixMaterial> {
     required double widthFactor,
   }) {
     final matrixEdi = widget.workflowStep?.matrixEdi;
+    final state = context.read<RequestManagerBloc>().state;
     return Container(
       width: MediaQuery.sizeOf(context).width * widthFactor,
       height: double.infinity,
@@ -78,7 +82,12 @@ class _MatrixMaterialState extends State<MatrixMaterial> {
                               matrixEdi: matrixEdi,
                               sectionTitle: 'CLOSURE',
                             )
-                          : const SizedBox.shrink(),
+                          : MatrixPreformMaterial(
+                              matrixEdiList:
+                                  widget.workflowStep?.matrixEdiList ?? [],
+                              listViewConfig: state.matrixEdiListViewConfig,
+                              onConfigUpdated: (config, isFixed) {},
+                            ),
                     ),
                   ),
                 ],
@@ -92,8 +101,8 @@ class _MatrixMaterialState extends State<MatrixMaterial> {
 
   Widget _buildAnimatedHeader() {
     return AnimatedSwitcher(
-      duration: const Duration(milliseconds: 660),
-      reverseDuration: const Duration(milliseconds: 520),
+      duration: const Duration(milliseconds: 600),
+      reverseDuration: const Duration(milliseconds: 320),
       switchInCurve: Curves.easeOutQuart,
       switchOutCurve: Curves.easeInOutCubic,
       layoutBuilder: (currentChild, previousChildren) {
@@ -104,7 +113,7 @@ class _MatrixMaterialState extends State<MatrixMaterial> {
       },
       transitionBuilder: (child, animation) {
         final slideAnimation = Tween<Offset>(
-          begin: const Offset(0, -0.3),
+          begin: const Offset(0, -0.4),
           end: Offset.zero,
         ).animate(animation);
         return FadeTransition(
@@ -229,111 +238,5 @@ class _MatrixMaterialState extends State<MatrixMaterial> {
     }
 
     return MatrixInfo(matrixEdi: matrixEdi);
-  }
-
-  Widget buildItemPreview(MatrixEdi matrixEdi) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-      decoration: BoxDecoration(
-        color: AppColors.workFlowMatrixItemIcon,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.workFlowMatrixItemIconShadow,
-            offset: Offset(8, 6),
-            blurRadius: 8,
-            spreadRadius: 0,
-          ),
-          BoxShadow(
-            color: AppColors.workFlowMatrixItemIconShadow2,
-            offset: Offset(-5, 4),
-            blurRadius: 25,
-            spreadRadius: 0,
-          ),
-        ],
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        spacing: 30,
-        children: [
-          Assets.icons.common.icoCommonPet.image(height: 200),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            spacing: 10,
-            children: [
-              buildPetIcon(
-                Assets.icons.drawers.icoDrawerSize,
-                '${matrixEdi.size.toString()} ${matrixEdi.unit}',
-              ),
-              buildPetIcon(
-                Assets.icons.drawers.icoDrawerWeight,
-                '${matrixEdi.weight.toString()} ${matrixEdi.unitWeight}',
-              ),
-              buildPetIcon(
-                Assets.icons.drawers.icoDrawerMixingSap,
-                matrixEdi.mold,
-              ),
-              Text(
-                matrixEdi.itemName,
-                style: const TextStyle(
-                  fontSize: 26,
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.workFlowTextStepName,
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget buildPetIcon(String iconPath, String value) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      spacing: 10,
-      children: [
-        SizedBox(width: 20, height: 20, child: SvgPicture.asset(iconPath)),
-        Text(
-          value,
-          style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
-        ),
-      ],
-    );
-  }
-
-  Widget buildInfoField(String label, TextEditingController controller) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 2,
-      children: [
-        Text(
-          '$label:',
-          style: const TextStyle(
-            fontSize: 13,
-            fontWeight: FontWeight.w500,
-            color: AppColors.workFlowTextDescription,
-          ),
-        ),
-        CustomTextFormField(
-          style: const TextStyle(
-            color: AppColors.workFlowTextDescription,
-            fontWeight: FontWeight.w600,
-          ),
-          enabled: false,
-          controller: controller,
-          maxLines: 1,
-
-          disabledTextColor: AppColors.workFlowTextDescription,
-          decoration: const InputDecoration(
-            isDense: true,
-            contentPadding: EdgeInsets.symmetric(horizontal: 6, vertical: 10),
-          ),
-        ),
-      ],
-    );
   }
 }

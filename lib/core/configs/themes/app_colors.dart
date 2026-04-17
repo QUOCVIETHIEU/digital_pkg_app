@@ -187,6 +187,9 @@ class AppColors {
   static const Color workFlowMatrixItemIcon = Color(0xFFEEEFF1);
   static const Color workFlowMatrixItemIconShadow = Color(0x17000000);
   static const Color workFlowMatrixItemIconShadow2 = Color(0x1AFFFFFF);
+  static const Color itemStatusTestingColor = Color(0xFFFFF2ED);
+  static const Color itemStatusTestingConfirmColor = Color(0xFFA8FFDE);
+  static const itemStatusTestingFollowColor = Color(0xFFFFE38E);
 
   static const Color batchBackGroundSelected = Color(0xFFA0A212);
   static const Color batchBackGroundSelecting = Color(0xFF03BF92);

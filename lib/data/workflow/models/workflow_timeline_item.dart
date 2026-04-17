@@ -5,7 +5,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import '../../../core/configs/themes/app_colors.dart';
 import '../../../gen/assets.gen.dart';
-import 'workflow_step.dart';
+import 'models.dart';
 
 part 'workflow_timeline_item.g.dart';
 

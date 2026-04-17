@@ -1,7 +1,11 @@
+import 'dart:math';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:tableview2/tableview2.dart';
 
 import '../../../../common/models/models.dart';
+import '../../../../core/configs/listview/listview_config.dart';
 import '../../../../core/constants/constants.dart';
 import '../../../../data/workflow/models/models.dart';
 
@@ -10,7 +14,13 @@ part 'request_manager_state.dart';
 
 class RequestManagerBloc
     extends Bloc<RequestManagerEvent, RequestManagerState> {
-  RequestManagerBloc() : super(RequestManagerState()) {
+  RequestManagerBloc()
+    : super(
+        RequestManagerState(
+          matrixEdiListViewConfig: ListViewConfigProvider
+              .configs[ListViewConfigName.matrixEdi.name]!,
+        ),
+      ) {
     on<RequestManagerLoadRequested>(_onLoadRequested);
   }
 
@@ -21,6 +31,10 @@ class RequestManagerBloc
     emit(state.copyWith(status: Status.loading));
     try {
       await Future.delayed(const Duration(seconds: 1));
+      final random = Random();
+      final availablePlantStatuses = PlantStatus.values
+          .where((status) => status != PlantStatus.none)
+          .toList();
       List<WorkflowTimelineItem> workflowTimelineItems;
       workflowTimelineItems = [
         WorkflowTimelineItem(
@@ -600,6 +614,7 @@ class RequestManagerBloc
               stepDatetime: DateTime.now(),
               status: WorkflowStepStatus.qcMatrix,
               matrixEdi: MatrixEdi(
+                plantStatus: PlantStatus.hmp,
                 line: 'CSD Sidel-T',
                 size: 390,
                 unit: 'ml',
@@ -625,9 +640,42 @@ class RequestManagerBloc
                     materialName: '30003689',
                   ),
                 ],
-                status: EdiStatus.pending,
+                status: [
+                  TestingStatus.testing,
+                  TestingStatus.testingFollow,
+                  TestingStatus.testingConfirm,
+                ],
               ),
+              matrixEdiList: List.generate(
+                20,
+                (index) => MatrixEdi(
+                  line: 'CSD Sidel-T ${index + 1}',
+                  size: random.nextInt(100).toDouble(),
+                  unit: 'ml',
+                  type: 'CSD - Clear',
+                  weight: random.nextInt(100).toDouble(),
+                  unitWeight: 'grs',
+                  supplier: 'SVN-BD ${index + 1}',
+                  resin: 'Ramapet S1 ${index + 1}',
+                  itemCode: 'CSD-S1-${index + 1}',
+                  mold: '3A-72 ${index + 1}',
+                  itemName: 'PET PREFORM ${index + 1}',
+                  items: [],
+                  status: List.generate(
+                    8,
+                    (index) =>
+                        TestingStatus.values[random.nextInt(
+                          TestingStatus.values.length,
+                        )],
+                  ),
+                  plantStatus:
+                      availablePlantStatuses[random.nextInt(
+                        availablePlantStatuses.length,
+                      )],
+                ),
+              ).toList(),
             ),
+
             WorkflowStep(
               stepName: 'Gửi thông báo tới PIC',
               stepDescription:
