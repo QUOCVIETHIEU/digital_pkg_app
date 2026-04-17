@@ -150,7 +150,7 @@ class WorkFlowStepItem extends StatelessWidget {
             ),
             height: 30,
             onPressed: () {
-              _handlePrimaryAction(context);
+              _handleSecondaryAction(context);
             },
           ),
       ],
@@ -247,8 +247,19 @@ class WorkFlowStepItem extends StatelessWidget {
       );
       return;
     }
-    if (status == WorkflowStepStatus.itemCodeMaterial) {
+    if (UtilsWorkFlow.isShowAddItemCodeSapDialog(status)) {
       _showAddItemCodeSapDialog(context);
+      return;
+    }
+  }
+
+  void _handleSecondaryAction(BuildContext context) {
+    final status = workflowStep.status;
+    if (UtilsWorkFlow.isShowViewMatrixMaterialDialog(status)) {
+      _showMatrixMaterialDialog(
+        context,
+        isHeader: status == WorkflowStepStatus.itemCodeMaterial,
+      );
       return;
     }
   }
