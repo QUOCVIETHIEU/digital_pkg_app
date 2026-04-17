@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../core/configs/themes/app_colors.dart';
-import '../../../gen/assets.gen.dart';
 
 class FilterOption<T> {
   final T value;
   final String label;
+  final String iconPath;
 
-  const FilterOption({required this.value, required this.label});
+  const FilterOption({
+    required this.value,
+    required this.label,
+    required this.iconPath,
+  });
 }
 
 class FilterWidget<T> extends StatelessWidget {
@@ -17,8 +21,7 @@ class FilterWidget<T> extends StatelessWidget {
     required this.options,
     required this.selectedValue,
     required this.onFilterChanged,
-    this.label = 'Filter:',
-    this.showIcon = true,
+    this.label,
     this.spacing = 4.0,
     this.buttonPadding = const EdgeInsets.all(8),
     this.borderRadius = 4.0,
@@ -27,8 +30,7 @@ class FilterWidget<T> extends StatelessWidget {
   final List<FilterOption<T>> options;
   final T selectedValue;
   final void Function(T value) onFilterChanged;
-  final String label;
-  final bool showIcon;
+  final String? label;
   final double spacing;
   final EdgeInsetsGeometry buttonPadding;
   final double borderRadius;
@@ -39,18 +41,15 @@ class FilterWidget<T> extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       spacing: spacing,
       children: [
-        if (showIcon) ...[
-          SvgPicture.asset(Assets.icons.common.icoActionFilter),
-          const SizedBox(width: 4),
-        ],
-        Text(
-          label,
-          style: const TextStyle(
-            color: AppColors.textColor,
-            fontSize: 12,
-            fontWeight: FontWeight.w500,
+        if (label != null)
+          Text(
+            label!,
+            style: const TextStyle(
+              color: AppColors.textColor,
+              fontSize: 12,
+              fontWeight: FontWeight.w500,
+            ),
           ),
-        ),
         ...options.map((option) => _buildFilterButton(option)),
       ],
     );
@@ -60,26 +59,32 @@ class FilterWidget<T> extends StatelessWidget {
     final isSelected = selectedValue == option.value;
 
     TextStyle textStyle() => TextStyle(
-      color: isSelected ? AppColors.activeTextButtonColor : null,
+      color: AppColors.iconDefault,
       fontSize: 12,
+      fontWeight: FontWeight.w600,
     );
 
-    return TextButton(
-      onPressed: () => onFilterChanged(option.value),
-      style: TextButton.styleFrom(
-        foregroundColor: AppColors.textColor,
-        textStyle: TextStyle(
-          fontWeight: isSelected ? FontWeight.w500 : FontWeight.w300,
-          decoration: isSelected
-              ? TextDecoration.underline
-              : TextDecoration.none,
-        ),
-        padding: buttonPadding,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(borderRadius),
+    return Container(
+      padding: buttonPadding,
+      decoration: BoxDecoration(
+        color: isSelected
+            ? AppColors.choiceChipSelectedBackground
+            : Colors.transparent,
+        borderRadius: BorderRadius.circular(borderRadius),
+        border: Border.all(
+          color: isSelected
+              ? AppColors.choiceChipSelectedColor
+              : AppColors.borderColor,
+          width: 0.5,
         ),
       ),
-      child: Text(option.label, style: textStyle()),
+      child: Row(
+        spacing: 8,
+        children: [
+          SvgPicture.asset(option.iconPath, width: 16, height: 16),
+          Text(option.label, style: textStyle()),
+        ],
+      ),
     );
   }
 }
@@ -91,9 +96,9 @@ class StatusFilterWidget extends StatelessWidget {
     required this.selectedStatus,
     required this.onStatusChanged,
     this.options = const [
-      FilterOption(value: -1, label: 'All'),
-      FilterOption(value: 0, label: 'Active'),
-      FilterOption(value: 1, label: 'InActive'),
+      FilterOption(value: -1, label: 'All', iconPath: ''),
+      FilterOption(value: 0, label: 'Active', iconPath: ''),
+      FilterOption(value: 1, label: 'InActive', iconPath: ''),
     ],
   });
 
@@ -118,13 +123,19 @@ class EnumFilterWidget<T extends Enum> extends StatelessWidget {
     required this.options,
     required this.selectedValue,
     required this.onFilterChanged,
-    this.label = 'Filter:',
+    this.label,
+    required this.iconPath,
+    this.borderRadius = 4.0,
+    this.buttonPadding = const EdgeInsets.all(8),
   });
 
   final List<FilterOption<T>> options;
   final T selectedValue;
   final void Function(T value) onFilterChanged;
-  final String label;
+  final String? label;
+  final String iconPath;
+  final double borderRadius;
+  final EdgeInsetsGeometry buttonPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -133,6 +144,8 @@ class EnumFilterWidget<T extends Enum> extends StatelessWidget {
       selectedValue: selectedValue,
       onFilterChanged: onFilterChanged,
       label: label,
+      borderRadius: borderRadius,
+      buttonPadding: buttonPadding,
     );
   }
 }

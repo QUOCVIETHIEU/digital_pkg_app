@@ -1,3 +1,5 @@
+import '../../gen/assets.gen.dart';
+
 enum Plant {
   hmp(
     plantCode: 'HMP',
@@ -222,6 +224,25 @@ extension AccessLevelExtension on AccessLevel {
   bool get isPrdClerk => this == AccessLevel.prdClerk;
   bool get isSyrupObserver => this == AccessLevel.syrupObserver;
   bool get isSyrupObserverNW => this == AccessLevel.syrupObserverNW;
+}
+
+extension PlantExtension on Plant {
+  String get iconPath => switch (this) {
+    Plant.hmp => Assets.icons.common.icoCommonPlant,
+    Plant.dop => Assets.icons.common.icoCommonPlant,
+    Plant.ctp => Assets.icons.common.icoCommonPlant,
+    Plant.qnp => Assets.icons.common.icoCommonPlant,
+    Plant.bnp => Assets.icons.common.icoCommonPlant,
+    Plant.lap => Assets.icons.common.icoCommonPlant,
+  };
+  String get name => switch (this) {
+    Plant.hmp => 'HMP',
+    Plant.dop => 'DOP',
+    Plant.ctp => 'CTP',
+    Plant.qnp => 'QNP',
+    Plant.bnp => 'BNP',
+    Plant.lap => 'LAP',
+  };
 }
 
 enum Department { unknown, productionSyrup, productionLine, qc }

@@ -12,6 +12,7 @@ class RequestManagerList extends StatelessWidget {
     return ScrollConfiguration(
       behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
       child: ListView.builder(
+        physics: const ClampingScrollPhysics(),
         itemCount: workflowTimelineItems.length,
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         itemBuilder: (context, index) {

@@ -238,6 +238,10 @@ class $AssetsIconsCommonGen {
   /// File path: assets/icons/common/ico_column.svg
   String get icoColumn => 'assets/icons/common/ico_column.svg';
 
+  /// File path: assets/icons/common/ico_common_all_plant.svg
+  String get icoCommonAllPlant =>
+      'assets/icons/common/ico_common_all_plant.svg';
+
   /// File path: assets/icons/common/ico_common_bottle.svg
   String get icoCommonBottle => 'assets/icons/common/ico_common_bottle.svg';
 
@@ -262,6 +266,9 @@ class $AssetsIconsCommonGen {
   /// File path: assets/icons/common/ico_common_pet_preform.svg
   String get icoCommonPetPreform =>
       'assets/icons/common/ico_common_pet_preform.svg';
+
+  /// File path: assets/icons/common/ico_common_plant.svg
+  String get icoCommonPlant => 'assets/icons/common/ico_common_plant.svg';
 
   /// File path: assets/icons/common/ico_common_primary.svg
   String get icoCommonPrimary => 'assets/icons/common/ico_common_primary.svg';
@@ -379,6 +386,7 @@ class $AssetsIconsCommonGen {
     icoCheckbox,
     icoClearSnack,
     icoColumn,
+    icoCommonAllPlant,
     icoCommonBottle,
     icoCommonComment,
     icoCommonConfirmStep,
@@ -386,6 +394,7 @@ class $AssetsIconsCommonGen {
     icoCommonDoneStep,
     icoCommonPet,
     icoCommonPetPreform,
+    icoCommonPlant,
     icoCommonPrimary,
     icoCommonRequest,
     icoDashboardSmall,

@@ -1,12 +1,13 @@
+import 'package:digital_pkg_system/presentation/workflow/widgets/request_manager/header_matrix_material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../common/helpers/utils.dart';
 import '../../../../common/widgets/widgets.dart';
 import '../../../../core/configs/themes/app_colors.dart';
 import '../../../../data/workflow/models/models.dart';
 import '../../../../gen/assets.gen.dart';
-import 'matrix_material_item.dart';
+import 'header_matrix_item.dart';
+import 'matrix_info.dart';
 
 class MatrixMaterial extends StatefulWidget {
   const MatrixMaterial({super.key, this.workflowStep});
@@ -18,43 +19,6 @@ class MatrixMaterial extends StatefulWidget {
 
 class _MatrixMaterialState extends State<MatrixMaterial> {
   int _selectedTabIndex = 0;
-  late TextEditingController _lineController,
-      _sizeController,
-      _typeController,
-      _weightController,
-      _supplierController,
-      _resinController,
-      _itemCodeController,
-      _moldController;
-
-  @override
-  void initState() {
-    final matrixEdi = widget.workflowStep?.matrixEdi;
-    super.initState();
-    _lineController = TextEditingController(text: matrixEdi?.line);
-    _sizeController = TextEditingController(text: matrixEdi?.size.toString());
-    _typeController = TextEditingController(text: matrixEdi?.type);
-    _weightController = TextEditingController(
-      text: matrixEdi?.weight.toString(),
-    );
-    _supplierController = TextEditingController(text: matrixEdi?.supplier);
-    _resinController = TextEditingController(text: matrixEdi?.resin);
-    _itemCodeController = TextEditingController(text: matrixEdi?.itemCode);
-    _moldController = TextEditingController(text: matrixEdi?.mold);
-  }
-
-  @override
-  void dispose() {
-    _lineController.dispose();
-    _sizeController.dispose();
-    _typeController.dispose();
-    _weightController.dispose();
-    _supplierController.dispose();
-    _resinController.dispose();
-    _itemCodeController.dispose();
-    _moldController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +47,7 @@ class _MatrixMaterialState extends State<MatrixMaterial> {
       ),
       child: Column(
         children: [
-          buildHeader(context),
+          _buildAnimatedHeader(),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(6),
@@ -126,105 +90,40 @@ class _MatrixMaterialState extends State<MatrixMaterial> {
     );
   }
 
-  Widget buildHeader(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 36.0),
-      decoration: const BoxDecoration(
-        border: Border(
-          bottom: BorderSide(color: AppColors.borderColor, width: 1.0),
-        ),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            spacing: 20,
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SvgPicture.asset(Assets.icons.drawers.icoDrawerSapBanner),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 8,
-                children: [
-                  Text(
-                    'SAP INTEGRATION STATUS',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.textColor,
-                    ),
-                  ),
-                  Row(
-                    spacing: 10,
-                    children: [
-                      IRectangleButton(
-                        onPressed: () {},
-                        leading: SvgPicture.asset(
-                          Assets.icons.actions.icoActionSend,
-                        ),
-                        title: 'SEND EDI',
-                        fontSize: 8,
-                        fontWeight: FontWeight.w500,
-                        backgroundColor: AppColors.workFlowTextGlobalApproved,
-                        outlineColor: AppColors.workFlowTextGlobalApproved,
-                        textColor: AppColors.primary,
-                        enableVerticalDivider: false,
-                        buttonPadding: const EdgeInsets.symmetric(
-                          vertical: 2,
-                          horizontal: 10,
-                        ),
-                        height: 28,
-                        padding: EdgeInsets.zero,
-                      ),
-                      Container(
-                        height: 28,
-                        padding: EdgeInsets.symmetric(horizontal: 8),
-                        decoration: BoxDecoration(
-                          color: AppColors.backgroundEdi,
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(
-                            color: AppColors.borderEdi,
-                            width: 1,
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          spacing: 4,
-                          children: [
-                            SvgPicture.asset(
-                              Assets.icons.drawers.icoDrawerClock,
-                            ),
-                            Text(
-                              'Wait to Send EDI',
-                              style: TextStyle(
-                                fontSize: 8,
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.textEdi,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
-          const Spacer(),
-          InkWell(
-            onTap: () => context.popSafety(),
-            child: SvgPicture.asset(
-              Assets.icons.common.icoActionClose,
-              width: 28,
-              height: 28,
+  Widget _buildAnimatedHeader() {
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 660),
+      reverseDuration: const Duration(milliseconds: 520),
+      switchInCurve: Curves.easeOutQuart,
+      switchOutCurve: Curves.easeInOutCubic,
+      layoutBuilder: (currentChild, previousChildren) {
+        return Stack(
+          alignment: Alignment.topCenter,
+          children: [...previousChildren, ?currentChild],
+        );
+      },
+      transitionBuilder: (child, animation) {
+        final slideAnimation = Tween<Offset>(
+          begin: const Offset(0, -0.3),
+          end: Offset.zero,
+        ).animate(animation);
+        return FadeTransition(
+          opacity: animation,
+          child: SlideTransition(
+            position: slideAnimation,
+            child: SizeTransition(
+              sizeFactor: animation,
+              axisAlignment: -1,
+              child: child,
             ),
           ),
-        ],
+        );
+      },
+      child: KeyedSubtree(
+        key: ValueKey<int>(_selectedTabIndex),
+        child: _selectedTabIndex == 0
+            ? const HeaderMatrixItem()
+            : HeaderMatrixMaterial(searchValue: '', onSearch: (value) {}),
       ),
     );
   }
@@ -329,38 +228,7 @@ class _MatrixMaterialState extends State<MatrixMaterial> {
       return const SizedBox.shrink();
     }
 
-    return buildMatrixInfo(matrixEdi, sectionTitle);
-  }
-
-  Widget buildMatrixInfo(MatrixEdi matrixEdi, String sectionTitle) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 30),
-      decoration: BoxDecoration(
-        color: AppColors.primary,
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(10),
-          bottomRight: Radius.circular(10),
-        ),
-        border: Border.all(
-          color: AppColors.workFlowBorderColorFile,
-          width: 0.7,
-        ),
-      ),
-      child: Column(
-        spacing: 60,
-        children: [
-          buildMaterialItem(matrixEdi),
-          Expanded(
-            flex: 1,
-            child: buildMaterialPanel(
-              sectionTitle: sectionTitle,
-              items: matrixEdi.items,
-            ),
-          ),
-        ],
-      ),
-    );
+    return MatrixInfo(matrixEdi: matrixEdi);
   }
 
   Widget buildItemPreview(MatrixEdi matrixEdi) {
@@ -372,8 +240,8 @@ class _MatrixMaterialState extends State<MatrixMaterial> {
         boxShadow: [
           BoxShadow(
             color: AppColors.workFlowMatrixItemIconShadow,
-            offset: Offset(8, 4),
-            blurRadius: 15,
+            offset: Offset(8, 6),
+            blurRadius: 8,
             spreadRadius: 0,
           ),
           BoxShadow(
@@ -463,82 +331,6 @@ class _MatrixMaterialState extends State<MatrixMaterial> {
           decoration: const InputDecoration(
             isDense: true,
             contentPadding: EdgeInsets.symmetric(horizontal: 6, vertical: 10),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget buildMaterialPanel({
-    required String sectionTitle,
-    required List<MatrixEdiItem> items,
-  }) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 40),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: AppColors.workFlowBorderColorFile),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        spacing: 30,
-        children: [
-          Text(
-            sectionTitle,
-            style: const TextStyle(
-              fontSize: 38,
-              fontWeight: FontWeight.w700,
-              color: AppColors.workFlowTextStepName,
-            ),
-          ),
-          Wrap(
-            spacing: 18,
-            runSpacing: 12,
-            children: items
-                .map((item) => MatrixMaterialItem(matrixEdiItem: item))
-                .toList(),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget buildMaterialItem(MatrixEdi matrixEdi) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 18,
-      children: [
-        buildItemPreview(matrixEdi),
-        Expanded(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            spacing: 18,
-            children: [
-              Expanded(
-                child: Column(
-                  spacing: 12,
-                  children: [
-                    buildInfoField('Line', _lineController),
-                    buildInfoField('Size', _sizeController),
-                    buildInfoField('Type', _typeController),
-                    buildInfoField('Weight', _weightController),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Column(
-                  spacing: 12,
-                  children: [
-                    buildInfoField('Supplier', _supplierController),
-                    buildInfoField('Resin', _resinController),
-                    buildInfoField('Item Code', _itemCodeController),
-                    buildInfoField('Mold', _moldController),
-                  ],
-                ),
-              ),
-            ],
           ),
         ),
       ],
