@@ -134,20 +134,25 @@ class _MatrixMaterialState extends State<MatrixMaterial> {
         key: ValueKey<int>(_selectedTabIndex),
         child: _selectedTabIndex == 0
             ? widget.isHeader
-                  ? Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 30.0,
-                        vertical: 30.0,
-                      ),
-                      child: HeaderWorkFlowStep(
-                        value: 'THÔNG TIN MATRIX NGUYÊN LIỆU PREFORM MỚI',
-                        peopleCreate:
-                            'Người tạo: ${widget.workflowStep?.stepPeople ?? ''}',
-                        datetimeCreate: widget.workflowStep?.stepDatetime,
-                      ),
-                    )
+                  ? _buildHeaderBom()
                   : const HeaderMatrixItem()
             : HeaderMatrixMaterial(searchValue: '', onSearch: (value) {}),
+      ),
+    );
+  }
+
+  Widget _buildHeaderBom() {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 44.0),
+      decoration: const BoxDecoration(
+        border: Border(
+          bottom: BorderSide(color: AppColors.borderColor, width: 1.0),
+        ),
+      ),
+      child: HeaderWorkFlowStep(
+        value: 'THÔNG TIN MATRIX NGUYÊN LIỆU PREFORM MỚI',
+        peopleCreate: 'Người tạo: ${widget.workflowStep?.stepPeople ?? ''}',
+        datetimeCreate: widget.workflowStep?.stepDatetime,
       ),
     );
   }
