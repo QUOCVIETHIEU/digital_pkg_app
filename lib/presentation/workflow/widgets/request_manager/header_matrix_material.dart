@@ -36,7 +36,6 @@ class HeaderMatrixMaterial extends StatelessWidget {
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          // mainAxisAlignment: MainAxisAlignment.start,
           spacing: 6,
           children: [
             Text(

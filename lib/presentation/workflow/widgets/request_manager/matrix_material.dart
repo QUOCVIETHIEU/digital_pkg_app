@@ -9,12 +9,14 @@ import '../../../../data/workflow/models/models.dart';
 import '../../../../gen/assets.gen.dart';
 import '../../../bloc.dart';
 import 'header_matrix_item.dart';
+import 'header_work_flow_step.dart';
 import 'matrix_info.dart';
 import 'matrix_preform_material.dart';
 
 class MatrixMaterial extends StatefulWidget {
-  const MatrixMaterial({super.key, this.workflowStep});
+  const MatrixMaterial({super.key, this.workflowStep, this.isHeader = false});
   final WorkflowStep? workflowStep;
+  final bool isHeader;
 
   @override
   State<MatrixMaterial> createState() => _MatrixMaterialState();
@@ -131,7 +133,20 @@ class _MatrixMaterialState extends State<MatrixMaterial> {
       child: KeyedSubtree(
         key: ValueKey<int>(_selectedTabIndex),
         child: _selectedTabIndex == 0
-            ? const HeaderMatrixItem()
+            ? widget.isHeader
+                  ? Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 30.0,
+                        vertical: 30.0,
+                      ),
+                      child: HeaderWorkFlowStep(
+                        value: 'THÔNG TIN MATRIX NGUYÊN LIỆU PREFORM MỚI',
+                        peopleCreate:
+                            'Người tạo: ${widget.workflowStep?.stepPeople ?? ''}',
+                        datetimeCreate: widget.workflowStep?.stepDatetime,
+                      ),
+                    )
+                  : const HeaderMatrixItem()
             : HeaderMatrixMaterial(searchValue: '', onSearch: (value) {}),
       ),
     );

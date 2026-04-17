@@ -149,7 +149,9 @@ class WorkFlowStepItem extends StatelessWidget {
               horizontal: 6,
             ),
             height: 30,
-            onPressed: () {},
+            onPressed: () {
+              _handlePrimaryAction(context);
+            },
           ),
       ],
     );
@@ -239,7 +241,10 @@ class WorkFlowStepItem extends StatelessWidget {
       return;
     }
     if (UtilsWorkFlow.isShowMatrixMaterialDialog(status)) {
-      _showMatrixMaterialDialog(context);
+      _showMatrixMaterialDialog(
+        context,
+        isHeader: status == WorkflowStepStatus.itemCodeMaterial,
+      );
       return;
     }
     if (status == WorkflowStepStatus.itemCodeMaterial) {
@@ -288,12 +293,15 @@ class WorkFlowStepItem extends StatelessWidget {
     );
   }
 
-  void _showMatrixMaterialDialog(BuildContext context) {
+  void _showMatrixMaterialDialog(
+    BuildContext context, {
+    bool isHeader = false,
+  }) {
     IDialog.showDialogLeft(
       context: context,
       content: BlocProvider.value(
         value: context.read<RequestManagerBloc>(),
-        child: MatrixMaterial(workflowStep: workflowStep),
+        child: MatrixMaterial(workflowStep: workflowStep, isHeader: isHeader),
       ),
     );
   }

@@ -51,6 +51,7 @@ class UtilsWorkFlow {
   static bool isShowMatrixMaterialDialog(WorkflowStepStatus workflowStep) {
     return switch (workflowStep) {
       WorkflowStepStatus.qcMatrix => true,
+      WorkflowStepStatus.itemCodeMaterial => true,
       _ => false,
     };
   }
