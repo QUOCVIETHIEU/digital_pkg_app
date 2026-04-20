@@ -43,8 +43,8 @@ class TimeLineRequestItem extends StatelessWidget {
             children: [
               if (isFirst) TimelineLine(minHeight: 20),
               Container(
-                height: 35,
-                width: 35,
+                height: 30,
+                width: 30,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
@@ -58,8 +58,8 @@ class TimeLineRequestItem extends StatelessWidget {
                         WorkflowTimelineItemStatus.done
                     ? SvgPicture.asset(
                         Assets.icons.actions.icoActionWorkflowCompleted,
-                        width: 15,
-                        height: 15,
+                        width: 10,
+                        height: 10,
                       )
                     : null,
               ),
@@ -89,16 +89,16 @@ class TimeLineRequestItem extends StatelessWidget {
         Text(
           '${index < 9 ? '0${index + 1}' : index + 1} - ${workflowTimelineItem.stepName}',
           style: TextStyle(
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w700,
             color: AppColors.workFlowTextStepName,
-            fontSize: 14,
+            fontSize: 15,
           ),
         ),
         Text(
           workflowTimelineItem.stepDescription,
           style: TextStyle(
             color: AppColors.workFlowTextDescription,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w600,
           ),
         ),
       ],
@@ -116,14 +116,14 @@ class TimeLineRequestItem extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
-              spacing: 4,
+              spacing: 6,
               children: [
                 Text(
                   workflowTimelineItem.titleRequest,
                   style: TextStyle(
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w600,
                     color: AppColors.workFlowTextStepName,
-                    fontSize: 14,
+                    fontSize: 15,
                   ),
                 ),
                 Text(
@@ -131,36 +131,45 @@ class TimeLineRequestItem extends StatelessWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     color: AppColors.workFlowTextDescription,
-                    fontSize: 12,
+                    fontSize: 10,
                     fontStyle: FontStyle.italic,
                   ),
                 ),
                 IRichTextValue(
                   label: 'Người thực hiện',
                   value: workflowTimelineItem.requestPeople,
-                  fontSizeValue: 12,
+                  styleLabel: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 12,
+                  ),
                 ),
                 IRichTextValue(
                   label: 'Người phê duyệt',
                   value: workflowTimelineItem.requestApprovePeople,
-                  fontSizeValue: 12,
+                  styleLabel: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 12,
+                  ),
                 ),
                 IRichTextValue(
                   label: 'Pic',
                   value: workflowTimelineItem.requestPic,
-                  fontSizeValue: 12,
+                  styleLabel: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 12,
+                  ),
                 ),
               ],
             ),
             Container(
-              width: 60,
-              height: 30,
+              width: 40,
+              height: 24,
               decoration: BoxDecoration(
                 color: workflowTimelineItem.status.backgroundColor,
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(14),
                 border: Border.all(
                   color: workflowTimelineItem.status.borderColor,
-                  width: 0.8,
+                  width: 0.5,
                 ),
               ),
               child: Center(
@@ -168,8 +177,8 @@ class TimeLineRequestItem extends StatelessWidget {
                   workflowTimelineItem.status.name,
                   style: TextStyle(
                     color: workflowTimelineItem.status.color,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 8,
                   ),
                 ),
               ),

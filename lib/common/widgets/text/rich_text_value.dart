@@ -13,6 +13,7 @@ class IRichTextValue extends StatelessWidget {
     this.maxLines,
     this.noDot = false,
     this.styleValue,
+    this.styleLabel,
   });
 
   final String label;
@@ -21,18 +22,21 @@ class IRichTextValue extends StatelessWidget {
   final int? maxLines;
   final bool noDot;
   final TextStyle? styleValue;
+  final TextStyle? styleLabel;
   @override
   Widget build(BuildContext context) {
     return SelectableText.rich(
       maxLines: maxLines,
       TextSpan(
         text: noDot ? '$label: ' : '${AppStrings.dotChar} $label: ',
-        style: DefaultTextStyle.of(context).style.copyWith(
-          fontSize: fontSizeValue,
-          fontWeight: FontWeight.w600,
-          color: AppColors.textColor,
-          fontFamily: FontFamily.montserrat,
-        ),
+        style:
+            styleLabel ??
+            DefaultTextStyle.of(context).style.copyWith(
+              fontSize: fontSizeValue,
+              fontWeight: FontWeight.w600,
+              color: AppColors.textColor,
+              fontFamily: FontFamily.montserrat,
+            ),
         children: <TextSpan>[
           TextSpan(
             text: value,

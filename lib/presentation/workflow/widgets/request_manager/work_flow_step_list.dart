@@ -68,12 +68,12 @@ class _WorkFlowStepListState extends State<WorkFlowStepList>
           borderRadius: BorderRadius.circular(4),
           border: Border.all(
             color: AppColors.workFlowBorderColorUpComing,
-            width: 1,
+            width: 0.7,
           ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 6,
+          spacing: 12,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -83,7 +83,7 @@ class _WorkFlowStepListState extends State<WorkFlowStepList>
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     color: AppColors.workFlowTextStepList,
-                    fontSize: 13,
+                    fontSize: 12,
                   ),
                 ),
                 InkWell(
@@ -104,7 +104,6 @@ class _WorkFlowStepListState extends State<WorkFlowStepList>
                   sizeFactor: contentAnimation,
                   axisAlignment: -1,
                   child: Column(
-                    spacing: 6,
                     children: widget.workflowSteps
                         .map(
                           (workflowStep) => WorkFlowStepItem(

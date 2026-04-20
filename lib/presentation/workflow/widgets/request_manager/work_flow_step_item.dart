@@ -31,42 +31,54 @@ class WorkFlowStepItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
       child: Column(
-        spacing: 10,
+        spacing: 2,
         children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 spacing: 12,
                 children: [
-                  SvgPicture.asset(
-                    workflowStep.status.icon,
-                    width: 20,
-                    height: 20,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 3),
+                    child: SvgPicture.asset(
+                      workflowStep.status.icon,
+                      width: 16,
+                      height: 16,
+                    ),
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 10,
                     children: [
-                      Text(
-                        workflowStep.stepName,
-                        style: TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w500,
-                        ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            workflowStep.stepName,
+                            style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Text(
+                            workflowStep.stepDescription,
+                            style: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w500,
+                              fontStyle: FontStyle.italic,
+                              color: AppColors.workFlowTextUpComing,
+                            ),
+                          ),
+                        ],
                       ),
-                      Text(
-                        workflowStep.stepDescription,
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          fontStyle: FontStyle.italic,
-                          color: AppColors.workFlowTextUpComing,
-                        ),
-                      ),
+                      UtilsWorkFlow.isShowButtonConfirm(workflowStep.status)
+                          ? _buildButtonViewConfirm(context)
+                          : _buildButton(context),
                     ],
                   ),
                 ],
@@ -74,7 +86,7 @@ class WorkFlowStepItem extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.end,
-                spacing: 8,
+                spacing: 4,
                 children: [
                   Text(
                     DateTimeUtils.formatDateTime(
@@ -82,7 +94,7 @@ class WorkFlowStepItem extends StatelessWidget {
                       DateTimeFormat.dateTimeWithPipeFormat,
                     ),
                     style: TextStyle(
-                      fontSize: 10,
+                      fontSize: 9,
                       fontWeight: FontWeight.w400,
                       color: AppColors.workFlowTextDescription,
                     ),
@@ -90,7 +102,7 @@ class WorkFlowStepItem extends StatelessWidget {
                   Text(
                     workflowStep.stepPeople,
                     style: TextStyle(
-                      fontSize: 10,
+                      fontSize: 9,
                       fontWeight: FontWeight.w400,
                       color: AppColors.workFlowTextDescription,
                     ),
@@ -99,12 +111,11 @@ class WorkFlowStepItem extends StatelessWidget {
               ),
             ],
           ),
-
-          UtilsWorkFlow.isShowButtonConfirm(workflowStep.status)
-              ? _buildButtonViewConfirm(context)
-              : _buildButton(context),
-
-          if (!isLast) const Divider(),
+          if (!isLast)
+            const Divider(
+              color: AppColors.workFlowBorderColorUpComing,
+              thickness: 0.7,
+            ),
         ],
       ),
     );
@@ -117,39 +128,40 @@ class WorkFlowStepItem extends StatelessWidget {
         IRectangleButton(
           leading: SvgPicture.asset(
             workflowStep.status.buttonIcon,
-            width: 10,
-            height: 10,
+            width: 8,
+            height: 8,
           ),
           title: workflowStep.status.buttonStepName,
-          fontSize: 10,
+          fontSize: 8,
           fontWeight: FontWeight.w500,
           backgroundColor: AppColors.workFlowButtonBackgroundColor,
           textColor: AppColors.primary,
           outlineColor: AppColors.workFlowButtonBackgroundColor,
           enableVerticalDivider: false,
-          buttonPadding: const EdgeInsets.symmetric(vertical: 2, horizontal: 6),
-          height: 30,
+          buttonPadding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+          height: 22,
           onPressed: () => _handlePrimaryAction(context),
         ),
         if (workflowStep.status == WorkflowStepStatus.itemCodeMaterial)
           IRectangleButton(
             leading: SvgPicture.asset(
               Assets.icons.drawers.icoDrawerMatrix,
-              width: 10,
-              height: 10,
+              width: 8,
+              height: 8,
             ),
             title: 'Xem matrix update',
-            fontSize: 10,
+            fontSize: 8,
             fontWeight: FontWeight.w500,
             backgroundColor: AppColors.workFlowButtonMatrix,
             textColor: AppColors.primary,
             outlineColor: AppColors.workFlowButtonMatrix,
             enableVerticalDivider: false,
             buttonPadding: const EdgeInsets.symmetric(
-              vertical: 2,
-              horizontal: 6,
+              vertical: 4,
+              horizontal: 8,
             ),
-            height: 30,
+
+            height: 22,
             onPressed: () {
               _handleSecondaryAction(context);
             },
@@ -166,13 +178,13 @@ class WorkFlowStepItem extends StatelessWidget {
       children: [
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-          height: 30,
+          height: 22,
           decoration: BoxDecoration(
             color: AppColors.workFlowBackgroundColorDone,
             borderRadius: BorderRadius.circular(18),
             border: Border.all(
               color: AppColors.workFlowBorderColorDone,
-              width: 1,
+              width: 0.8,
             ),
           ),
           child: Row(
@@ -188,7 +200,7 @@ class WorkFlowStepItem extends StatelessWidget {
               Text(
                 workflowStep.status.buttonTitleConfirm,
                 style: TextStyle(
-                  fontSize: 10,
+                  fontSize: 8,
                   fontWeight: FontWeight.w600,
                   color: AppColors.workFlowTextDone,
                 ),
@@ -200,8 +212,8 @@ class WorkFlowStepItem extends StatelessWidget {
           IRectangleButton(
             leading: SvgPicture.asset(
               Assets.icons.common.icoCommonComment,
-              width: 10,
-              height: 10,
+              width: 8,
+              height: 8,
             ),
             title: 'View comment',
             fontSize: 8,
@@ -211,10 +223,11 @@ class WorkFlowStepItem extends StatelessWidget {
             outlineColor: AppColors.workFlowTextDescription,
             enableVerticalDivider: false,
             buttonPadding: const EdgeInsets.symmetric(
-              vertical: 2,
-              horizontal: 6,
+              vertical: 4,
+              horizontal: 8,
             ),
-            height: 30,
+
+            height: 22,
             onPressed: () {
               _showCommentDialog(context);
             },

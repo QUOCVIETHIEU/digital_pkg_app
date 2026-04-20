@@ -75,7 +75,7 @@ class IRectangleButton extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   spacing: enableVerticalDivider ? 0 : 6,
                   children: [
-                    SizedBox(width: 12.0, height: 12.0, child: leading),
+                    leading,
                     if (enableVerticalDivider)
                       const VerticalDivider(
                         color: AppColors.borderColor,
