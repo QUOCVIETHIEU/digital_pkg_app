@@ -118,22 +118,29 @@ class TimeLineRequestItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               spacing: 6,
               children: [
-                Text(
-                  workflowTimelineItem.titleRequest,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.workFlowTextStepName,
-                    fontSize: 15,
-                  ),
-                ),
-                Text(
-                  workflowTimelineItem.requestDescription,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.workFlowTextDescription,
-                    fontSize: 10,
-                    fontStyle: FontStyle.italic,
-                  ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  spacing: 4,
+                  children: [
+                    Text(
+                      workflowTimelineItem.titleRequest,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.workFlowTextStepName,
+                        fontSize: 15,
+                      ),
+                    ),
+                    Text(
+                      workflowTimelineItem.requestDescription,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        color: AppColors.workFlowTextDescription,
+                        fontSize: 10,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                  ],
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),

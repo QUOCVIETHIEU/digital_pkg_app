@@ -110,7 +110,7 @@ class _HeaderMenuState extends State<HeaderMenu> {
             Row(
               children: [
                 Text(
-                  widget.drawer.title + (subTitle != null ? '| ' : ''),
+                  widget.drawer.title + (subTitle != null ? '  |  ' : ''),
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.w600,
                     fontSize: 16,

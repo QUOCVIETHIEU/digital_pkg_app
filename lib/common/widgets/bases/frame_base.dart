@@ -13,11 +13,13 @@ class IFrameBase extends StatelessWidget {
     this.background = Colors.white,
     required this.navigationShell,
     required this.drawer,
+    this.subTitle,
   }) : super(key: key ?? const ValueKey<String>('IFrameBase'));
   final Widget? footer;
   final Color background;
   final StatefulNavigationShell navigationShell;
   final DrawerModel drawer;
+  final String? subTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +33,7 @@ class IFrameBase extends StatelessWidget {
               child: HeaderMenu(
                 drawer: drawer,
                 navigationShell: navigationShell,
+                subTitle: subTitle,
               ),
             ),
             Expanded(child: navigationShell),

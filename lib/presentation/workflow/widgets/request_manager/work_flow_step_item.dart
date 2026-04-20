@@ -220,7 +220,7 @@ class WorkFlowStepItem extends StatelessWidget {
             fontWeight: FontWeight.w600,
             backgroundColor: AppColors.workFlowBorderColorUpComing,
             textColor: AppColors.textColor,
-            borderSize: 0.7,
+            borderSize: 0.5,
             outlineColor: AppColors.workFlowTextDescription,
             enableVerticalDivider: false,
             buttonPadding: const EdgeInsets.symmetric(

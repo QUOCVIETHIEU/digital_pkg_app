@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../presentation/bloc.dart';
@@ -102,9 +103,21 @@ class AppRouter extends ChangeNotifier {
               routes: <RouteBase>[
                 StatefulShellRoute.indexedStack(
                   builder: (context, state, navigationShell) {
+                    final selectedMaterial = context
+                        .read<WorkflowRequestBloc>()
+                        .state
+                        .selectedMaterial;
+                    final currentRouteName = GoRouter.of(context).state.name;
+                    final isRequestManagerRoute =
+                        currentRouteName == AppRoute.requestManager.name;
+
                     return IFrameBase(
                       navigationShell: navigationShell,
                       drawer: PageWorkflow.drawer,
+                      subTitle:
+                          isRequestManagerRoute && selectedMaterial != null
+                          ? 'Request Manager  >  ${selectedMaterial.requestId}'
+                          : 'Request Manager',
                     );
                   },
                   branches: [
