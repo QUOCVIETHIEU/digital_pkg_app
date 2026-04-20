@@ -30,7 +30,7 @@ class _MatrixMaterialState extends State<MatrixMaterial> {
   @override
   Widget build(BuildContext context) {
     return ResponsiveWidget(
-      small: buildFormContainer(context, widthFactor: 0.8),
+      small: buildFormContainer(context, widthFactor: 0.98),
       normal: buildFormContainer(context, widthFactor: 0.8),
       large: buildFormContainer(context, widthFactor: 0.8),
       extraLarge: buildFormContainer(context, widthFactor: 0.8),

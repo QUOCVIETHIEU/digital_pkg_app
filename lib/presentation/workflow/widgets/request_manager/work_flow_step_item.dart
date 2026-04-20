@@ -37,51 +37,59 @@ class WorkFlowStepItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 12,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 3),
-                    child: SvgPicture.asset(
-                      workflowStep.status.icon,
-                      width: 16,
-                      height: 16,
+              Expanded(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: 12,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 3),
+                      child: SvgPicture.asset(
+                        workflowStep.status.icon,
+                        width: 16,
+                        height: 16,
+                      ),
                     ),
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    spacing: 10,
-                    children: [
-                      Column(
+                    Expanded(
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        spacing: 10,
                         children: [
-                          Text(
-                            workflowStep.stepName,
-                            style: TextStyle(
-                              fontSize: 11,
-                              fontWeight: FontWeight.w600,
-                            ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                workflowStep.stepName,
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                                softWrap: true,
+                                overflow: TextOverflow.visible,
+                              ),
+                              Text(
+                                workflowStep.stepDescription,
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w500,
+                                  fontStyle: FontStyle.italic,
+                                  color: AppColors.workFlowTextUpComing,
+                                ),
+                                softWrap: true,
+                                overflow: TextOverflow.visible,
+                              ),
+                            ],
                           ),
-                          Text(
-                            workflowStep.stepDescription,
-                            style: TextStyle(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w500,
-                              fontStyle: FontStyle.italic,
-                              color: AppColors.workFlowTextUpComing,
-                            ),
-                          ),
+                          UtilsWorkFlow.isShowButtonConfirm(workflowStep.status)
+                              ? _buildButtonViewConfirm(context)
+                              : _buildButton(context),
                         ],
                       ),
-                      UtilsWorkFlow.isShowButtonConfirm(workflowStep.status)
-                          ? _buildButtonViewConfirm(context)
-                          : _buildButton(context),
-                    ],
-                  ),
-                ],
+                    ),
+                  ],
+                ),
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -128,8 +136,9 @@ class WorkFlowStepItem extends StatelessWidget {
         IRectangleButton(
           leading: SvgPicture.asset(
             workflowStep.status.buttonIcon,
-            width: 8,
-            height: 8,
+            width: 9,
+            height: 9,
+            alignment: Alignment.center,
           ),
           title: workflowStep.status.buttonStepName,
           fontSize: 8,

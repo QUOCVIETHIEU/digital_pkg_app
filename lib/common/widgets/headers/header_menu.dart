@@ -97,36 +97,46 @@ class _HeaderMenuState extends State<HeaderMenu> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: SvgPicture.asset(
-                'assets/icons/drawers/${widget.drawer.icon}_active.svg',
-                width: 24.0,
-                height: 24.0,
-              ),
-            ),
-            Row(
-              children: [
-                Text(
-                  widget.drawer.title + (subTitle != null ? '  |  ' : ''),
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16,
-                  ),
+        Expanded(
+          child: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: SvgPicture.asset(
+                  'assets/icons/drawers/${widget.drawer.icon}_active.svg',
+                  width: 24.0,
+                  height: 24.0,
                 ),
-                if (subTitle != null)
-                  Text(
-                    subTitle,
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
+              ),
+              Expanded(
+                child: Row(
+                  children: [
+                    Text(
+                      widget.drawer.title + (subTitle != null ? '  |  ' : ''),
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16,
+                      ),
                     ),
-                  ),
-              ],
-            ),
-          ],
+                    if (subTitle != null)
+                      Expanded(
+                        child: Text(
+                          subTitle,
+                          style: Theme.of(context).textTheme.titleMedium
+                              ?.copyWith(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                              ),
+                          softWrap: false,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
         if (showMenuItems)
           Expanded(

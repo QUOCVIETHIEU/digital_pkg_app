@@ -39,7 +39,7 @@ class TimeLineRequestItem extends StatelessWidget {
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,
+            mainAxisSize: MainAxisSize.min,
             children: [
               if (isFirst) TimelineLine(minHeight: 20),
               Container(
@@ -63,7 +63,7 @@ class TimeLineRequestItem extends StatelessWidget {
                       )
                     : null,
               ),
-              Expanded(child: TimelineLine(minHeight: 0)),
+              Flexible(fit: FlexFit.loose, child: TimelineLine(minHeight: 0)),
             ],
           ),
           Expanded(
@@ -93,6 +93,8 @@ class TimeLineRequestItem extends StatelessWidget {
             color: AppColors.workFlowTextStepName,
             fontSize: 15,
           ),
+          softWrap: true,
+          overflow: TextOverflow.visible,
         ),
         Text(
           workflowTimelineItem.stepDescription,
@@ -100,6 +102,8 @@ class TimeLineRequestItem extends StatelessWidget {
             color: AppColors.workFlowTextDescription,
             fontWeight: FontWeight.w600,
           ),
+          softWrap: true,
+          overflow: TextOverflow.visible,
         ),
       ],
     );
@@ -113,70 +117,76 @@ class TimeLineRequestItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              spacing: 6,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  spacing: 4,
-                  children: [
-                    Text(
-                      workflowTimelineItem.titleRequest,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.workFlowTextStepName,
-                        fontSize: 15,
-                      ),
-                    ),
-                    Text(
-                      workflowTimelineItem.requestDescription,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.workFlowTextDescription,
-                        fontSize: 10,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: 6,
+                children: [
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    spacing: 6,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    spacing: 4,
                     children: [
-                      IRichTextValue(
-                        label: 'Người thực hiện',
-                        value: workflowTimelineItem.requestPeople,
-                        styleLabel: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 12,
+                      Text(
+                        workflowTimelineItem.titleRequest,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.workFlowTextStepName,
+                          fontSize: 15,
                         ),
+                        softWrap: true,
+                        overflow: TextOverflow.visible,
                       ),
-                      IRichTextValue(
-                        label: 'Người phê duyệt',
-                        value: workflowTimelineItem.requestApprovePeople,
-                        styleLabel: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 12,
+                      Text(
+                        workflowTimelineItem.requestDescription,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.workFlowTextDescription,
+                          fontSize: 10,
+                          fontStyle: FontStyle.italic,
                         ),
-                      ),
-                      IRichTextValue(
-                        label: 'Pic',
-                        value: workflowTimelineItem.requestPic,
-                        styleLabel: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 12,
-                        ),
+                        softWrap: true,
+                        overflow: TextOverflow.visible,
                       ),
                     ],
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      spacing: 6,
+                      children: [
+                        IRichTextValue(
+                          label: 'Người thực hiện',
+                          value: workflowTimelineItem.requestPeople,
+                          styleLabel: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 12,
+                          ),
+                        ),
+                        IRichTextValue(
+                          label: 'Người phê duyệt',
+                          value: workflowTimelineItem.requestApprovePeople,
+                          styleLabel: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 12,
+                          ),
+                        ),
+                        IRichTextValue(
+                          label: 'Pic',
+                          value: workflowTimelineItem.requestPic,
+                          styleLabel: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
             Container(
               width: 40,

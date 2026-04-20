@@ -41,8 +41,20 @@ class _ItemExecutionsState extends State<ItemExecutions> {
 
   @override
   Widget build(BuildContext context) {
+    return ResponsiveWidget(
+      small: _buildFormContainer(context, widthFactor: 0.98),
+      normal: _buildFormContainer(context, widthFactor: 0.8),
+      large: _buildFormContainer(context, widthFactor: 0.5),
+      extraLarge: _buildFormContainer(context, widthFactor: 0.45),
+    );
+  }
+
+  Widget _buildFormContainer(
+    BuildContext context, {
+    required double widthFactor,
+  }) {
     return Container(
-      width: MediaQuery.sizeOf(context).width * 0.4,
+      width: MediaQuery.sizeOf(context).width * widthFactor,
       height: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
       decoration: BoxDecoration(
