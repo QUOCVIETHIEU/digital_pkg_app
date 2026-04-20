@@ -276,6 +276,10 @@ class $AssetsIconsCommonGen {
   /// File path: assets/icons/common/ico_common_request.svg
   String get icoCommonRequest => 'assets/icons/common/ico_common_request.svg';
 
+  /// File path: assets/icons/common/ico_common_reservation.png
+  AssetGenImage get icoCommonReservation =>
+      const AssetGenImage('assets/icons/common/ico_common_reservation.png');
+
   /// File path: assets/icons/common/ico_dashboard_small.svg
   String get icoDashboardSmall => 'assets/icons/common/ico_dashboard_small.svg';
 
@@ -397,6 +401,7 @@ class $AssetsIconsCommonGen {
     icoCommonPlant,
     icoCommonPrimary,
     icoCommonRequest,
+    icoCommonReservation,
     icoDashboardSmall,
     icoDataEmpty,
     icoHistory,

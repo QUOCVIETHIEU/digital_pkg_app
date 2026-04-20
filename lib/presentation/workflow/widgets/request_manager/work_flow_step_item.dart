@@ -8,6 +8,7 @@ import '../../../../core/configs/themes/app_colors.dart';
 import '../../../../data/workflow/models/models.dart';
 import '../../../../gen/assets.gen.dart';
 import '../../../bloc.dart';
+import 'bom_information.dart';
 import 'item_code_sap.dart';
 import 'item_executions.dart';
 import 'matrix_material.dart';
@@ -251,6 +252,10 @@ class WorkFlowStepItem extends StatelessWidget {
       _showAddItemCodeSapDialog(context);
       return;
     }
+    if (UtilsWorkFlow.isShowBomInformationDialog(status)) {
+      _showBomInformationDialog(context);
+      return;
+    }
   }
 
   void _handleSecondaryAction(BuildContext context) {
@@ -323,5 +328,9 @@ class WorkFlowStepItem extends StatelessWidget {
       barrierDismissible: false,
       content: ViewComment(comment: workflowStep.viewComment ?? ''),
     );
+  }
+
+  void _showBomInformationDialog(BuildContext context) {
+    IDialog.showDialogLeft(context: context, content: BomInformation());
   }
 }

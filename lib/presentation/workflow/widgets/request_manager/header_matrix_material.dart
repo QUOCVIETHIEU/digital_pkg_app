@@ -1,35 +1,44 @@
-import 'package:digital_pkg_system/core/constants/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../common/helpers/utils.dart';
 import '../../../../common/widgets/widgets.dart';
 import '../../../../core/configs/themes/app_colors.dart';
+import '../../../../core/typedefs/type_defs.dart';
+import '../../../../data/workflow/models/models.dart';
 import '../../../../gen/assets.gen.dart';
+import '../../../bloc.dart';
 
 class HeaderMatrixMaterial extends StatelessWidget {
   const HeaderMatrixMaterial({
     super.key,
     required this.searchValue,
     required this.onSearch,
+    required this.onFilter,
   });
   final String searchValue;
   final void Function(String value) onSearch;
+  final OnFilterCallback<PlantStatus> onFilter;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 33.0),
-      decoration: const BoxDecoration(
-        border: Border(
-          bottom: BorderSide(color: AppColors.borderColor, width: 1.0),
-        ),
-      ),
-      child: _buildHeader(context),
+    return BlocBuilder<PreformMaterialBlocBloc, PreformMaterialBlocState>(
+      builder: (context, state) {
+        return Container(
+          padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 33.0),
+          decoration: const BoxDecoration(
+            border: Border(
+              bottom: BorderSide(color: AppColors.borderColor, width: 1.0),
+            ),
+          ),
+          child: _buildHeader(context, state),
+        );
+      },
     );
   }
 
-  Widget _buildHeader(BuildContext context) {
+  Widget _buildHeader(BuildContext context, PreformMaterialBlocState state) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -46,7 +55,7 @@ class HeaderMatrixMaterial extends StatelessWidget {
                 color: AppColors.textColor,
               ),
             ),
-            _buildFilter(context),
+            _buildFilter(context, state),
           ],
         ),
         SizedBox(
@@ -85,7 +94,7 @@ class HeaderMatrixMaterial extends StatelessWidget {
               ),
               ITextFieldSearch(
                 size: Size(300, 40),
-                value: searchValue,
+                value: state.searchQuery,
                 radius: 100,
                 hintText: 'Nhập mã, tên... ',
                 onChanged: (s) => onSearch(s),
@@ -97,46 +106,50 @@ class HeaderMatrixMaterial extends StatelessWidget {
     );
   }
 
-  Widget _buildFilter(BuildContext context) {
-    return EnumFilterWidget<Plant>(
-      iconPath: Plant.hmp.iconPath,
-      selectedValue: Plant.hmp,
+  Widget _buildFilter(BuildContext context, PreformMaterialBlocState state) {
+    return EnumFilterWidget<PlantStatus>(
+      iconPath: PlantStatus.hmp.iconPath,
+      selectedValue: state.plantStatus,
       onFilterChanged: (filterType) {
-        // onFilter(filterType);
+        onFilter(filterType);
       },
       borderRadius: 16,
       buttonPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
       options: [
         FilterOption(
-          value: Plant.hmp,
-          label: Plant.hmp.name,
-
-          iconPath: Plant.hmp.iconPath,
+          value: PlantStatus.none,
+          label: PlantStatus.none.name,
+          iconPath: PlantStatus.none.iconPath,
         ),
         FilterOption(
-          value: Plant.dop,
-          label: Plant.dop.name,
-          iconPath: Plant.dop.iconPath,
+          value: PlantStatus.hmp,
+          label: PlantStatus.hmp.name,
+          iconPath: PlantStatus.hmp.iconPath,
         ),
         FilterOption(
-          value: Plant.ctp,
-          label: Plant.ctp.name,
-          iconPath: Plant.ctp.iconPath,
+          value: PlantStatus.dop,
+          label: PlantStatus.dop.name,
+          iconPath: PlantStatus.dop.iconPath,
         ),
         FilterOption(
-          value: Plant.qnp,
-          label: Plant.qnp.name,
-          iconPath: Plant.qnp.iconPath,
+          value: PlantStatus.ctp,
+          label: PlantStatus.ctp.name,
+          iconPath: PlantStatus.ctp.iconPath,
         ),
         FilterOption(
-          value: Plant.bnp,
-          label: Plant.bnp.name,
-          iconPath: Plant.bnp.iconPath,
+          value: PlantStatus.qnp,
+          label: PlantStatus.qnp.name,
+          iconPath: PlantStatus.qnp.iconPath,
         ),
         FilterOption(
-          value: Plant.lap,
-          label: Plant.lap.name,
-          iconPath: Plant.lap.iconPath,
+          value: PlantStatus.bnp,
+          label: PlantStatus.bnp.name,
+          iconPath: PlantStatus.bnp.iconPath,
+        ),
+        FilterOption(
+          value: PlantStatus.lap,
+          label: PlantStatus.lap.name,
+          iconPath: PlantStatus.lap.iconPath,
         ),
         // const FilterOption(value: Plant.none, label: 'Tất cả'),
       ],

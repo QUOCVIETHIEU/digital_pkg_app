@@ -64,26 +64,33 @@ class FilterWidget<T> extends StatelessWidget {
       fontWeight: FontWeight.w600,
     );
 
-    return Container(
-      padding: buttonPadding,
-      decoration: BoxDecoration(
-        color: isSelected
-            ? AppColors.choiceChipSelectedBackground
-            : Colors.transparent,
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () => onFilterChanged(option.value),
         borderRadius: BorderRadius.circular(borderRadius),
-        border: Border.all(
-          color: isSelected
-              ? AppColors.choiceChipSelectedColor
-              : AppColors.borderColor,
-          width: 0.5,
+        child: Container(
+          padding: buttonPadding,
+          decoration: BoxDecoration(
+            color: isSelected
+                ? AppColors.choiceChipSelectedBackground
+                : Colors.transparent,
+            borderRadius: BorderRadius.circular(borderRadius),
+            border: Border.all(
+              color: isSelected
+                  ? AppColors.choiceChipSelectedColor
+                  : AppColors.borderColor,
+              width: 0.5,
+            ),
+          ),
+          child: Row(
+            spacing: 8,
+            children: [
+              SvgPicture.asset(option.iconPath, width: 16, height: 16),
+              Text(option.label, style: textStyle()),
+            ],
+          ),
         ),
-      ),
-      child: Row(
-        spacing: 8,
-        children: [
-          SvgPicture.asset(option.iconPath, width: 16, height: 16),
-          Text(option.label, style: textStyle()),
-        ],
       ),
     );
   }

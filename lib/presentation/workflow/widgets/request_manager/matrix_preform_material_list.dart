@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:tableview2/tableview2.dart';
 
 import '../../../../common/widgets/widgets.dart';
 import '../../../../core/configs/themes/app_colors.dart';
 import '../../../../core/constants/constants.dart';
 import '../../../../data/workflow/models/models.dart';
+import '../../../../gen/assets.gen.dart';
 
 class MatrixPreFormMaterialList extends StatefulWidget {
   const MatrixPreFormMaterialList({
@@ -115,9 +117,11 @@ class _MatrixPreFormMaterialListState extends State<MatrixPreFormMaterialList> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
       child: TableView2(
-        empty: const ListviewEmptyData(
+        empty: ListviewEmptyData(
+          alignment: Alignment.topCenter,
           size: Size(double.infinity, 100),
-          message: 'Không tìm thấy thông tin batch...',
+          message: 'Không tìm thấy thông tin matrix...',
+          icon: SvgPicture.asset(Assets.icons.common.icoDataEmpty),
         ),
         listViewConfig: widget.listViewConfig,
         dataRowHeight: AppConfigs.dataRowHeight,

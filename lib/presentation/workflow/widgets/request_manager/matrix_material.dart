@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../../common/helpers/utils.dart';
 import '../../../../common/widgets/widgets.dart';
 import '../../../../core/configs/themes/app_colors.dart';
+import '../../../../core/constants/constants.dart';
 import '../../../../data/workflow/models/models.dart';
 import '../../../../gen/assets.gen.dart';
 import '../../../bloc.dart';
@@ -40,94 +42,104 @@ class _MatrixMaterialState extends State<MatrixMaterial> {
     required double widthFactor,
   }) {
     final matrixEdi = widget.workflowStep?.matrixEdi;
-    final state = context.read<RequestManagerBloc>().state;
-    return Container(
-      width: MediaQuery.sizeOf(context).width * widthFactor,
-      height: double.infinity,
-      decoration: BoxDecoration(
-        color: AppColors.primary,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(12),
-          bottomLeft: Radius.circular(12),
+    return BlocProvider(
+      create: (context) => PreformMaterialBlocBloc()
+        ..add(
+          PreformMaterialBlocEventLoadRequested(
+            matrixEdiList: widget.workflowStep?.matrixEdiList,
+          ),
         ),
-      ),
-      child: Column(
-        children: [
-          _buildAnimatedHeader(),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(6),
-              child: Column(
-                children: [
-                  buildTabBar(),
-                  Expanded(
-                    child: AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 280),
-                      reverseDuration: const Duration(milliseconds: 180),
-                      switchInCurve: Curves.easeOutCubic,
-                      switchOutCurve: Curves.easeInCubic,
-                      transitionBuilder: (child, animation) {
-                        final slideAnimation = Tween<Offset>(
-                          begin: const Offset(0.02, 0),
-                          end: Offset.zero,
-                        ).animate(animation);
-                        return FadeTransition(
-                          opacity: animation,
-                          child: SlideTransition(
-                            position: slideAnimation,
-                            child: child,
-                          ),
-                        );
-                      },
-                      child: _selectedTabIndex == 0
-                          ? buildTabContent(
-                              matrixEdi: matrixEdi,
-                              sectionTitle: 'CLOSURE',
-                            )
-                          : MatrixPreformMaterial(
-                              matrixEdiList:
-                                  widget.workflowStep?.matrixEdiList ?? [],
-                              listViewConfig: state.matrixEdiListViewConfig,
-                              onConfigUpdated: (config, isFixed) {},
-                            ),
-                    ),
-                  ),
-                ],
+      child: BlocConsumer<PreformMaterialBlocBloc, PreformMaterialBlocState>(
+        listener: (context, state) {
+          if (state.status == Status.loading) {
+            IDialog.showDialogLoading(context: context);
+          } else if (state.status == Status.loaded) {
+            context.popSafety();
+          } else if (state.status == Status.error) {
+            context.popSafety();
+            IDialog.showErrorException(context: context, error: state.error!);
+          }
+        },
+        builder: (context, state) {
+          return Container(
+            width: MediaQuery.sizeOf(context).width * widthFactor,
+            height: double.infinity,
+            decoration: BoxDecoration(
+              color: AppColors.primary,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(12),
+                bottomLeft: Radius.circular(12),
               ),
             ),
-          ),
-        ],
+            child: Column(
+              children: [
+                _buildAnimatedHeader(state, context),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(6),
+                    child: Column(
+                      children: [
+                        buildTabBar(),
+                        Expanded(
+                          child: AnimatedSwitcher(
+                            duration: const Duration(milliseconds: 380),
+                            reverseDuration: const Duration(milliseconds: 380),
+                            switchInCurve: Curves.easeOutCubic,
+                            switchOutCurve: Curves.easeInCubic,
+                            transitionBuilder: (child, animation) {
+                              final slideAnimation = Tween<Offset>(
+                                begin: const Offset(0.02, 0),
+                                end: Offset.zero,
+                              ).animate(animation);
+                              return FadeTransition(
+                                opacity: animation,
+                                child: SlideTransition(
+                                  position: slideAnimation,
+                                  child: child,
+                                ),
+                              );
+                            },
+                            child: _selectedTabIndex == 0
+                                ? buildTabContent(
+                                    matrixEdi: matrixEdi,
+                                    sectionTitle: 'CLOSURE',
+                                  )
+                                : MatrixPreformMaterial(
+                                    matrixEdiList: state.matrixEdiList,
+                                    listViewConfig: state.listViewConfig,
+                                    onConfigUpdated: (config, isFixed) {},
+                                  ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }
 
-  Widget _buildAnimatedHeader() {
+  Widget _buildAnimatedHeader(
+    PreformMaterialBlocState state,
+    BuildContext context,
+  ) {
     return AnimatedSwitcher(
-      duration: const Duration(milliseconds: 600),
-      reverseDuration: const Duration(milliseconds: 320),
-      switchInCurve: Curves.easeOutQuart,
-      switchOutCurve: Curves.easeInOutCubic,
-      layoutBuilder: (currentChild, previousChildren) {
-        return Stack(
-          alignment: Alignment.topCenter,
-          children: [...previousChildren, ?currentChild],
-        );
-      },
+      duration: const Duration(milliseconds: 380),
+      reverseDuration: const Duration(milliseconds: 380),
+      switchInCurve: Curves.easeOutCubic,
+      switchOutCurve: Curves.easeInCubic,
       transitionBuilder: (child, animation) {
         final slideAnimation = Tween<Offset>(
-          begin: const Offset(0, -0.4),
+          begin: const Offset(0.03, 0),
           end: Offset.zero,
         ).animate(animation);
         return FadeTransition(
           opacity: animation,
-          child: SlideTransition(
-            position: slideAnimation,
-            child: SizeTransition(
-              sizeFactor: animation,
-              axisAlignment: -1,
-              child: child,
-            ),
-          ),
+          child: SlideTransition(position: slideAnimation, child: child),
         );
       },
       child: KeyedSubtree(
@@ -136,7 +148,17 @@ class _MatrixMaterialState extends State<MatrixMaterial> {
             ? widget.isHeader
                   ? _buildHeaderBom()
                   : const HeaderMatrixItem()
-            : HeaderMatrixMaterial(searchValue: '', onSearch: (value) {}),
+            : HeaderMatrixMaterial(
+                searchValue: state.searchQuery,
+                onSearch: (value) {
+                  final bloc = context.read<PreformMaterialBlocBloc>();
+                  bloc.add(SearchMaterialStatus(value));
+                },
+                onFilter: (plantStatus) {
+                  final bloc = context.read<PreformMaterialBlocBloc>();
+                  bloc.add(FilterMaterialStatus(plantStatus));
+                },
+              ),
       ),
     );
   }

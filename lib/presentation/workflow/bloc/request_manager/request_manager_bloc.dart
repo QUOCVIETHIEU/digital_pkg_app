@@ -2,10 +2,8 @@ import 'dart:math';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:tableview2/tableview2.dart';
 
 import '../../../../common/models/models.dart';
-import '../../../../core/configs/listview/listview_config.dart';
 import '../../../../core/constants/constants.dart';
 import '../../../../data/workflow/models/models.dart';
 
@@ -14,13 +12,7 @@ part 'request_manager_state.dart';
 
 class RequestManagerBloc
     extends Bloc<RequestManagerEvent, RequestManagerState> {
-  RequestManagerBloc()
-    : super(
-        RequestManagerState(
-          matrixEdiListViewConfig: ListViewConfigProvider
-              .configs[ListViewConfigName.matrixEdi.name]!,
-        ),
-      ) {
+  RequestManagerBloc() : super(RequestManagerState()) {
     on<RequestManagerLoadRequested>(_onLoadRequested);
   }
 

@@ -190,7 +190,7 @@ class _MatrixInfoState extends State<MatrixInfo> {
         crossAxisAlignment: CrossAxisAlignment.end,
         spacing: 30,
         children: [
-          Assets.icons.common.icoCommonPet.image(height: 200),
+          Assets.icons.common.icoCommonPet.image(height: 250),
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -259,11 +259,10 @@ class _MatrixInfoState extends State<MatrixInfo> {
           enabled: false,
           controller: controller,
           maxLines: 1,
-
           disabledTextColor: AppColors.workFlowTextDescription,
           decoration: const InputDecoration(
             isDense: true,
-            contentPadding: EdgeInsets.symmetric(horizontal: 6, vertical: 10),
+            contentPadding: EdgeInsets.symmetric(horizontal: 6, vertical: 16),
           ),
         ),
       ],

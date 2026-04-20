@@ -170,6 +170,7 @@ enum Status {
   error,
   selected,
   sorted,
+  filtered,
   search,
   exported,
   transitionPage,

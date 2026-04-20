@@ -68,4 +68,11 @@ class UtilsWorkFlow {
       _ => false,
     };
   }
+
+  static bool isShowBomInformationDialog(WorkflowStepStatus workflowStep) {
+    return switch (workflowStep) {
+      WorkflowStepStatus.itemCodeBom => true,
+      _ => false,
+    };
+  }
 }
