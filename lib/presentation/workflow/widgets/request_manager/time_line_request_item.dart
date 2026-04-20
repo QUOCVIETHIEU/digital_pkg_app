@@ -126,7 +126,7 @@ class TimeLineRequestItem extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
-                    spacing: 4,
+                    spacing: 2,
                     children: [
                       Text(
                         workflowTimelineItem.titleRequest,
