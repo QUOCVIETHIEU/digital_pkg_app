@@ -43,8 +43,8 @@ class TimeLineRequestItem extends StatelessWidget {
             children: [
               if (isFirst) TimelineLine(minHeight: 20),
               Container(
-                height: 30,
-                width: 30,
+                height: 28,
+                width: 28,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
@@ -135,28 +135,38 @@ class TimeLineRequestItem extends StatelessWidget {
                     fontStyle: FontStyle.italic,
                   ),
                 ),
-                IRichTextValue(
-                  label: 'Người thực hiện',
-                  value: workflowTimelineItem.requestPeople,
-                  styleLabel: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 12,
-                  ),
-                ),
-                IRichTextValue(
-                  label: 'Người phê duyệt',
-                  value: workflowTimelineItem.requestApprovePeople,
-                  styleLabel: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 12,
-                  ),
-                ),
-                IRichTextValue(
-                  label: 'Pic',
-                  value: workflowTimelineItem.requestPic,
-                  styleLabel: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 12,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 6,
+                    children: [
+                      IRichTextValue(
+                        label: 'Người thực hiện',
+                        value: workflowTimelineItem.requestPeople,
+                        styleLabel: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 12,
+                        ),
+                      ),
+                      IRichTextValue(
+                        label: 'Người phê duyệt',
+                        value: workflowTimelineItem.requestApprovePeople,
+                        styleLabel: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 12,
+                        ),
+                      ),
+                      IRichTextValue(
+                        label: 'Pic',
+                        value: workflowTimelineItem.requestPic,
+                        styleLabel: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
