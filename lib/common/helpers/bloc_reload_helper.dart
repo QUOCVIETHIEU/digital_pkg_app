@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/constants/constants.dart';
 import '../../domain/common/repositories/common.dart';
+import '../../presentation/bloc.dart';
 import '../../service_locator.dart';
 
 /// Helper class to reload blocs based on route
@@ -19,6 +21,12 @@ class BlocReloadHelper {
 
     try {
       switch (route) {
+        case AppRoute.workflow:
+          if (count > 0) {
+            context.read<WorkflowRequestBloc>().add(
+              const WorkflowRequestLoadRequested(''),
+            );
+          }
         default:
           // No reload needed for other routes
           break;

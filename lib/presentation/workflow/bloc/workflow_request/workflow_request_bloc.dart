@@ -45,6 +45,7 @@ class WorkflowRequestBloc
     Emitter<WorkflowRequestState> emit,
   ) async {
     emit(state.copyWith(status: Status.loading));
+    await Future.delayed(const Duration(seconds: 1));
     try {
       final listViewConfig = await sl<AppDatabaseRepository>()
           .getListViewConfig(ListViewConfigName.request.name);
