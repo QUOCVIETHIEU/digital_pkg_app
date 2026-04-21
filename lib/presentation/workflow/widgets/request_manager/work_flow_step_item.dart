@@ -136,12 +136,12 @@ class WorkFlowStepItem extends StatelessWidget {
         IRectangleButton(
           leading: SvgPicture.asset(
             workflowStep.status.buttonIcon,
-            width: 9,
-            height: 9,
+            width: 10,
+            height: 10,
             alignment: Alignment.center,
           ),
           title: workflowStep.status.buttonStepName,
-          fontSize: 8,
+          fontSize: 9,
           fontWeight: FontWeight.w500,
           backgroundColor: AppColors.workFlowButtonBackgroundColor,
           textColor: AppColors.primary,
@@ -155,11 +155,11 @@ class WorkFlowStepItem extends StatelessWidget {
           IRectangleButton(
             leading: SvgPicture.asset(
               Assets.icons.drawers.icoDrawerMatrix,
-              width: 8,
-              height: 8,
+              width: 10,
+              height: 10,
             ),
             title: 'Xem matrix update',
-            fontSize: 8,
+            fontSize: 9,
             fontWeight: FontWeight.w500,
             backgroundColor: AppColors.workFlowButtonMatrix,
             textColor: AppColors.primary,
@@ -209,7 +209,7 @@ class WorkFlowStepItem extends StatelessWidget {
               Text(
                 workflowStep.status.buttonTitleConfirm,
                 style: TextStyle(
-                  fontSize: 8,
+                  fontSize: 9,
                   fontWeight: FontWeight.w600,
                   color: AppColors.workFlowTextDone,
                 ),
@@ -221,11 +221,11 @@ class WorkFlowStepItem extends StatelessWidget {
           IRectangleButton(
             leading: SvgPicture.asset(
               Assets.icons.common.icoCommonComment,
-              width: 8,
-              height: 8,
+              width: 10,
+              height: 10,
             ),
             title: 'View comment',
-            fontSize: 8,
+            fontSize: 9,
             fontWeight: FontWeight.w600,
             backgroundColor: AppColors.workFlowBorderColorUpComing,
             textColor: AppColors.textColor,
